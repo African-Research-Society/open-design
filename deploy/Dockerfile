@@ -1,5 +1,5 @@
-ARG NODE_IMAGE=docker.io/library/node:24-alpine
-ARG RUNTIME_IMAGE=docker.io/library/node:24-alpine
+ARG NODE_IMAGE=docker.io/library/node:24-bookworm-slim
+ARG RUNTIME_IMAGE=docker.io/library/node:24-bookworm-slim
 
 FROM ${NODE_IMAGE} AS build
 
@@ -18,7 +18,9 @@ ENV no_proxy=${no_proxy}
 ENV NO_PROXY=${NO_PROXY}
 ENV CI=true
 
-RUN apk add --no-cache python3 make g++
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends python3 make g++ && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
@@ -93,17 +95,19 @@ COPY plugins/_official ./plugins/_official
 
 FROM ${RUNTIME_IMAGE}
 
-RUN apk add --no-cache tini poppler-utils bash git curl && \
-    addgroup -S -g 1001 open-design && \
-    adduser -S -D -H -u 1001 -G open-design open-design
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends tini poppler-utils bash git curl ca-certificates && \
+    rm -rf /var/lib/apt/lists/* && \
+    groupadd --gid 1001 open-design && \
+    useradd --uid 1001 --gid open-design --no-create-home --shell /usr/sbin/nologin open-design
 
 # ARS: coding-agent CLIs. Open Design detects agents by probing PATH at boot and
 # asking each one whether it is signed in ("codex login status", "claude auth
 # status"), so the binaries have to live in the image even though the credentials
 # do not - those come from each CLI own OAuth sign-in and are kept on the .od
-# volume via HOME below. Both publish musl builds, so the Alpine runtime stays
-# viable. Versions are pinned so a rebuild cannot silently swap the agent under a
-# running studio; bump them deliberately.
+# volume via HOME below. Vela's official Linux binary is glibc-linked, so the
+# hosted image uses Debian slim. Versions are pinned so a rebuild cannot silently
+# swap an agent under a running studio; bump them deliberately.
 RUN npm i -g @openai/codex@0.148.0 @anthropic-ai/claude-code@2.1.235
 
 WORKDIR /app
@@ -143,5 +147,5 @@ ENV HOME=/app/.od/home
 EXPOSE 7456
 
 USER open-design
-ENTRYPOINT ["/sbin/tini", "--"]
+ENTRYPOINT ["/usr/bin/tini", "--"]
 CMD ["node", "apps/daemon/dist/cli.js", "--no-open"]

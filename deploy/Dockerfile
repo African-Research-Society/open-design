@@ -32,6 +32,19 @@ RUN corepack enable && \
     corepack prepare pnpm@10.33.2 --activate && \
     pnpm install --frozen-lockfile
 
+# The hosted daemon uses the same pinned Vela + OpenCode pair as the packaged
+# desktop app. Resolve the platform-specific optional dependency while the full
+# workspace install is available, then carry only the native runtime forward.
+RUN node --input-type=module -e "\
+import { cpSync, mkdirSync } from 'node:fs'; \
+import { dirname, join } from 'node:path'; \
+import { resolveVelaCliBin } from './tools/pack/node_modules/@powerformer/vela-cli/index.mjs'; \
+const source = resolveVelaCliBin({ strict: true }); \
+const target = '/app/deploy/vela/bin'; \
+mkdirSync(target, { recursive: true }); \
+cpSync(source, join(target, 'vela')); \
+cpSync(join(dirname(source), 'libexec'), join(target, 'libexec'), { recursive: true });"
+
 COPY apps ./apps
 RUN pnpm --filter @open-design/daemon build && \
     pnpm --filter @open-design/web build && \
@@ -95,6 +108,7 @@ RUN npm i -g @openai/codex@0.148.0 @anthropic-ai/claude-code@2.1.235
 
 WORKDIR /app
 COPY --from=build --chown=open-design:open-design /app/deploy/daemon ./apps/daemon
+COPY --from=build --chown=open-design:open-design /app/deploy/vela ./vela
 COPY --from=build --chown=open-design:open-design /app/apps/web/out ./apps/web/out
 COPY --from=build --chown=open-design:open-design /app/skills ./skills
 COPY --from=build --chown=open-design:open-design /app/design-systems ./design-systems
@@ -109,13 +123,17 @@ COPY --from=build --chown=open-design:open-design /app/assets/community-pets ./a
 # via the same registry path third-party plugins use.
 COPY --from=build --chown=open-design:open-design /app/plugins/_official ./plugins/_official
 
-RUN mkdir -p /app/.od/home && \
+RUN chmod +x /app/vela/bin/vela /app/vela/bin/libexec/opencode/opencode && \
+    /app/vela/bin/vela --version && \
+    mkdir -p /app/.od/home && \
     chown -R open-design:open-design /app
 
 ENV NODE_ENV=production
 ENV NODE_OPTIONS=--max-old-space-size=512
 ENV OD_BIND_HOST=0.0.0.0
 ENV OD_PORT=7456
+ENV VELA_BIN=/app/vela/bin/vela
+ENV VELA_OPENCODE_BIN=/app/vela/bin/libexec/opencode/opencode
 # ARS: the agent CLIs keep their OAuth credentials under $HOME (~/.codex,
 # ~/.claude). The runtime user is created with -H, i.e. no home directory, so
 # point HOME into the persistent .od volume - a sign-in then survives redeploys

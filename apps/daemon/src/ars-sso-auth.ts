@@ -126,7 +126,16 @@ export function createArsSsoAuth(env: NodeJS.ProcessEnv = process.env): ArsSsoAu
       if (typeof assertion !== 'string' || assertion.length > 4096) {
         throw new Error('Invalid assertion');
       }
-      if (request.get('origin') !== ssoConfig.issuer) {
+      // Some privacy-focused browsers omit or neutralize Origin on a top-level
+      // cross-site form POST. The signed assertion is the authoritative trust
+      // boundary; keep rejecting an explicit non-null mismatch as additional
+      // defence in depth without breaking those browsers.
+      const requestOrigin = request.get('origin');
+      if (
+        requestOrigin != null
+        && requestOrigin !== 'null'
+        && requestOrigin !== ssoConfig.issuer
+      ) {
         throw new Error('Invalid assertion origin');
       }
 

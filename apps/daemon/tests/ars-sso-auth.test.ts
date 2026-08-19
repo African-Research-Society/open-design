@@ -116,6 +116,27 @@ describe('ARS SSO browser authentication', () => {
     });
     expect(authenticatedApi.status).toBe(200);
 
+    const privacyBrowserExchange = await fetch(`${started.url}/auth/ars/callback`, {
+      method: 'POST',
+      redirect: 'manual',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({ assertion: await assertion() }),
+    });
+    expect(privacyBrowserExchange.status).toBe(303);
+
+    const wrongOriginExchange = await fetch(`${started.url}/auth/ars/callback`, {
+      method: 'POST',
+      redirect: 'manual',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+        origin: 'https://attacker.example',
+      },
+      body: new URLSearchParams({ assertion: await assertion() }),
+    });
+    expect(wrongOriginExchange.status).toBe(401);
+
     const forgedMutation = await fetch(`${started.url}/api/not-a-real-route`, {
       method: 'POST',
       headers: {

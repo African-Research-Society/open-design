@@ -80,7 +80,7 @@ COPY plugins/_official ./plugins/_official
 
 FROM ${RUNTIME_IMAGE}
 
-RUN apk add --no-cache tini poppler-utils bash git && \
+RUN apk add --no-cache tini poppler-utils bash git curl && \
     addgroup -S -g 1001 open-design && \
     adduser -S -D -H -u 1001 -G open-design open-design
 
@@ -113,7 +113,7 @@ RUN mkdir -p /app/.od/home && \
     chown -R open-design:open-design /app
 
 ENV NODE_ENV=production
-ENV NODE_OPTIONS=--max-old-space-size=192
+ENV NODE_OPTIONS=--max-old-space-size=512
 ENV OD_BIND_HOST=0.0.0.0
 ENV OD_PORT=7456
 # ARS: the agent CLIs keep their OAuth credentials under $HOME (~/.codex,

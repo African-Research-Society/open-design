@@ -84,6 +84,15 @@ RUN apk add --no-cache tini poppler-utils bash git && \
     addgroup -S -g 1001 open-design && \
     adduser -S -D -H -u 1001 -G open-design open-design
 
+# ARS: coding-agent CLIs. Open Design detects agents by probing PATH at boot and
+# asking each one whether it is signed in ("codex login status", "claude auth
+# status"), so the binaries have to live in the image even though the credentials
+# do not - those come from each CLI own OAuth sign-in and are kept on the .od
+# volume via HOME below. Both publish musl builds, so the Alpine runtime stays
+# viable. Versions are pinned so a rebuild cannot silently swap the agent under a
+# running studio; bump them deliberately.
+RUN npm i -g @openai/codex@0.148.0 @anthropic-ai/claude-code@2.1.235
+
 WORKDIR /app
 COPY --from=build --chown=open-design:open-design /app/deploy/daemon ./apps/daemon
 COPY --from=build --chown=open-design:open-design /app/apps/web/out ./apps/web/out
@@ -100,13 +109,18 @@ COPY --from=build --chown=open-design:open-design /app/assets/community-pets ./a
 # via the same registry path third-party plugins use.
 COPY --from=build --chown=open-design:open-design /app/plugins/_official ./plugins/_official
 
-RUN mkdir -p /app/.od && \
+RUN mkdir -p /app/.od/home && \
     chown -R open-design:open-design /app
 
 ENV NODE_ENV=production
 ENV NODE_OPTIONS=--max-old-space-size=192
 ENV OD_BIND_HOST=0.0.0.0
 ENV OD_PORT=7456
+# ARS: the agent CLIs keep their OAuth credentials under $HOME (~/.codex,
+# ~/.claude). The runtime user is created with -H, i.e. no home directory, so
+# point HOME into the persistent .od volume - a sign-in then survives redeploys
+# and image rebuilds instead of dying with the container.
+ENV HOME=/app/.od/home
 
 EXPOSE 7456
 

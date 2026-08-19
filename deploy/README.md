@@ -41,6 +41,26 @@ password. The browser reuses those credentials for same-origin API requests;
 CLI clients and reverse proxies can continue to send
 `Authorization: Bearer <OD_API_TOKEN>`.
 
+### ARS member SSO
+
+The African Research Society deployment can replace the browser Basic dialog
+with a signed member hand-off while keeping `OD_API_TOKEN` for CLI and
+automation access. Configure all four values in `deploy/.env`:
+
+```bash
+OD_ARS_SSO_SECRET=<random value of at least 32 bytes>
+OD_ARS_SSO_ISSUER=https://africanresearchsociety.org
+OD_ARS_SSO_AUDIENCE=https://design.africanresearchsociety.org
+OD_ARS_SSO_LOGIN_URL=https://africanresearchsociety.org/admin/design
+```
+
+Set the same secret as `OPEN_DESIGN_SSO_SECRET` in the ARS web deployment and
+keep it independent from `OD_API_TOKEN`. Authorized ARS members open the studio
+from the ARS admin navigation; the ARS app sends a 60-second, one-time signed
+POST assertion, and OpenDesign exchanges it for an HttpOnly browser session.
+The assertion is never placed in a URL. Partial or invalid SSO configuration
+fails startup instead of falling back silently.
+
 The published `ghcr.io/nexu-io/od` package must be public for anonymous
 `docker pull`, Docker Compose, and Dokploy installs to work. If GHCR returns an
 authentication or access-denied error for this image, an organization maintainer

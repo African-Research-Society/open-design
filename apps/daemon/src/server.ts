@@ -1007,6 +1007,7 @@ import {
   isApiAuthDisabled,
   isApiTokenMiddlewareEnabled,
 } from './api-token-auth.js';
+import { createArsSsoAuth } from './ars-sso-auth.js';
 import { createOpenDesignPublicMetadataService } from './services/open-design-public-metadata.js';
 import { createWhatsNewService } from './services/whats-new.js';
 import { execCommandViaLoginShell } from './services/login-shell.js';
@@ -2605,6 +2606,14 @@ export async function startServer({
 
   const app = express();
   installRouteRegistrationGuard(app);
+  const arsSsoAuth = createArsSsoAuth();
+  if (arsSsoAuth) {
+    app.post(
+      '/auth/ars/callback',
+      express.urlencoded({ extended: false, limit: '8kb', parameterLimit: 4 }),
+      arsSsoAuth.callback,
+    );
+  }
   // Clipper page captures are self-contained HTML with inlined images plus a
   // Figma IR, which for an image-heavy site (The Economist, news front pages)
   // runs to tens of MB — far past a normal JSON body. Give the ingest route a
@@ -2643,7 +2652,7 @@ export async function startServer({
       '/version',
       '/api/version',
     ]);
-    app.use('/api', (req, res, next) => {
+    app.use('/api', async (req, res, next) => {
       if (openProbePaths.has(req.path)) return next();
       if (req.method === 'GET') {
         const previewAsset = parseProjectPreviewAssetPath(req.path);
@@ -2660,6 +2669,18 @@ export async function startServer({
       // UI which has no proxy in the path.
       if (isLoopbackPeerAddress(req.socket?.remoteAddress)) return next();
       if (apiTokenAuthorizationMatches(req.get('authorization'), apiToken)) return next();
+      const arsAuthorization = arsSsoAuth
+        ? await arsSsoAuth.authorizeApiRequest(req)
+        : 'unauthorized';
+      if (arsAuthorization === 'authorized') return next();
+      if (arsAuthorization === 'csrf') {
+        return res.status(403).json({
+          error: {
+            code: 'CSRF_VALIDATION_FAILED',
+            message: 'Same-origin request required',
+          },
+        });
+      }
       if (
         req.method === 'POST'
         && PROJECT_RUN_SCOPED_EXPORT_PATH_RE.test(req.path)
@@ -2670,11 +2691,14 @@ export async function startServer({
       ) {
         return next();
       }
-      res.setHeader('WWW-Authenticate', API_TOKEN_BASIC_CHALLENGE);
+      if (!arsSsoAuth) res.setHeader('WWW-Authenticate', API_TOKEN_BASIC_CHALLENGE);
       return res.status(401).json({
         error: {
-          code: 'API_TOKEN_REQUIRED',
-          message: 'Authorization: Bearer <OD_API_TOKEN> or browser Basic authentication required',
+          code: arsSsoAuth ? 'ARS_SSO_REQUIRED' : 'API_TOKEN_REQUIRED',
+          message: arsSsoAuth
+            ? 'A signed-in ARS design-studio session is required'
+            : 'Authorization: Bearer <OD_API_TOKEN> or browser Basic authentication required',
+          ...(arsSsoAuth ? { loginUrl: arsSsoAuth.loginUrl } : {}),
         },
       });
     });
@@ -2685,10 +2709,16 @@ export async function startServer({
     // credentials for same-origin /api requests. Static assets do not need a
     // separate challenge because the authenticated shell is the only entry
     // point and API routes still enforce credentials independently.
-    app.use((req, res, next) => {
+    app.use(async (req, res, next) => {
       if (isLoopbackPeerAddress(req.socket?.remoteAddress)) return next();
       if (resolveStaticSpaFallbackPath(req, staticDir) === null) return next();
       if (apiTokenAuthorizationMatches(req.get('authorization'), apiToken)) return next();
+
+      if (arsSsoAuth) {
+        if (await arsSsoAuth.isAuthenticated(req)) return next();
+        res.setHeader('Cache-Control', 'no-store');
+        return res.redirect(303, arsSsoAuth.loginUrl);
+      }
 
       res.setHeader('WWW-Authenticate', API_TOKEN_BASIC_CHALLENGE);
       return res.status(401).type('text/plain').send(

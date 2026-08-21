@@ -1,70 +1,72 @@
 /* ============================================================
-   OpenDesign — neutral product workspace
+   ARS Design — Observatory product workspace
    ============================================================ */
 :root {
-  /* OpenDesign system palette. Neutrals carry the interface; brand green is
-     reserved for sparse feedback, selected assists, and brand emphasis. */
-  --bg: #fff;
-  --bg-app: #fff;
-  --bg-panel: #fafafa;
-  --bg-subtle: #ededed;
-  --bg-muted: #dbdbdb;
-  --bg-fill-tertiary: rgba(0, 0, 0, 0.03);
-  --bg-fill-secondary: rgba(0, 0, 0, 0.06);
-  --bg-fill: rgba(0, 0, 0, 0.12);
-  --bg-elevated: #fafafa;
+  /* The ARS Observatory palette keeps the working canvas quiet and warm.
+     Solar gold identifies action and selection; malachite is reserved for
+     success so product state and brand emphasis remain distinct. */
+  --bg: #f2ede2;
+  --bg-app: #f2ede2;
+  --bg-panel: #f7f3ea;
+  --bg-subtle: #e9e2d0;
+  --bg-muted: #d8cfbc;
+  --bg-fill-tertiary: rgba(23, 22, 27, 0.035);
+  --bg-fill-secondary: rgba(23, 22, 27, 0.065);
+  --bg-fill: rgba(23, 22, 27, 0.12);
+  --bg-elevated: #f7f3ea;
   /* Liquid Glass — frosted "regular" material for floating functional layers
      (nav rail, toolbars, popovers) per the material spec. Translucent surface
      + backdrop blur; falls back to a solid --bg-panel where unsupported. */
-  --glass-regular: rgba(250, 250, 250, 0.66);
+  --glass-regular: rgba(242, 237, 226, 0.72);
   --glass-regular-blur: 28px;
   /* Bright top-edge sheen that reads as glass thickness on a frosted pane. */
-  --glass-edge-highlight: color-mix(in srgb, #fff 65%, transparent);
+  --glass-edge-highlight: color-mix(in srgb, #fff 48%, transparent);
   /* Entry ground shares the app surface — the nav rail is a solid panel now,
      so the page behind it no longer needs a tinted ground to float on. */
   --entry-ground: var(--bg);
-  --border: #dbdbdb;
-  --border-strong: #bdbdbd;
-  --border-selected: #a3a3a3;
-  --border-soft: #ededed;
+  --border: #d8cfbc;
+  --border-strong: #c4b99f;
+  --border-selected: #a99d82;
+  --border-soft: #e4dcc9;
 
-  --text: #494949;
-  --text-strong: #202020;
-  --text-muted: #5c5c5c;
-  --text-soft: #848484;
-  --text-faint: #bdbdbd;
+  --text: #37343c;
+  --text-strong: #17161b;
+  --text-muted: #666157;
+  --text-soft: #666157;
+  --text-faint: #666157;
 
-  --accent: #353535;
-  --accent-contrast: #fafafa;
-  --accent-strong: #202020;
-  --accent-soft: #ededed;
-  --accent-tint: #f7f7f7;
-  --accent-hover: #202020;
-  --brand: #87ea5c;
-  --brand-weak: #d0ffb5;
-  --brand-soft: #ebffde;
-  --brand-text: #0d5400;
+  --accent: #7f5a0c;
+  --accent-contrast: #f2ede2;
+  --accent-strong: #5d3f00;
+  --accent-soft: #eadfbe;
+  --accent-tint: #fbf3d7;
+  --accent-hover: #684806;
+  --brand: #e8b23a;
+  --brand-weak: #f6cf6b;
+  --brand-soft: #fbf3d7;
+  --brand-text: #5d3f00;
+  --brand-contrast: #221703;
 
   /* Semantic accent tints used by tool / status pills. */
-  --green: #00AA54;
-  --green-bg: #f5ffee;
-  --green-border: #adf788;
-  --blue: #1A74FF;
-  --blue-bg: color-mix(in srgb, #1A74FF 10%, #fafafa);
-  --blue-border: color-mix(in srgb, #1A74FF 24%, #dbdbdb);
-  --purple: #353535;
-  --purple-bg: #ededed;
-  --purple-border: #dbdbdb;
-  --red: #F04142;
-  --red-bg: color-mix(in srgb, #F04142 10%, #fafafa);
-  --red-border: color-mix(in srgb, #F04142 24%, #dbdbdb);
-  --amber: #FF7528;
-  --amber-bg: color-mix(in srgb, #FFBA12 18%, #fafafa);
+  --green: #176f47;
+  --green-bg: #e4efe8;
+  --green-border: #9fc5ad;
+  --blue: #5b46c4;
+  --blue-bg: color-mix(in srgb, #5b46c4 10%, #f7f3ea);
+  --blue-border: color-mix(in srgb, #5b46c4 24%, #d8cfbc);
+  --purple: #5b46c4;
+  --purple-bg: #e9e2f4;
+  --purple-border: #c8bee6;
+  --red: #a33227;
+  --red-bg: color-mix(in srgb, #a33227 10%, #f7f3ea);
+  --red-border: color-mix(in srgb, #a33227 24%, #d8cfbc);
+  --amber: #7f5a0c;
+  --amber-bg: color-mix(in srgb, #e8b23a 18%, #f7f3ea);
 
-  --shadow-xs: 0 1px 0 rgba(28, 27, 26, 0.04);
-  --shadow-sm: 0 1px 2px rgba(28, 27, 26, 0.05), 0 1px 3px rgba(28, 27, 26, 0.04);
-  --shadow-md: 0 6px 24px rgba(28, 27, 26, 0.07), 0 2px 6px rgba(28, 27, 26, 0.04);
-  --shadow-lg: 0 24px 60px rgba(28, 27, 26, 0.16), 0 8px 16px rgba(28, 27, 26, 0.07);
+  --shadow-xs: 0 1px 0 rgba(23, 22, 27, 0.04);
+  --shadow-sm: 0 1px 2px rgba(23, 22, 27, 0.05), 0 1px 3px rgba(23, 22, 27, 0.04);
+  --shadow-md: 0 6px 24px rgba(23, 22, 27, 0.08), 0 2px 6px rgba(23, 22, 27, 0.04);
+  --shadow-lg: 0 24px 60px rgba(23, 22, 27, 0.16), 0 8px 16px rgba(23, 22, 27, 0.07);
 
   /* Corner-radius scale — the only radii UI should reach for (Shape
      Consistency Lock). xs for inline code / micro-chips, sm for controls,
@@ -111,8 +113,8 @@
      fidelity card, focused input ring, active filter pill — so a primary
      CTA and a selected state can coexist on the same screen without
      competing. --selected-soft is the 16% tint for outer rings / fills. */
-  --selected: #353535;
-  --selected-soft: color-mix(in srgb, #353535 12%, transparent);
+  --selected: #7f5a0c;
+  --selected-soft: color-mix(in srgb, #e8b23a 18%, transparent);
 
   --serif: "Albert Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
   --sans: "Albert Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -123,7 +125,7 @@
   --prose-font-size: 13px;
   --prose-line-height: 1.7;
   --code-header-bg: #ededed;
-  --code-body-bg: #fafafa;
+  --code-body-bg: #f7f3ea;
   --code-font-size: 13px;
   --code-line-height: 1.65;
 }
@@ -132,121 +134,123 @@
    OS-level prefers-color-scheme media query (system mode = no data-theme attr). */
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg: #202020;
-  --bg-app: #202020;
-  --bg-panel: #353535;
-  --bg-subtle: #494949;
-  --bg-muted: #5c5c5c;
+  --bg: #0b0c15;
+  --bg-app: #0b0c15;
+  --bg-panel: #11131f;
+  --bg-subtle: #171a2a;
+  --bg-muted: #25283a;
   --bg-fill-tertiary: rgba(255, 255, 255, 0.06);
   --bg-fill-secondary: rgba(255, 255, 255, 0.10);
   --bg-fill: rgba(255, 255, 255, 0.16);
-  --bg-elevated: #353535;
-  --glass-regular: rgba(53, 53, 53, 0.66);
+  --bg-elevated: #11131f;
+  --glass-regular: rgba(17, 19, 31, 0.72);
   --glass-edge-highlight: color-mix(in srgb, #fff 14%, transparent);
-  --border: #5c5c5c;
-  --border-strong: #848484;
-  --border-selected: #a3a3a3;
-  --border-soft: #494949;
+  --border: rgba(220, 214, 255, 0.12);
+  --border-strong: #34374d;
+  --border-selected: #e8b23a;
+  --border-soft: #1d2031;
 
-  --text: #ededed;
-  --text-strong: #fafafa;
-  --text-muted: #bdbdbd;
-  --text-soft: #848484;
-  --text-faint: #5c5c5c;
+  --text: #c9c8d6;
+  --text-strong: #efede4;
+  --text-muted: #c9c8d6;
+  --text-soft: #8e8fa6;
+  --text-faint: #77798f;
 
-  --accent: #ededed;
-  --accent-contrast: #202020;
-  --accent-strong: #fafafa;
-  --accent-soft: #494949;
-  --accent-tint: #353535;
-  --accent-hover: #fafafa;
-  --brand: #87ea5c;
-  --brand-weak: #2f781d;
-  --brand-soft: #164111;
-  --brand-text: #adf788;
+  --accent: #e8b23a;
+  --accent-contrast: #221703;
+  --accent-strong: #f6cf6b;
+  --accent-soft: #39301c;
+  --accent-tint: #2d281c;
+  --accent-hover: #f6cf6b;
+  --brand: #e8b23a;
+  --brand-weak: #7f5a0c;
+  --brand-soft: #2d281c;
+  --brand-text: #f6cf6b;
+  --brand-contrast: #221703;
 
-  --green: #3BBF7D;
-  --green-bg: #164111;
-  --green-border: #2f781d;
-  --blue: #3AA5F0;
-  --blue-bg: color-mix(in srgb, #1A74FF 22%, #202020);
-  --blue-border: color-mix(in srgb, #3AA5F0 34%, #5c5c5c);
-  --purple: #ededed;
-  --purple-bg: #494949;
-  --purple-border: #5c5c5c;
-  --red: #FF5E5E;
-  --red-bg: color-mix(in srgb, #F04142 24%, #202020);
-  --red-border: color-mix(in srgb, #FF5E5E 34%, #5c5c5c);
-  --amber: #FFC740;
-  --amber-bg: color-mix(in srgb, #FFBA12 22%, #202020);
+  --green: #5cc493;
+  --green-bg: #112c23;
+  --green-border: #286d50;
+  --blue: #a99bf0;
+  --blue-bg: color-mix(in srgb, #6d5ae0 22%, #0b0c15);
+  --blue-border: color-mix(in srgb, #a99bf0 34%, #34374d);
+  --purple: #a99bf0;
+  --purple-bg: #25203d;
+  --purple-border: #51458b;
+  --red: #e59a90;
+  --red-bg: color-mix(in srgb, #a33227 24%, #0b0c15);
+  --red-border: color-mix(in srgb, #e59a90 34%, #34374d);
+  --amber: #f6cf6b;
+  --amber-bg: color-mix(in srgb, #e8b23a 22%, #0b0c15);
 
   --shadow-xs: 0 1px 0 rgba(0, 0, 0, 0.2);
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
   --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.25);
   --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.6), 0 8px 16px rgba(0, 0, 0, 0.3);
 
-  --code-header-bg: #1e1e20;
-  --code-body-bg: #18181b;
+  --code-header-bg: #11131f;
+  --code-body-bg: #0b0c15;
 }
 
 /* System mode: follow OS preference when no explicit data-theme is set. */
 @media (prefers-color-scheme: dark) {
   html:not([data-theme]) {
     color-scheme: dark;
-    --bg: #202020;
-    --bg-app: #202020;
-    --bg-panel: #353535;
-    --bg-subtle: #494949;
-    --bg-muted: #5c5c5c;
+    --bg: #0b0c15;
+    --bg-app: #0b0c15;
+    --bg-panel: #11131f;
+    --bg-subtle: #171a2a;
+    --bg-muted: #25283a;
     --bg-fill-tertiary: rgba(255, 255, 255, 0.06);
     --bg-fill-secondary: rgba(255, 255, 255, 0.10);
     --bg-fill: rgba(255, 255, 255, 0.16);
-    --bg-elevated: #353535;
-    --glass-regular: rgba(53, 53, 53, 0.66);
+    --bg-elevated: #11131f;
+    --glass-regular: rgba(17, 19, 31, 0.72);
     --glass-edge-highlight: color-mix(in srgb, #fff 14%, transparent);
-    --border: #5c5c5c;
-    --border-strong: #848484;
-    --border-selected: #a3a3a3;
-    --border-soft: #494949;
+    --border: rgba(220, 214, 255, 0.12);
+    --border-strong: #34374d;
+    --border-selected: #e8b23a;
+    --border-soft: #1d2031;
 
-    --text: #ededed;
-    --text-strong: #fafafa;
-    --text-muted: #bdbdbd;
-    --text-soft: #848484;
-    --text-faint: #5c5c5c;
+    --text: #c9c8d6;
+    --text-strong: #efede4;
+    --text-muted: #c9c8d6;
+    --text-soft: #8e8fa6;
+    --text-faint: #77798f;
 
-    --accent: #ededed;
-    --accent-contrast: #202020;
-    --accent-strong: #fafafa;
-    --accent-soft: #494949;
-    --accent-tint: #353535;
-    --accent-hover: #fafafa;
-    --brand: #87ea5c;
-    --brand-weak: #2f781d;
-    --brand-soft: #164111;
-    --brand-text: #adf788;
+    --accent: #e8b23a;
+    --accent-contrast: #221703;
+    --accent-strong: #f6cf6b;
+    --accent-soft: #39301c;
+    --accent-tint: #2d281c;
+    --accent-hover: #f6cf6b;
+    --brand: #e8b23a;
+    --brand-weak: #7f5a0c;
+    --brand-soft: #2d281c;
+    --brand-text: #f6cf6b;
+    --brand-contrast: #221703;
 
-    --green: #3BBF7D;
-    --green-bg: #164111;
-    --green-border: #2f781d;
-    --blue: #3AA5F0;
-    --blue-bg: color-mix(in srgb, #1A74FF 22%, #202020);
-    --blue-border: color-mix(in srgb, #3AA5F0 34%, #5c5c5c);
-    --purple: #ededed;
-    --purple-bg: #494949;
-    --purple-border: #5c5c5c;
-    --red: #FF5E5E;
-    --red-bg: color-mix(in srgb, #F04142 24%, #202020);
-    --red-border: color-mix(in srgb, #FF5E5E 34%, #5c5c5c);
-    --amber: #FFC740;
-    --amber-bg: color-mix(in srgb, #FFBA12 22%, #202020);
+    --green: #5cc493;
+    --green-bg: #112c23;
+    --green-border: #286d50;
+    --blue: #a99bf0;
+    --blue-bg: color-mix(in srgb, #6d5ae0 22%, #0b0c15);
+    --blue-border: color-mix(in srgb, #a99bf0 34%, #34374d);
+    --purple: #a99bf0;
+    --purple-bg: #25203d;
+    --purple-border: #51458b;
+    --red: #e59a90;
+    --red-bg: color-mix(in srgb, #a33227 24%, #0b0c15);
+    --red-border: color-mix(in srgb, #e59a90 34%, #34374d);
+    --amber: #f6cf6b;
+    --amber-bg: color-mix(in srgb, #e8b23a 22%, #0b0c15);
 
     --shadow-xs: 0 1px 0 rgba(0, 0, 0, 0.2);
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2);
     --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.25);
     --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.6), 0 8px 16px rgba(0, 0, 0, 0.3);
 
-    --code-header-bg: #1e1e20;
-    --code-body-bg: #18181b;
+    --code-header-bg: #11131f;
+    --code-body-bg: #0b0c15;
   }
 }

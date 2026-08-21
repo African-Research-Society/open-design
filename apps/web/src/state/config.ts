@@ -24,15 +24,15 @@ import {
 import { randomUUID } from '../utils/uuid';
 
 const STORAGE_KEY = 'open-design:config';
-const CONFIG_MIGRATION_VERSION = 3;
+const CONFIG_MIGRATION_VERSION = 4;
 // Accent values that were the SHIPPED DEFAULT in an earlier build and were
 // persisted verbatim into every install's config. None of them is offered in
 // ACCENT_SWATCHES anymore, so a config still carrying one is a leftover
 // default rather than a deliberate choice — the migration resets it to the
-// current default. (v2 covered the green era; v3 adds the older brick one,
-// which kept long-lived installs off the #5517 accent.) Keep this list in
-// sync with the pre-hydration script in app/layout.tsx.
-const LEGACY_DEFAULT_ACCENT_COLORS = ['#87ea5c', '#c96442'];
+// current default. v4 folds the former ARS oxblood default into the new
+// Observatory gold system. Keep this list in sync with the pre-hydration
+// script in app/layout.tsx.
+const LEGACY_DEFAULT_ACCENT_COLORS = ['#87ea5c', '#c96442', '#bf2025'];
 const RETIRED_SECURE_BYOK_KEYS = [
   'byokProfileId',
   'byokCredentialConfigured',

@@ -9,17 +9,14 @@ const ACCENT_VARS = [
   '--accent-hover',
 ] as const;
 
-export const DEFAULT_ACCENT_COLOR = '#bf2025';
+export const DEFAULT_ACCENT_COLOR = '#7f5a0c';
 export const ACCENT_SWATCHES = [
   DEFAULT_ACCENT_COLOR,
-  '#202020',
-  '#848484',
-  '#87ea5c',
-  '#0d5400',
-  '#1A74FF',
-  '#FFBA12',
-  '#FF7528',
-  '#F04142',
+  '#17161b',
+  '#666157',
+  '#176f47',
+  '#5b46c4',
+  '#a33227',
 ] as const;
 
 export function normalizeAccentColor(value: unknown): string | null {

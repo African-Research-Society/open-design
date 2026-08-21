@@ -106,10 +106,9 @@
   position: relative;
   /* Craft-style milky frost (material.css thin tier): soft white surface over
      the wash/wallpaper with a saturated blur, instead of fully clear glass. */
-  /* White frost: pure-white base at 65% alpha, so the card reads white but
-     keeps the frosted-glass translucency (the panel's material-thin backdrop
-     blur below does the frosting). */
-  --rail-surface: rgba(255, 255, 255, 0.65);
+  /* Warm paper frost: the rail keeps its translucent material while sharing
+     the Observatory reading ground used across the ARS site. */
+  --rail-surface: rgba(242, 237, 226, 0.72);
   background: var(--rail-surface);
   -webkit-backdrop-filter: var(--material-thin-backdrop);
   backdrop-filter: var(--material-thin-backdrop);
@@ -2603,7 +2602,7 @@
   border: 0;
   border-radius: var(--radius-pill);
   background: var(--text-strong);
-  color: var(--brand, #87ea5c);
+  color: var(--brand-weak);
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -2613,10 +2612,10 @@
 }
 /* brightness(1.05) on a near-black fill was imperceptible — and the doubled
    selector also outranks the global button:hover primitive so the ink fill
-   can't get swapped to gray. Same ink-toward-green hover as the community
+   can't get swapped to gray. Same ink-toward-gold hover as the community
    pills, plus a 1px lift. */
 .entry-blank__cta:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--text-strong) 84%, var(--brand, #87ea5c));
+  background: color-mix(in srgb, var(--text-strong) 84%, var(--brand));
   transform: translateY(-1px);
 }
 .entry-section__head {
@@ -5776,8 +5775,8 @@
   /* Rounded square (8px), replacing the squircle clip-path — a clip-path
      would also swallow the unread dot that overflows the top-right corner. */
   border-radius: 8px;
-  background: linear-gradient(135deg, #87ea5c, #0d5400);
-  color: #fff;
+  background: linear-gradient(135deg, var(--brand), var(--brand-text));
+  color: var(--brand-contrast);
   display: grid;
   place-items: center;
   font-size: 12px;
@@ -6284,8 +6283,8 @@
   width: 34px;
   height: 34px;
   border-radius: 8px;
-  background: linear-gradient(135deg, #87ea5c, #0d5400);
-  color: #fff;
+  background: linear-gradient(135deg, var(--brand), var(--brand-text));
+  color: var(--brand-contrast);
   display: grid;
   place-items: center;
   font-size: 14px;
@@ -6556,8 +6555,8 @@ button.entry-nav-rail__menu-credits-row:active:not(:disabled) {
   transition: background-color 120ms var(--ease-out), color 120ms var(--ease-out);
 }
 .ds-top-scope-chip:hover { color: var(--text); background: var(--bg-subtle); }
-/* Selected = solid white pill: --accent-tint was near-invisible against the
-   grayish page wash, so selected and unselected read the same. */
+/* Selected = warm paper pill: --accent-tint is too subtle against the page
+   wash, so selected and unselected otherwise read the same. */
 .ds-top-scope-chip.is-active { background: var(--bg); color: var(--accent); }
 .ds-top-scope-count { font-size: 12px; color: var(--text-faint); font-weight: 600; }
 .ds-top-scope-chip.is-active .ds-top-scope-count { color: var(--accent); }
@@ -7351,15 +7350,15 @@ button.entry-nav-rail__menu-credits-row:active:not(:disabled) {
 .entry-invite__btn.is-primary {
   background: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: var(--accent-contrast);
 }
-/* Re-assert the accent fill + white label on hover — the global
+/* Re-assert the accent fill + contrasting label on hover — the global
    `button:hover` rule in primitives.css otherwise repaints the background to
-   --bg-subtle, washing the white text away. */
+   --bg-subtle, washing the label away. */
 .entry-invite__btn.is-primary:hover:not(:disabled) {
   background: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: var(--accent-contrast);
   filter: brightness(1.05);
 }
 
@@ -7611,7 +7610,7 @@ button.entry-nav-rail__menu-credits-row:active:not(:disabled) {
 }
 .entry-invite__submit:hover:not(:disabled) {
   /* Hold the accent fill — the global button:hover rule would repaint it to
-     --bg-subtle and hide the white label. */
+     --bg-subtle and hide the contrasting label. */
   background: var(--accent);
   color: var(--accent-contrast, #fff);
   filter: brightness(1.05);

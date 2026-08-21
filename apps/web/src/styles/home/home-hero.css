@@ -144,7 +144,7 @@
 }
 .home-hero__ars-wordmark span {
   margin-top: 7px;
-  color: #a51d22;
+  color: var(--accent);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -447,7 +447,7 @@
   padding: 6px;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--bg-panel) 98%, white);
+  background: color-mix(in srgb, var(--bg-panel) 98%, var(--bg-app));
   box-shadow: var(--shadow-lg);
 }
 .home-hero__shortcut-menu-item {
@@ -533,7 +533,7 @@
 /* While the composer is engaged (input focused) the grouping surface steps
    one level heavier on the neutral ladder so the active state reads. */
 .home-hero__composer-card:focus-within {
-  /* Engaged state: same white tray, a touch more opaque so the active step
+  /* Engaged state: same warm-paper tray, a touch more opaque so the active step
      still reads without reverting to gray. */
   background: color-mix(in srgb, var(--bg) 72%, transparent);
 }
@@ -550,8 +550,8 @@
   z-index: 2;
   width: 100%;
   max-width: 720px;
-  /* Inner prompt surface stays white; the outer composer card provides the
-     subtle selected-gray grouping. */
+  /* Inner prompt surface stays paper; the outer composer card provides the
+     subtle selected-neutral grouping. */
   background: var(--bg-app);
   /* Stroke only appears once the user engages the field (focus-within
      below); idle state stays borderless. */
@@ -2277,12 +2277,10 @@
   }
 }
 .home-hero__submit {
-  /* Black send pill with brand-green arrow + label. One tier deeper than
-     --accent (#353535) per design: ink-black ground so the green pops. In
-     dark the blocks below pin the surface to the lifted dark tint instead —
-     brand green stays legible on both. */
-  --home-hero-submit-bg: var(--text-strong);
-  --home-hero-submit-fg: #87ea5c;
+  /* Cosmic send pill with solar-gold arrow: the small dark region anchors the
+     warm paper composer and mirrors the ARS site's night-sky hero ground. */
+  --home-hero-submit-bg: #0b0c15;
+  --home-hero-submit-fg: #f6cf6b;
 
   appearance: none;
   display: inline-flex;
@@ -3189,17 +3187,16 @@
   background-color: transparent;
   background-image: none;
 }
-/* Selected template: same selected pair as the nav rail's active item
-   (极浅品牌背景 #f9fff4 under deep brand green #2f781d). */
+/* Selected template: solar wash with the AA-safe gold ink used on ARS paper. */
 .home-hero__footer-option--select[data-field-name='template'].has-selection {
   max-width: 250px;
   border-color: transparent;
-  background-color: #f9fff4;
+  background-color: var(--brand-soft);
   background-image: none;
-  color: #2f781d;
+  color: var(--brand-text);
   /* Same selected stroke as the composer-mode (设计) pill: an inset 1px ring
      at 22% of the deep brand green. */
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, #2f781d 22%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand-text) 22%, transparent);
 }
 .home-hero__footer-option--select[data-field-name='template']:hover,
 .home-hero__footer-option--select[data-field-name='template'].is-open,
@@ -3214,11 +3211,11 @@
 .home-hero__footer-option--select[data-field-name='template'].has-selection.is-open,
 .home-hero__footer-option--select[data-field-name='template'].has-selection:focus-within {
   border-color: transparent;
-  background-color: #f9fff4;
-  color: #2f781d;
+  background-color: var(--brand-soft);
+  color: var(--brand-text);
   /* Keep the selected ring through hover/open/focus — the generic template
      hover rule above would otherwise swap it back to shadow-xs. */
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, #2f781d 22%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand-text) 22%, transparent);
 }
 .home-hero__footer-option.home-hero__template-option:hover,
 .home-hero__footer-option.home-hero__template-option.is-open,
@@ -3260,12 +3257,12 @@
 .home-hero__template-option.has-selection .home-hero__template-kicker {
   color: var(--text-faint);
 }
-/* Icon + label in the nav rail's deep brand green on the pale wash. */
+/* Icon + label in the ARS gold ink on the solar wash. */
 .home-hero__template-option.has-selection .home-hero__footer-option-icon {
-  color: #2f781d;
+  color: var(--brand-text);
 }
 .home-hero__template-option.has-selection .home-hero__footer-select-label {
-  color: #2f781d;
+  color: var(--brand-text);
   font-weight: 600;
 }
 /* The template pill breathes wider than its 8px siblings: 16px on both
@@ -3451,20 +3448,18 @@
   background: color-mix(in srgb, var(--bg-panel) 92%, var(--bg-subtle));
   transform: translateY(-0.5px);
 }
-/* Selected pill mirrors the composer's selected template chip exactly (the
-   `.has-selection` pair above: 极浅品牌背景 #f9fff4, deep brand green
-   #2f781d, inset 1px ring at 22%), so the picked type reads as the same
-   object in both places. */
+/* Selected pill mirrors the composer's selected template chip: a pale-gold
+   ground, accessible gold ink, and a restrained inset ring. */
 .home-hero__type-pill.is-active {
-  background: #f9fff4;
+  background: var(--brand-soft);
   border-color: transparent;
-  color: #2f781d;
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, #2f781d 22%, transparent);
+  color: var(--brand-text);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand-text) 22%, transparent);
 }
 .home-hero__type-pill.is-active:hover:not(:disabled) {
-  background: #f9fff4;
+  background: var(--brand-soft);
   border-color: transparent;
-  color: #2f781d;
+  color: var(--brand-text);
   transform: none;
 }
 .home-hero__type-pill:disabled {

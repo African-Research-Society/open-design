@@ -73,6 +73,7 @@ import type {
 } from '@open-design/contracts/analytics';
 import { agentIdToTracking } from '@open-design/contracts/analytics';
 import { useT } from '../i18n';
+import { ARS_BRANDED, ARS_HOME_URL, ARS_ORGANIZATION_NAME } from '../branding';
 import { navigate, useRoute } from '../router';
 import type {
   AgentInfo,
@@ -680,14 +681,16 @@ export function EntryShell({
         ? null
         : amrAccountPlan?.trim() || null,
   });
-  const deepSeekV4FlashCampaignAudience = resolveDeepSeekV4FlashCampaignAudience({
-    // Subscription is the only campaign segmentation axis. In particular,
-    // `resolvePlanLabelTier` turns the backend-confirmed unsubscribed state into
-    // `free`; wallet balance / historical recharge never upgrades this audience.
-    plan: deepSeekCampaignPlan,
-    loggedIn: amrLoggedIn,
-    now: deepSeekCampaignVisibility.now,
-  });
+  const deepSeekV4FlashCampaignAudience = ARS_BRANDED
+    ? 'unknown'
+    : resolveDeepSeekV4FlashCampaignAudience({
+        // Subscription is the only campaign segmentation axis. In particular,
+        // `resolvePlanLabelTier` turns the backend-confirmed unsubscribed state into
+        // `free`; wallet balance / historical recharge never upgrades this audience.
+        plan: deepSeekCampaignPlan,
+        loggedIn: amrLoggedIn,
+        now: deepSeekCampaignVisibility.now,
+      });
   const workspaceBalanceUsd = workspaceBillingBalanceUsd(
     workspaceBillingResponse,
     workspaceContext,
@@ -1659,20 +1662,27 @@ export function EntryShell({
           }}
           onOpenSearch={() => setProjectSearchOpen(true)}
           open={railOpen}
-          topRightSlot={
-            view === 'home' && deepSeekV4FlashCampaignAudience !== 'unknown' ? (
-              <button
-                type="button"
-                className="entry-deepseek-campaign-badge"
-                onClick={openDeepSeekCampaignPricing}
-                aria-label={t('campaign.deepseekV4Flash.workbenchBadgeAria')}
-                data-testid="deepseek-campaign-pricing-badge"
-              >
-                <span>{t('campaign.deepseekV4Flash.workbenchBadge')}</span>
-                <Icon name="arrow-right" size={13} />
-              </button>
-            ) : null
-          }
+          topRightSlot={ARS_BRANDED ? (
+            <a
+              className="entry-ars-back-link"
+              href={ARS_HOME_URL}
+              aria-label={`Back to ${ARS_ORGANIZATION_NAME}`}
+            >
+              <Icon name="arrow-left" size={14} />
+              <span>Back to ARS</span>
+            </a>
+          ) : view === 'home' && deepSeekV4FlashCampaignAudience !== 'unknown' ? (
+            <button
+              type="button"
+              className="entry-deepseek-campaign-badge"
+              onClick={openDeepSeekCampaignPricing}
+              aria-label={t('campaign.deepseekV4Flash.workbenchBadgeAria')}
+              data-testid="deepseek-campaign-pricing-badge"
+            >
+              <span>{t('campaign.deepseekV4Flash.workbenchBadge')}</span>
+              <Icon name="arrow-right" size={13} />
+            </button>
+          ) : null}
           context={railWorkspaceContext}
           billing={workspaceBilling}
           balanceUsd={workspaceBalanceUsd}

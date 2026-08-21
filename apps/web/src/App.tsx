@@ -3,6 +3,7 @@ import { flushSync } from 'react-dom';
 import { AnimatePresence, motion, MotionConfig } from 'motion/react';
 import { Button } from '@open-design/components';
 import { useAnalytics } from './analytics/provider';
+import { ARS_BRANDED } from './branding';
 import {
   trackExperienceSurveyDismissed,
   trackExperienceSurveySent,
@@ -5324,7 +5325,7 @@ function AppInner() {
         onSignedOut={handleActiveCloudSignOut}
         onAmrLoginStatusChange={handleAmrLoginStatusChange}
         artifactUpgradeSlot={
-          amrArtifactUpgradeHomeOffer ? (
+          !ARS_BRANDED && amrArtifactUpgradeHomeOffer ? (
             <AmrArtifactUpgradeHomeCard
               key={amrArtifactUpgradeHomeOffer.sessionKey}
               profile={amrLoginStatus?.profile ?? null}
@@ -5441,28 +5442,30 @@ function AppInner() {
         onDismiss={() => trackExperienceSurveyDismissed(analytics.track)}
         onSubmit={(answers) => trackExperienceSurveySent(analytics.track, answers)}
       />
-      <AmrArtifactUpgradeGate
-        cloudModelSelected={config.mode === 'daemon' && config.agentId === 'amr'}
-        homeVisible={route.kind === 'home' && route.view === 'home'}
-        activeProjectId={route.kind === 'project' ? route.projectId : null}
-        activeConversationId={
-          route.kind === 'project' ? route.conversationId ?? null : null
-        }
-        activeFileName={route.kind === 'project' ? route.fileName : null}
-        plan={resolvedAmrPlan}
-        planResolved={
-          amrLoginStatus !== null
-          && (!isAmrSessionAuthenticated(amrLoginStatus) || resolvedAmrPlan !== null)
-        }
-        profile={amrLoginStatus?.profile ?? null}
-        metricsConsent={config.telemetry?.metrics === true}
-        installationId={config.installationId}
-        onHomeOfferChange={
-          amrArtifactUpgradeHomeMock
-            ? undefined
-            : setAmrArtifactUpgradeHomeOffer
-        }
-      />
+      {ARS_BRANDED ? null : (
+        <AmrArtifactUpgradeGate
+          cloudModelSelected={config.mode === 'daemon' && config.agentId === 'amr'}
+          homeVisible={route.kind === 'home' && route.view === 'home'}
+          activeProjectId={route.kind === 'project' ? route.projectId : null}
+          activeConversationId={
+            route.kind === 'project' ? route.conversationId ?? null : null
+          }
+          activeFileName={route.kind === 'project' ? route.fileName : null}
+          plan={resolvedAmrPlan}
+          planResolved={
+            amrLoginStatus !== null
+            && (!isAmrSessionAuthenticated(amrLoginStatus) || resolvedAmrPlan !== null)
+          }
+          profile={amrLoginStatus?.profile ?? null}
+          metricsConsent={config.telemetry?.metrics === true}
+          installationId={config.installationId}
+          onHomeOfferChange={
+            amrArtifactUpgradeHomeMock
+              ? undefined
+              : setAmrArtifactUpgradeHomeOffer
+          }
+        />
+      )}
       <AnimatePresence>
       {settingsOpen ? (
         renderSettingsSurface('modal')

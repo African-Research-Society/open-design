@@ -80,6 +80,7 @@ import type {
   TrackingWorkspacePage,
 } from '@open-design/contracts/analytics';
 import { useAnalytics } from '../analytics/provider';
+import { ARS_BRANDED, ARS_PRODUCT_NAME } from '../branding';
 import {
   trackAccountMenuClick,
   trackEntryNavigationClick,
@@ -627,7 +628,9 @@ export function EntryTopRightCluster({
   // Account identity (real). No email field on the context → the head shows the
   // avatar + name only.
   const displayName = context?.displayName?.trim() || '';
-  const accountName = displayName || t('app.brand');
+  const accountName = ARS_BRANDED && /^open\s?design$/i.test(displayName)
+    ? ARS_PRODUCT_NAME
+    : displayName || (ARS_BRANDED ? ARS_PRODUCT_NAME : t('app.brand'));
   const accountInitial = accountName.charAt(0).toUpperCase() || '·';
 
   // Billing chip: prefer the real summary metadata; fall back to the context
@@ -812,18 +815,20 @@ export function EntryTopRightCluster({
           {/* GitHub star chip: its own option in the cluster, right after the
               campaign badge (per product) — it used to live in the account
               menu's social row. */}
-          <a
-            className="entry-top-right-github"
-            href={REPO_URL}
-            {...externalLinkProps}
-            aria-label={`GitHub · ${githubStars == null ? GITHUB_STARS_FALLBACK_LABEL : formatStars(githubStars)} stars`}
-            title={`GitHub · ${githubStars == null ? GITHUB_STARS_FALLBACK_LABEL : formatStars(githubStars)} stars`}
-            data-testid="entry-top-right-github"
-            onClick={() => trackAccountAction('github')}
-          >
-            <Icon name="github-filled" size={14} />
-            <span>{githubStars == null ? GITHUB_STARS_FALLBACK_LABEL : formatStars(githubStars)}</span>
-          </a>
+          {ARS_BRANDED ? null : (
+            <a
+              className="entry-top-right-github"
+              href={REPO_URL}
+              {...externalLinkProps}
+              aria-label={`GitHub · ${githubStars == null ? GITHUB_STARS_FALLBACK_LABEL : formatStars(githubStars)} stars`}
+              title={`GitHub · ${githubStars == null ? GITHUB_STARS_FALLBACK_LABEL : formatStars(githubStars)} stars`}
+              data-testid="entry-top-right-github"
+              onClick={() => trackAccountAction('github')}
+            >
+              <Icon name="github-filled" size={14} />
+              <span>{githubStars == null ? GITHUB_STARS_FALLBACK_LABEL : formatStars(githubStars)}</span>
+            </a>
+          )}
           {/* One shared capsule for the account module (per product: 头像和积分
               合并成一个胶囊): credits segment on the left (same availability
               rule as the menu's billing card; clicking jumps to B's billing
@@ -832,7 +837,7 @@ export function EntryTopRightCluster({
               chrome-free click targets. */}
           {context ? (
             <div className="entry-top-right-account-pill">
-          {(billing || balanceLabel) ? (
+          {!ARS_BRANDED && (billing || balanceLabel) ? (
             <button
               type="button"
               className="entry-top-right-credits"
@@ -911,7 +916,7 @@ export function EntryTopRightCluster({
                         The balance row links out to B's console. It receives
                         only an explicitly scoped money value; raw credits are
                         never formatted as dollars here. */}
-                    {billing || balanceLabel ? (
+                    {!ARS_BRANDED && (billing || balanceLabel) ? (
                       <div className="entry-nav-rail__menu-credits">
                         <div className="entry-nav-rail__menu-credits-head">
                           <span className="entry-nav-rail__menu-credits-plan">
@@ -992,76 +997,77 @@ export function EntryTopRightCluster({
                         between. Both controls still have a home in 设置·通用 (theme
                         segmented control + language picker), so dropping the
                         duplicates here costs no capability. */}
-                    <a
-                      className="entry-nav-rail__menu-item"
-                      role="menuitem"
-                      href={GITHUB_HELP_URL}
-                      {...externalLinkProps}
-                      onClick={() => {
-                        trackAccountAction('github_help');
-                        setAccountOpen(false);
-                      }}
-                    >
-                      <Icon name="comment" size={15} /> {t('entry.accountGithubHelp')}
-                    </a>
-                    <a
-                      className="entry-nav-rail__menu-item"
-                      role="menuitem"
-                      href={GITHUB_FEATURE_URL}
-                      {...externalLinkProps}
-                      onClick={() => {
-                        trackAccountAction('feature_request');
-                        setAccountOpen(false);
-                      }}
-                    >
-                      <Icon name="sparkles" size={15} /> {t('entry.accountFeatureRequest')}
-                    </a>
-                    {/* #5517: the Discord/X/mail badges move off the rail footer
-                        into a compact social row inside the account menu. GitHub
-                        left the row for its own top-right cluster chip. */}
-                    <div className="entry-nav-rail__menu-social">
-                      <a
-                        className="entry-nav-rail__menu-social-btn"
-                        role="menuitem"
-                        href={DISCORD_URL}
-                        {...externalLinkProps}
-                        aria-label={t('entry.discordAria')}
-                        title={t('entry.discordAria')}
-                        onClick={() => {
-                          trackAccountAction('discord');
-                          setAccountOpen(false);
-                        }}
-                      >
-                        <Icon name="discord" size={15} />
-                      </a>
-                      <a
-                        className="entry-nav-rail__menu-social-btn"
-                        role="menuitem"
-                        href={X_URL}
-                        {...externalLinkProps}
-                        aria-label="@OpenDesignHQ"
-                        title="@OpenDesignHQ"
-                        onClick={() => {
-                          trackAccountAction('twitter');
-                          setAccountOpen(false);
-                        }}
-                      >
-                        <span className="entry-nav-rail__menu-x" aria-hidden>X</span>
-                      </a>
-                      <a
-                        className="entry-nav-rail__menu-social-btn"
-                        role="menuitem"
-                        href={CONTACT_EMAIL_URL}
-                        aria-label={t('entry.mailAria')}
-                        title={t('entry.mailAria')}
-                        onClick={() => {
-                          trackAccountAction('email');
-                          setAccountOpen(false);
-                        }}
-                      >
-                        <Icon name="mail" size={15} />
-                      </a>
-                    </div>
+                    {ARS_BRANDED ? null : (
+                      <>
+                        <a
+                          className="entry-nav-rail__menu-item"
+                          role="menuitem"
+                          href={GITHUB_HELP_URL}
+                          {...externalLinkProps}
+                          onClick={() => {
+                            trackAccountAction('github_help');
+                            setAccountOpen(false);
+                          }}
+                        >
+                          <Icon name="comment" size={15} /> {t('entry.accountGithubHelp')}
+                        </a>
+                        <a
+                          className="entry-nav-rail__menu-item"
+                          role="menuitem"
+                          href={GITHUB_FEATURE_URL}
+                          {...externalLinkProps}
+                          onClick={() => {
+                            trackAccountAction('feature_request');
+                            setAccountOpen(false);
+                          }}
+                        >
+                          <Icon name="sparkles" size={15} /> {t('entry.accountFeatureRequest')}
+                        </a>
+                        <div className="entry-nav-rail__menu-social">
+                          <a
+                            className="entry-nav-rail__menu-social-btn"
+                            role="menuitem"
+                            href={DISCORD_URL}
+                            {...externalLinkProps}
+                            aria-label={t('entry.discordAria')}
+                            title={t('entry.discordAria')}
+                            onClick={() => {
+                              trackAccountAction('discord');
+                              setAccountOpen(false);
+                            }}
+                          >
+                            <Icon name="discord" size={15} />
+                          </a>
+                          <a
+                            className="entry-nav-rail__menu-social-btn"
+                            role="menuitem"
+                            href={X_URL}
+                            {...externalLinkProps}
+                            aria-label="@OpenDesignHQ"
+                            title="@OpenDesignHQ"
+                            onClick={() => {
+                              trackAccountAction('twitter');
+                              setAccountOpen(false);
+                            }}
+                          >
+                            <span className="entry-nav-rail__menu-x" aria-hidden>X</span>
+                          </a>
+                          <a
+                            className="entry-nav-rail__menu-social-btn"
+                            role="menuitem"
+                            href={CONTACT_EMAIL_URL}
+                            aria-label={t('entry.mailAria')}
+                            title={t('entry.mailAria')}
+                            onClick={() => {
+                              trackAccountAction('email');
+                              setAccountOpen(false);
+                            }}
+                          >
+                            <Icon name="mail" size={15} />
+                          </a>
+                        </div>
+                      </>
+                    )}
                     <div className="entry-nav-rail__menu-divider" />
                     <button
                       type="button"

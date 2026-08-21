@@ -635,9 +635,9 @@
 }
 .modal-confirm .row button.primary:disabled,
 .modal-confirm .row button.primary:disabled:hover {
-  background: #ededed;
+  background: var(--bg-muted);
   border-color: transparent;
-  color: #bdbdbd;
+  color: var(--text-faint);
   cursor: not-allowed;
 }
 .modal-confirm .row button.primary.danger {
@@ -671,9 +671,9 @@
   min-width: 0;
 }
 .design-card-tag.tag-prototype {
-  color: #2348b8;
-  background: #e8efff;
-  border-color: rgba(35, 72, 184, 0.18);
+  color: var(--blue);
+  background: var(--blue-bg);
+  border-color: var(--blue-border);
 }
 .design-card-tag.tag-live-artifact {
   color: #6d4ff5;

@@ -803,11 +803,11 @@
   background: var(--bg-muted);
   color: var(--text-muted);
 }
-.routines-status-running { background: #f3eddc; color: #8a6a1a; }
-.routines-status-queued { background: #ece9e2; color: var(--text-muted); }
-.routines-status-succeeded { background: #e3efe6; color: #2e7d5b; }
-.routines-status-failed { background: #f6dfdc; color: #b3382b; }
-.routines-status-canceled { background: #ece9e2; color: var(--text-muted); }
+.routines-status-running { background: var(--amber-bg); color: var(--amber); }
+.routines-status-queued { background: var(--bg-subtle); color: var(--text-muted); }
+.routines-status-succeeded { background: var(--green-bg); color: var(--green); }
+.routines-status-failed { background: var(--red-bg); color: var(--red); }
+.routines-status-canceled { background: var(--bg-subtle); color: var(--text-muted); }
 
 /* ============================================================
    New Project — Media tab additions (Media tab + segmented inner
@@ -1015,8 +1015,7 @@
 .workspace-tabs-chrome:has(.workspace-tab.is-active:not(.is-pinned)) .workspace-tabs-glide {
   display: none;
 }
-/* Collapse-chat control, lifted from the chat card header into the dock row
-   (left of the white tab dropdown). */
+/* Collapse-chat control, lifted from the chat card header into the dock row. */
 .split-chat-collapse {
   appearance: none;
   cursor: pointer;
@@ -1028,10 +1027,9 @@
   /* Dock is top-aligned; re-center this 32px button on the 36px dropdown. */
   margin-top: 2px;
   padding: 0;
-  border: 0;
+  border: 1px solid var(--border);
   border-radius: 10px;
-  /* White seat matching the dropdown beside it. */
-  background: #fff;
+  background: var(--bg-elevated);
   box-shadow: 0 1px 2px color-mix(in srgb, var(--text) 5%, transparent);
   color: var(--text);
   -webkit-app-region: no-drag;
@@ -1057,12 +1055,12 @@
 .ws-tabs-project-dock {
   display: none;
 }
-/* Docked mode swaps the pill strip for the white dropdown below. The strip
+/* Docked mode swaps the pill strip for the project dropdown below. The strip
    stays mounted (its measurement/drag hooks keep their DOM) but invisible. */
 .split-chat-tabs-dock .workspace-tabs-strip {
   display: none;
 }
-/* ── Docked tab dropdown: one pure-white select spanning the chat column ── */
+/* ── Docked tab dropdown spanning the chat column ── */
 .workspace-tabs-dropdown {
   position: relative;
   flex: 1 1 auto;
@@ -1078,9 +1076,9 @@
   width: 100%;
   height: 36px;
   padding: 0 10px 0 12px;
-  border: 0;
+  border: 1px solid var(--border);
   border-radius: 12px;
-  background: #fff;
+  background: var(--bg-elevated);
   color: var(--text);
   font-family: inherit;
   font-size: 13px;
@@ -1120,7 +1118,7 @@
   padding: 6px;
   border: 1px solid var(--material-separator);
   border-radius: 12px;
-  background: #fff;
+  background: var(--bg-elevated);
   box-shadow: var(--shadow-lg);
   /* Six 32px rows plus vertical padding and borders. Global border-box sizing
      means the border must be included or the sixth row is slightly clipped. */
@@ -1311,7 +1309,7 @@
 }
 .workspace-shell .workspace-tab.is-active {
   border-radius: 12px;
-  background: #ffffff;
+  background: var(--bg-elevated);
   border-color: var(--workspace-active-tab-border);
   box-shadow:
     0 1px 2px color-mix(in srgb, var(--text) 6%, transparent),
@@ -1704,7 +1702,7 @@
   padding: 8px 12px;
   border: 0;
   border-radius: var(--radius-lg) var(--radius-none) var(--radius-lg) var(--radius-lg);
-  background: #ededed;
+  background: color-mix(in srgb, var(--bg-subtle) 88%, var(--bg-panel));
   color: var(--text);
   line-height: 1.45;
   font-size: 13px;
@@ -2333,7 +2331,7 @@
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 9%, transparent);
 }
 .chat-composer-fixed-layer .composer-input-wrap {
-  background: #fff;
+  background: color-mix(in srgb, var(--bg-panel) 72%, var(--bg));
   /* No inner frame — the input sits directly on the shell surface. The shell
      keeps its own outer border (see .composer-shell above). */
   border-color: transparent;
@@ -2889,14 +2887,14 @@
 
 .app .df-panel,
 .app .df-main {
-  background: #fff;
+  background: var(--bg-panel);
 }
 .app .df-main {
   border-right-color: var(--border);
 }
 .app .df-body {
   padding: 4px 20px 20px;
-  background: #fff;
+  background: var(--bg-panel);
 }
 .app .df-controls-row {
   margin: 0 0 14px;

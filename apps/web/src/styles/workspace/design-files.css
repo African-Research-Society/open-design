@@ -561,7 +561,7 @@
 .df-row-icon[data-kind="folder"] { background: var(--bg-muted); color: var(--text-soft); }
 .df-row-icon[data-kind="html"] { background: var(--accent-tint); color: var(--accent-strong); }
 .df-row-icon[data-kind="image"] { background: var(--green-bg); color: var(--green); }
-.df-row-icon[data-kind="code"] { background: #fff7d8; color: #8c6700; }
+.df-row-icon[data-kind="code"] { background: var(--amber-bg); color: var(--amber); }
 .df-row-icon[data-kind="text"] { background: var(--bg-subtle); color: var(--text-muted); }
 .df-row-icon[data-kind="sketch"] { background: var(--purple-bg); color: var(--purple); }
 .df-row-icon[data-kind="stylesheet"] { background: var(--blue-bg); color: var(--blue, var(--accent-strong)); }
@@ -697,8 +697,8 @@
   color: var(--text-muted);
   font-size: 13px;
   min-height: 320px;
-  /* Plain pure-white surface — grid pattern removed. */
-  background-color: #fff;
+  /* Plain workspace surface — grid pattern removed. */
+  background-color: var(--bg-panel);
 }
 .df-empty-pill {
   /* Chrome-less: the illustration / title / actions sit directly on the
@@ -1169,7 +1169,7 @@
   width: 22px;
   height: 22px;
   border-radius: var(--radius-xs);
-  background: color-mix(in srgb, #fff 92%, transparent);
+  background: color-mix(in srgb, var(--bg-panel) 92%, transparent);
   box-shadow: var(--shadow-xs);
   opacity: 0;
   transition: opacity 120ms cubic-bezier(0.23, 1, 0.32, 1), background 120ms var(--ease-out);
@@ -1188,7 +1188,7 @@
   min-width: 0;
   border: 1px solid var(--border-soft);
   border-radius: var(--radius);
-  background: #fff;
+  background: var(--bg-panel);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
   transition: border-color 120ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 120ms cubic-bezier(0.23, 1, 0.32, 1);

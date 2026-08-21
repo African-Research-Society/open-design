@@ -1,0 +1,48 @@
+# ARS CI for this fork.
+#
+# Deliberately a NEW file rather than an edit to the inherited workflows. The
+# other 50 files under .github/workflows/ belong to upstream open-design, and
+# editing them would turn each upstream sync into a merge conflict. They are
+# disabled on this fork instead: upstream's ci.yml resolves its runners to
+# `nexu-runners-small` (their ARC fleet), a label that does not exist in this
+# org, so those jobs would sit queued forever rather than failing visibly.
+name: ARS CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ars-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  typecheck:
+    runs-on: [self-hosted, Linux, X64, ARS]
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      # Reads the pnpm version from the packageManager field (10.33.2 here —
+      # note this repo is a major behind afrinexus, which is why the version is
+      # not hardcoded anywhere in this file).
+      - uses: pnpm/action-setup@v4
+
+      # engines.node is "~24" in package.json.
+      #
+      # No `cache: pnpm`: the ARS runner is persistent, so the pnpm store is
+      # already warm on local disk and round-tripping a tarball through
+      # GitHub's cache service would only add time.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - run: pnpm install --frozen-lockfile
+
+      # Recursive across packages/, apps/, tools/ and e2e, plus the scripts
+      # tsconfig — see the `typecheck` script in package.json.
+      - run: pnpm run typecheck

@@ -75,6 +75,7 @@ import { canUpgradeFromPlanTier, hasTeamPlan, resolvePlanLabelTier } from '../co
 import { AMR_CONSOLE_UPGRADE_INTENT, amrPlansUrlForProfile } from '../runtime/amr-guidance';
 import { useWorkspaceInvalidation } from '../collab/workspace-events';
 import type { EntryHomeView } from '../router';
+import type { AppTheme } from '../types';
 import type {
   AccountMenuClickProps,
   TrackingWorkspacePage,
@@ -209,6 +210,8 @@ interface Props {
   /** Extra content for the floating top-right cluster, rendered LEFT of the
    *  account module (e.g. the DeepSeek campaign badge). */
   topRightSlot?: ReactNode;
+  theme?: AppTheme;
+  onThemeChange?: (theme: Exclude<AppTheme, 'system'>) => void;
   /** The one shared workspace context; null → local (no cloud identity) state. */
   context: WorkspaceCollabContext | null;
   /** Account billing metadata (via the vela CLI 收口). Null → the billing
@@ -588,6 +591,8 @@ interface EntryTopRightClusterProps {
   /** Extra content rendered LEFT of the credits pill (e.g. the DeepSeek
    *  campaign badge on Home). */
   leadingSlot?: ReactNode;
+  theme?: AppTheme;
+  onThemeChange?: (theme: Exclude<AppTheme, 'system'>) => void;
   /** Update-ready host; rides the account row right after the avatar chip. */
   updaterSlot?: ReactNode;
   onOpenSettings?: (section?: EntrySettingsSection) => void;
@@ -613,6 +618,8 @@ export function EntryTopRightCluster({
   billing,
   balanceUsd,
   leadingSlot,
+  theme,
+  onThemeChange,
   updaterSlot,
   onOpenSettings,
   onSignedOut,
@@ -805,13 +812,29 @@ export function EntryTopRightCluster({
     });
   }
 
-  if ((!leadingSlot && !context) || typeof document === 'undefined') return null;
+  if ((!leadingSlot && !context && !theme) || typeof document === 'undefined') return null;
+
+  const darkTheme = theme === 'dark';
+  const nextTheme = darkTheme ? 'light' : 'dark';
+  const themeToggleLabel = darkTheme ? 'Switch to light mode' : 'Switch to dark mode';
 
   return (
     <>
       {createPortal(
         <div className="entry-top-right-cluster">
           {leadingSlot}
+          {theme && onThemeChange ? (
+            <button
+              type="button"
+              className="entry-theme-toggle"
+              aria-label={themeToggleLabel}
+              title={themeToggleLabel}
+              aria-pressed={darkTheme}
+              onClick={() => onThemeChange(nextTheme)}
+            >
+              <Icon name={darkTheme ? 'sun' : 'moon'} size={15} />
+            </button>
+          ) : null}
           {/* GitHub star chip: its own option in the cluster, right after the
               campaign badge (per product) — it used to live in the account
               menu's social row. */}
@@ -1145,6 +1168,8 @@ export function WorkspaceTopRightAccountCluster({
   updaterSlot,
   workspaceContextOverride,
   workspaceContextLoading,
+  theme,
+  onThemeChange,
 }: {
   onOpenSettings?: (section?: EntrySettingsSection) => void;
   onSignedOut?: () => void | Promise<void>;
@@ -1152,6 +1177,8 @@ export function WorkspaceTopRightAccountCluster({
   updaterSlot?: ReactNode;
   workspaceContextOverride?: WorkspaceCollabContext | null;
   workspaceContextLoading?: boolean;
+  theme?: AppTheme;
+  onThemeChange?: (theme: Exclude<AppTheme, 'system'>) => void;
 }) {
   const ambient = useWorkspaceContext();
   const hasExplicitWorkspaceContext = workspaceContextOverride !== undefined;
@@ -1175,6 +1202,8 @@ export function WorkspaceTopRightAccountCluster({
       context={context}
       billing={billing}
       balanceUsd={balanceUsd}
+      theme={theme}
+      onThemeChange={onThemeChange}
       updaterSlot={updaterSlot}
       onOpenSettings={onOpenSettings}
       onSignedOut={onSignedOut}
@@ -1190,6 +1219,8 @@ export function EntryNavRail({
   newProjectDisabled,
   open,
   topRightSlot,
+  theme,
+  onThemeChange,
   context,
   billing,
   balanceUsd,
@@ -1880,6 +1911,8 @@ export function EntryNavRail({
         billing={billing}
         balanceUsd={balanceUsd}
         leadingSlot={topRightSlot}
+        theme={theme}
+        onThemeChange={onThemeChange}
         updaterSlot={updaterSlot}
         onOpenSettings={onOpenSettings}
         onSignedOut={onSignedOut}

@@ -1018,8 +1018,8 @@ describe('loadConfig', () => {
     expect(config.baseUrl).toBe('https://api.deepseek.com');
     expect(config.model).toBe('deepseek-v4-flash');
     expect(config.apiProtocol).toBe('openai');
-    expect(config.configMigrationVersion).toBe(3);
-    expect(config.configMigrationVersion).toBe(3);
+    expect(config.configMigrationVersion).toBe(4);
+    expect(config.configMigrationVersion).toBe(4);
   });
 
   it('migrates retired provider defaults in active, protocol, and provider-draft configs', () => {
@@ -1060,7 +1060,7 @@ describe('loadConfig', () => {
     expect(
       config.byokProviderConfigDrafts?.[`openai:${moonshotBaseUrl}`]?.apiConfig.model,
     ).toBe('kimi-k2.6');
-    expect(config.configMigrationVersion).toBe(3);
+    expect(config.configMigrationVersion).toBe(4);
   });
 
   it('migrates legacy SiliconFlow Global configs to the known OpenAI preset', () => {
@@ -1079,7 +1079,7 @@ describe('loadConfig', () => {
 
     expect(config.apiProtocol).toBe('openai');
     expect(config.apiProviderBaseUrl).toBe('https://api.siliconflow.com/v1');
-    expect(config.configMigrationVersion).toBe(3);
+    expect(config.configMigrationVersion).toBe(4);
   });
 
   it('keeps the parsed config when re-persisting a downgraded protocol fails', () => {
@@ -1294,8 +1294,8 @@ describe('loadConfig', () => {
 
     expect(config.mode).toBe('daemon');
     expect(config.apiProtocol).toBe('openai');
-    expect(config.configMigrationVersion).toBe(3);
-    expect(config.configMigrationVersion).toBe(3);
+    expect(config.configMigrationVersion).toBe(4);
+    expect(config.configMigrationVersion).toBe(4);
   });
 
   it('migrates legacy Ollama Cloud configs to an explicit ollama apiProtocol', () => {
@@ -1317,8 +1317,8 @@ describe('loadConfig', () => {
     expect(config.model).toBe('gpt-oss:120b');
     expect(config.apiProtocol).toBe('ollama');
     expect(config.apiProviderBaseUrl).toBe('https://ollama.com');
-    expect(config.configMigrationVersion).toBe(3);
-    expect(config.configMigrationVersion).toBe(3);
+    expect(config.configMigrationVersion).toBe(4);
+    expect(config.configMigrationVersion).toBe(4);
   });
 
   it('migrates legacy ollama.com configs with a custom base URL path', () => {
@@ -1397,7 +1397,7 @@ describe('loadConfig', () => {
     expect(config.apiProtocol).toBe('anthropic');
   });
 
-  it('preserves a valid saved accent color while forcing the theme back to light', () => {
+  it('preserves a valid saved theme and accent color', () => {
     const savedConfig: Partial<AppConfig> = {
       theme: 'dark',
       accentColor: '#4F46E5',
@@ -1406,10 +1406,7 @@ describe('loadConfig', () => {
 
     const config = loadConfig();
 
-    // The theme setting was removed and the app ships light-only, so a stored
-    // dark preference is coerced on read (see tests/state/force-light-theme).
-    // The accent, which has no such rule, must still survive.
-    expect(config.theme).toBe('light');
+    expect(config.theme).toBe('dark');
     expect(config.accentColor).toBe('#4f46e5');
   });
 
@@ -1443,8 +1440,8 @@ describe('loadConfig', () => {
 
   it('sets an explicit apiProtocol for new default configs', () => {
     expect(DEFAULT_CONFIG.apiProtocol).toBe('anthropic');
-    expect(DEFAULT_CONFIG.configMigrationVersion).toBe(3);
-    expect(DEFAULT_CONFIG.accentColor).toBe('#353535');
+    expect(DEFAULT_CONFIG.configMigrationVersion).toBe(4);
+    expect(DEFAULT_CONFIG.accentColor).toBe('#7f5a0c');
   });
 
   // Long-lived installs carry whatever accent shipped as the default when they
@@ -1462,7 +1459,7 @@ describe('loadConfig', () => {
       const config = loadConfig();
 
       expect(config.accentColor).toBe(DEFAULT_CONFIG.accentColor);
-      expect(config.configMigrationVersion).toBe(3);
+      expect(config.configMigrationVersion).toBe(4);
     },
   );
 
@@ -1473,9 +1470,9 @@ describe('loadConfig', () => {
     );
 
     expect(loadConfig().accentColor).toBe('#1a74ff');
-    expect(DEFAULT_CONFIG.configMigrationVersion).toBe(3);
+    expect(DEFAULT_CONFIG.configMigrationVersion).toBe(4);
     // #5517 把默认强调色改成中性灰,#c96442 随之进了 LEGACY_DEFAULT_ACCENT_COLORS。
-    expect(DEFAULT_CONFIG.accentColor).toBe('#353535');
+    expect(DEFAULT_CONFIG.accentColor).toBe('#7f5a0c');
   });
 });
 

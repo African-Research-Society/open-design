@@ -129,6 +129,15 @@
   height: 54px;
   object-fit: contain;
 }
+.home-hero__ars-mark--cosmic {
+  display: none;
+}
+[data-theme="dark"] .home-hero__ars-mark--paper {
+  display: none;
+}
+[data-theme="dark"] .home-hero__ars-mark--cosmic {
+  display: block;
+}
 .home-hero__ars-wordmark {
   display: flex;
   flex-direction: column;

@@ -1,13 +1,8 @@
 // @vitest-environment jsdom
 //
-// Product removed the theme setting: the workspace surfaces have no dark
-// tokens, so a dark app is a broken app. Removing the picker is not enough —
-// every install that ever touched it still has `theme: 'dark'` (or `'system'`,
-// which resolves dark on a dark OS) sitting in localStorage, and a stored
-// value does not change just because the default did. These specs pin the
-// coerce-on-read invariant at all three places a persisted theme can reach
-// the document: the config parser, the runtime appearance applier, and the
-// pre-hydration inline script that paints before React mounts.
+// Theme persistence spans the config parser, runtime appearance applier, and
+// the pre-hydration inline script that paints before React mounts. These specs
+// pin explicit light/dark behavior and the retired legacy `system` value.
 
 import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
@@ -56,7 +51,7 @@ function stubSystemPrefersDark(): void {
   );
 }
 
-describe('forced light theme — persisted config', () => {
+describe('workspace theme — persisted config', () => {
   beforeEach(() => {
     store.clear();
   });
@@ -66,13 +61,13 @@ describe('forced light theme — persisted config', () => {
     expect(loadConfig().theme).toBe('light');
   });
 
-  it('coerces an already-persisted dark theme back to light on read', () => {
+  it('preserves an already-persisted dark theme on read', () => {
     persist({ theme: 'dark', accentColor: '#4F46E5' });
 
     const config = loadConfig();
 
-    expect(config.theme).toBe('light');
-    // Unrelated preferences must survive the coercion.
+    expect(config.theme).toBe('dark');
+    // Unrelated preferences must survive theme normalization.
     expect(config.accentColor).toBe('#4f46e5');
   });
 
@@ -83,8 +78,8 @@ describe('forced light theme — persisted config', () => {
     expect(loadConfig().theme).toBe('light');
   });
 
-  it('rewrites the coerced theme back to storage so the dark value stops existing', () => {
-    persist({ theme: 'dark' });
+  it('rewrites a legacy system theme back to the explicit light default', () => {
+    persist({ theme: 'system' });
 
     loadConfig();
 
@@ -93,23 +88,21 @@ describe('forced light theme — persisted config', () => {
   });
 });
 
-describe('forced light theme — document', () => {
+describe('workspace theme — document', () => {
   afterEach(() => {
     document.documentElement.removeAttribute('data-theme');
   });
 
-  it('stamps data-theme=light on the root element', () => {
+  it('stamps data-theme=light by default', () => {
     applyAppearanceToDocument({ accentColor: '#059669' });
 
     expect(document.documentElement.getAttribute('data-theme')).toBe('light');
   });
 
-  it('overwrites a dark data-theme left on the root element', () => {
-    document.documentElement.setAttribute('data-theme', 'dark');
+  it('stamps an explicit dark theme on the root element', () => {
+    applyAppearanceToDocument({ accentColor: '#059669', theme: 'dark' });
 
-    applyAppearanceToDocument({ accentColor: '#059669' });
-
-    expect(document.documentElement.getAttribute('data-theme')).toBe('light');
+    expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
   });
 
   // Every JS theme reader in apps/web (shiki, ConnectorLogo, SketchEditor,
@@ -124,11 +117,11 @@ describe('forced light theme — document', () => {
     applyAppearanceToDocument({ accentColor: '#10B981' });
 
     expect(document.documentElement.hasAttribute('data-theme')).toBe(true);
-    expect(document.documentElement.getAttribute('data-theme')).not.toBe('dark');
+    expect(document.documentElement.getAttribute('data-theme')).toBe('light');
   });
 });
 
-describe('forced light theme — pre-hydration script', () => {
+describe('workspace theme — pre-hydration script', () => {
   const layoutPath = resolve(
     dirname(fileURLToPath(import.meta.url)),
     '../../app/layout.tsx',
@@ -147,12 +140,12 @@ describe('forced light theme — pre-hydration script', () => {
     store.clear();
   });
 
-  it('paints light before hydration even when the stored theme is dark', () => {
+  it('paints dark before hydration when the stored theme is dark', () => {
     persist({ theme: 'dark' });
 
     runThemeInitScript();
 
-    expect(document.documentElement.getAttribute('data-theme')).toBe('light');
+    expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
   });
 
   it('paints light before hydration for a legacy system theme on a dark OS', () => {

@@ -1826,14 +1826,13 @@ function AppInner() {
     agents,
   ]);
 
-  // Stamp the app appearance onto the <html> element so CSS variables pick it
-  // up. The theme itself is a constant (light-only), but the accent still comes
-  // from config, and the stamp must be re-applied whenever that changes.
+  // Stamp the saved appearance onto <html> so every workspace surface,
+  // embedded editor, and native window material resolves the same theme.
   // useLayoutEffect (vs useEffect) fires before the browser paints, so no
   // 1-frame flash. Safe here because the component tree is ssr:false.
   useLayoutEffect(() => {
-    applyAppearanceToDocument({ accentColor: config.accentColor });
-  }, [config.accentColor]);
+    applyAppearanceToDocument({ accentColor: config.accentColor, theme: config.theme });
+  }, [config.accentColor, config.theme]);
 
   // Tell the daemon what the user is currently looking at, so the MCP
   // server can surface it as `get_active_context` to a coding agent in
@@ -5393,6 +5392,10 @@ function AppInner() {
             the routes are mutually exclusive, so exactly one is on screen. */}
         {route.kind === 'project' ? (
           <WorkspaceTopRightAccountCluster
+            theme={config.theme}
+            onThemeChange={(theme) => {
+              void handleConfigPersist({ ...config, theme });
+            }}
             onOpenSettings={openSettings}
             onSignedOut={handleActiveCloudSignOut}
             updaterSlot={

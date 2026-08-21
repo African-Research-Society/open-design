@@ -1641,6 +1641,10 @@ export function EntryShell({
     />
   );
 
+  const handleThemeChange = (theme: Exclude<AppConfig['theme'], 'system'>) => {
+    void onConfigPersist({ ...config, theme });
+  };
+
   return (
     <div className="entry-shell entry-shell--no-header">
       <div
@@ -1662,6 +1666,8 @@ export function EntryShell({
           }}
           onOpenSearch={() => setProjectSearchOpen(true)}
           open={railOpen}
+          theme={config.theme}
+          onThemeChange={handleThemeChange}
           topRightSlot={ARS_BRANDED ? (
             <a
               className="entry-ars-back-link"

@@ -1293,7 +1293,8 @@ export const HomeHero = forwardRef<HomeHeroHandle, Props>(function HomeHero(
   return (
     <section ref={homeHeroRef} className="home-hero" data-testid="home-hero">
       <span className="home-hero__ars-lockup" role="img" aria-label="African Research Society Design">
-        <img className="home-hero__ars-mark" src="/ars-mark.svg" alt="" />
+        <img className="home-hero__ars-mark home-hero__ars-mark--paper" src="/ars-mark.svg" alt="" />
+        <img className="home-hero__ars-mark home-hero__ars-mark--cosmic" src="/ars-mark-dark.svg" alt="" />
         <span className="home-hero__ars-wordmark">
           <strong>African Research Society</strong>
           <span>Design Studio</span>

@@ -3,9 +3,11 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import {
   DEFAULT_ACCENT_COLOR,
+  DEFAULT_APP_THEME,
   applyAppearanceToDocument,
   normalizeAccentColor,
   resolveAccentColor,
+  resolveAppTheme,
 } from '../../src/state/appearance';
 
 describe('normalizeAccentColor', () => {
@@ -27,6 +29,14 @@ describe('resolveAccentColor', () => {
   });
 });
 
+describe('resolveAppTheme', () => {
+  it('keeps explicit themes and retires system mode to the light default', () => {
+    expect(resolveAppTheme('dark')).toBe('dark');
+    expect(resolveAppTheme('light')).toBe('light');
+    expect(resolveAppTheme('system')).toBe(DEFAULT_APP_THEME);
+  });
+});
+
 describe('applyAppearanceToDocument', () => {
   afterEach(() => {
     document.documentElement.removeAttribute('data-theme');
@@ -35,14 +45,23 @@ describe('applyAppearanceToDocument', () => {
     document.documentElement.style.removeProperty('--accent-soft');
     document.documentElement.style.removeProperty('--accent-tint');
     document.documentElement.style.removeProperty('--accent-hover');
+    document.documentElement.style.removeProperty('color-scheme');
   });
 
-  it('applies the forced light theme and accent variables to the root element', () => {
+  it('applies the default light theme and accent variables to the root element', () => {
     applyAppearanceToDocument({ accentColor: '#4F46E5' });
 
     expect(document.documentElement.getAttribute('data-theme')).toBe('light');
     expect(document.documentElement.style.getPropertyValue('--accent')).toBe('#4f46e5');
     expect(document.documentElement.style.getPropertyValue('--accent-hover')).toContain('#4f46e5');
+  });
+
+  it('applies dark mode and maps ARS paper accents to cosmic equivalents', () => {
+    applyAppearanceToDocument({ accentColor: DEFAULT_ACCENT_COLOR, theme: 'dark' });
+
+    expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
+    expect(document.documentElement.style.colorScheme).toBe('dark');
+    expect(document.documentElement.style.getPropertyValue('--accent')).toBe('#e8b23a');
   });
 
   it('does not apply appearance colors to global background variables', () => {
@@ -58,7 +77,7 @@ describe('applyAppearanceToDocument', () => {
     document.documentElement.style.removeProperty('--bg-app');
   });
 
-  it('applies accent variables while forcing a stale dark theme back to light', () => {
+  it('uses light when no explicit theme is supplied', () => {
     document.documentElement.setAttribute('data-theme', 'dark');
 
     applyAppearanceToDocument({ accentColor: '#10B981' });

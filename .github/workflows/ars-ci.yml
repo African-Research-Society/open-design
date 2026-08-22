@@ -6,6 +6,15 @@
 # disabled on this fork instead: upstream's ci.yml resolves its runners to
 # `nexu-runners-small` (their ARC fleet), a label that does not exist in this
 # org, so those jobs would sit queued forever rather than failing visibly.
+#
+# Runs on ubuntu-latest, NOT the self-hosted coolify-ars-01 runner, even though
+# afrinexus uses that runner. This repository is public, and the runner lives on
+# the Coolify host itself. Pointing a public repo's `pull_request` jobs at it
+# would let anyone who opens a PR execute code on the box running Coolify, and
+# the runner is persistent, so a poisoned cache would outlive the job. GitHub
+# blocks this by default via the runner group's "Allow public repositories"
+# setting; that default is worth keeping. Public repos get hosted minutes free,
+# so there is nothing to gain by overriding it.
 name: ARS CI
 
 on:
@@ -22,7 +31,7 @@ permissions:
 
 jobs:
   typecheck:
-    runs-on: [self-hosted, Linux, X64, ARS]
+    runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
@@ -32,14 +41,12 @@ jobs:
       # not hardcoded anywhere in this file).
       - uses: pnpm/action-setup@v4
 
-      # engines.node is "~24" in package.json.
-      #
-      # No `cache: pnpm`: the ARS runner is persistent, so the pnpm store is
-      # already warm on local disk and round-tripping a tarball through
-      # GitHub's cache service would only add time.
+      # engines.node is "~24" in package.json. The runner is a throwaway VM, so
+      # unlike afrinexus's self-hosted setup the pnpm store does need caching.
       - uses: actions/setup-node@v4
         with:
           node-version: 24
+          cache: pnpm
 
       - run: pnpm install --frozen-lockfile
 

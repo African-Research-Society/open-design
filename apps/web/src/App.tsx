@@ -4,6 +4,7 @@ import { AnimatePresence, motion, MotionConfig } from 'motion/react';
 import { Button } from '@open-design/components';
 import { useAnalytics } from './analytics/provider';
 import { ARS_BRANDED } from './branding';
+import { useArsEmbed } from './integrations/ars-embed';
 import {
   trackExperienceSurveyDismissed,
   trackExperienceSurveySent,
@@ -951,6 +952,23 @@ function AppInner() {
     };
   }, [clientType, hostPlatform]);
   const [config, setConfig] = useState<AppConfig>(() => loadConfig());
+  const applyArsTheme = useCallback((theme: 'dark' | 'light') => {
+    setConfig((previous) => ({ ...previous, theme }));
+  }, []);
+  useArsEmbed(applyArsTheme);
+  useEffect(() => {
+    let disposed = false;
+    void fetch('/api/ars/team-config').then(async (response) => {
+      if (!response.ok) return;
+      const managed = await response.json();
+      if (!disposed && managed.managed === true && typeof managed.model === 'string') {
+        setConfig((previous) => ({ ...previous, onboardingCompleted: true,
+          agentId: 'byok-opencode', model: managed.model, apiProtocol: 'openai',
+          apiKey: 'ars-managed-session-no-provider-key', baseUrl: `${window.location.origin}/v1` }));
+      }
+    }).catch(() => {});
+    return () => { disposed = true; };
+  }, []);
   const configRef = useRef(config);
   configRef.current = config;
   const latestPersistedConfigRef = useRef(config);

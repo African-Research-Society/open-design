@@ -32,3 +32,6 @@
 @import './styles/modal-window-drag.css';
 @import './styles/entrance.css';
 @import './styles/home/plugin-marketplace-demo.css';
+
+/* ARS supplies the parent navigation; retain project tabs and editor controls. */
+html[data-ars-embed="true"] .entry-ars-back-link { display: none; }

@@ -1008,6 +1008,7 @@ import {
   isApiTokenMiddlewareEnabled,
 } from './api-token-auth.js';
 import { createArsSsoAuth } from './ars-sso-auth.js';
+import { installArsTeamMode } from './integrations/ars-team.js';
 import { createOpenDesignPublicMetadataService } from './services/open-design-public-metadata.js';
 import { createWhatsNewService } from './services/whats-new.js';
 import { execCommandViaLoginShell } from './services/login-shell.js';
@@ -2628,6 +2629,7 @@ export async function startServer({
   // (registered before the global parser so it claims the body first).
   app.use('/api/brands/:id/extract-from-html', express.json({ limit: '32mb' }));
   app.use(express.json({ limit: '4mb' }));
+  installArsTeamMode(app);
   const projectPreviewScopes = createProjectPreviewScopeRegistry();
 
   // Plan §3.K1 — API-token middleware.

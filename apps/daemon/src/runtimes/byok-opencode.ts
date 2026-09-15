@@ -1,3 +1,4 @@
+import { arsFundedProvider } from '../integrations/ars-team.js';
 import type { ByokChatProviderConfig } from '@open-design/contracts';
 
 export const BYOK_OPENCODE_AGENT_ID = 'byok-opencode';
@@ -43,6 +44,8 @@ export function buildOpenCodeByokProviderConfig(
   provider: ByokChatProviderConfig | null | undefined,
   model: string | null | undefined,
 ): OpenCodeByokProviderConfig | null {
+  provider = arsFundedProvider() ?? provider;
+  if (process.env.OD_ARS_TEAM_ID) model = process.env.OD_ARS_MODEL;
   if (!provider || typeof provider !== 'object') return null;
   const protocol = provider.protocol;
   if (!Object.prototype.hasOwnProperty.call(DEFAULT_BASE_URL_BY_PROTOCOL, protocol)) {

@@ -1,13 +1,19 @@
 import { useEffect } from 'react';
-import { ARS_HOME_URL } from '../branding';
+import { isArsParentOrigin } from '../branding';
 
 export function useArsEmbed(onTheme: (theme: 'dark' | 'light') => void) {
   useEffect(() => {
-    if (window.parent === window || !document.referrer || new URL(document.referrer).origin !== ARS_HOME_URL) return;
+    let parent = '';
+    try {
+      parent = document.referrer ? new URL(document.referrer).origin : '';
+    } catch {
+      parent = '';
+    }
+    if (window.parent === window || !isArsParentOrigin(parent)) return;
     document.documentElement.dataset.arsEmbed = 'true';
-    const send = (type: string, extra = {}) => window.parent.postMessage({ channel: 'ars-app', version: 1, type, ...extra }, ARS_HOME_URL);
+    const send = (type: string, extra = {}) => window.parent.postMessage({ channel: 'ars-app', version: 1, type, ...extra }, parent);
     const receive = (e: MessageEvent) => {
-      if (e.origin !== ARS_HOME_URL || e.source !== window.parent || e.data?.channel !== 'ars-app' || e.data.version !== 1) return;
+      if (e.origin !== parent || e.source !== window.parent || e.data?.channel !== 'ars-app' || e.data.version !== 1) return;
       if (e.data.type === 'sign-out') void fetch('/auth/ars/logout', { method: 'POST' });
       if (e.data.type === 'theme' && ['dark','light'].includes(e.data.theme)) {
         onTheme(e.data.theme);

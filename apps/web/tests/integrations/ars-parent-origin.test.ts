@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { isArsParentOrigin } from '../../src/branding';
+import { planArsEmbedAuth } from '../../src/integrations/ars-embed-auth';
 import { resolveArsEmbedParent, shouldBindArsHello } from '../../src/integrations/ars-embed-parent';
 
 describe('isArsParentOrigin', () => {
@@ -50,5 +51,15 @@ describe('resolveArsEmbedParent', () => {
         origin: 'https://evil.example',
       }),
     ).toBe(false);
+  });
+});
+
+describe('planArsEmbedAuth', () => {
+  it('does not announce ready or expiry before SSO succeeds', () => {
+    expect(planArsEmbedAuth({ announced: false, status: 403 })).toBe('wait');
+    expect(planArsEmbedAuth({ announced: false, status: 401 })).toBe('wait');
+    expect(planArsEmbedAuth({ announced: false, status: 200 })).toBe('ready');
+    expect(planArsEmbedAuth({ announced: true, status: 200 })).toBe('wait');
+    expect(planArsEmbedAuth({ announced: true, status: 403 })).toBe('expire');
   });
 });

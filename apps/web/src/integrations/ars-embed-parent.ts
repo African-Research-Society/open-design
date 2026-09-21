@@ -24,3 +24,5 @@ export function shouldBindArsHello(input: {
 }) {
   return !input.parent && input.type === 'hello' && isArsParentOrigin(input.origin ?? '');
 }
+
+export { planArsEmbedAuth } from './ars-embed-auth';

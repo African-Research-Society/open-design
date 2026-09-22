@@ -22,6 +22,8 @@ export type ArsSsoAuth = {
   callback: RequestHandler;
   isAuthenticated(request: Request): Promise<boolean>;
   loginUrl: string;
+  logout: RequestHandler;
+  status: RequestHandler;
 };
 
 function parseOrigin(value: string, name: string, allowLocalHttp = false): URL {
@@ -57,11 +59,12 @@ function loadConfig(env: NodeJS.ProcessEnv): ArsSsoConfig | null {
     throw new Error('OD_ARS_SSO_SECRET must contain at least 32 bytes');
   }
 
-  const issuer = parseOrigin(issuerValue, 'OD_ARS_SSO_ISSUER').origin;
+  const issuer = parseOrigin(issuerValue, 'OD_ARS_SSO_ISSUER', true).origin;
   const audienceUrl = parseOrigin(audienceValue, 'OD_ARS_SSO_AUDIENCE', true);
   const loginUrl = new URL(loginValue);
+  const localHttpIssuer = issuer.startsWith('http://');
   if (
-    loginUrl.protocol !== 'https:'
+    (loginUrl.protocol !== 'https:' && !(localHttpIssuer && loginUrl.protocol === 'http:'))
     || loginUrl.username
     || loginUrl.password
     || loginUrl.origin !== issuer
@@ -191,6 +194,17 @@ export function createArsSsoAuth(env: NodeJS.ProcessEnv = process.env): ArsSsoAu
     }
   };
 
+  const logout: RequestHandler = (_request, response) => {
+    response.setHeader('Set-Cookie', `${cookieName}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0${ssoConfig.secureCookie ? '; Secure' : ''}`);
+    response.setHeader('Cache-Control', 'no-store');
+    response.status(204).end();
+  };
+
+  const status: RequestHandler = async (request, response) => {
+    response.setHeader('Cache-Control', 'no-store');
+    response.status(await sessionIsValid(request) ? 204 : 401).end();
+  };
+
   return {
     async authorizeApiRequest(request) {
       if (!(await sessionIsValid(request))) return 'unauthorized';
@@ -207,5 +221,7 @@ export function createArsSsoAuth(env: NodeJS.ProcessEnv = process.env): ArsSsoAu
     callback,
     isAuthenticated: sessionIsValid,
     loginUrl: ssoConfig.loginUrl,
+    logout,
+    status,
   };
 }

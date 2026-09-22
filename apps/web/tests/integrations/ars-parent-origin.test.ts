@@ -8,6 +8,10 @@ describe('isArsParentOrigin', () => {
     expect(isArsParentOrigin('https://africanresearchsociety.org')).toBe(true);
     expect(isArsParentOrigin('https://www.africanresearchsociety.org')).toBe(true);
     expect(isArsParentOrigin('https://evil.example')).toBe(false);
+    expect(isArsParentOrigin('http://localhost:3000')).toBe(true);
+    expect(isArsParentOrigin('http://127.0.0.1:3000')).toBe(true);
+    expect(isArsParentOrigin('http://localhost.evil.com')).toBe(false);
+    expect(isArsParentOrigin('http://localhost:3000/dashboard')).toBe(false);
   });
 });
 

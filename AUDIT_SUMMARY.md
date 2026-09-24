@@ -1,87 +1,107 @@
-# Open Design audit
+# Open Design audit (second pass)
 
-## Executive Summary
+## Coverage Matrix
 
-Thirteen commits ahead of upstream, mostly ARS branding, deploy, SSO, and a team runtime. The team runtime treats any non-empty `x-ars-model-ticket` as identity while `OD_DISABLE_API_AUTH=1`. That is safe only if nothing except the ARS gateway can reach the container. Verifying the ticket inside the daemon would require the SSO secret, and this runtime is written to refuse that secret so it cannot share the admin SSO. No code change was made. The fix is network placement plus a human decision on how identity should be checked.
+| Subsystem | Depth | Notes |
+| --- | --- | --- |
+| ARS SSO callback, cookie, jti, origin | Adversarial | `apps/daemon/src/ars-sso-auth.ts` and its tests’ cited cases |
+| Team runtime header gate | Adversarial | `integrations/ars-team.ts` |
+| Embed sign-out and status | Deep | `apps/web/src/integrations/ars-embed.ts` versus daemon routes |
+| Daemon wiring | Deep | `server.ts` registration around the callback |
+| Design templates, skills, landing site | Not applicable | Not on the ARS auth or team-runtime path |
 
-## Architecture Overview
+## Findings
 
-Open Design daemon and web app. ARS runs a team studio behind a gateway that injects a model ticket, and an admin studio that accepts SSO assertions.
+Team mode accepts any non-empty `x-ars-model-ticket` and refuses `OD_ARS_SSO_SECRET`, so it cannot verify the ticket. That holds only when the studio port is private to the gateway.
 
-## Audit Coverage
+The admin embed posted to `/auth/ars/logout` and `/auth/ars/status`, which the daemon did not implement, so the `__Host-od_ars_session` cookie survived parent sign-out.
 
-SSO (`ars-sso-auth.ts`), team mode (`integrations/ars-team.ts`), embed logout routes, and the deploy Dockerfile notes in the ARS commits. Upstream Open Design was not re-audited.
+Spent assertion ids are process-local. A second replica can replay one assertion inside 90 seconds.
 
-## Confirmed Issues
+Origin may be missing or `null` on the callback. That is documented for privacy browsers. The JWT, audience, and jti are the control.
 
-Team mode authenticates by header presence, not by signature. The comment states the gateway overwrites the header and the model gateway verifies it. A client that can reach the studio port directly skips that.
+## Fixed Findings
 
-## Security Findings
+`GET /auth/ars/status` returns 204 or 401 from the existing session check. `POST /auth/ars/logout` clears the ARS session cookie. Both are registered next to the callback.
 
-- Header-only team auth. High if the studio port is reachable. Not changed, because a local verifier needs a secret this process is forbidden to hold.
-- Admin embed calls `/auth/ars/logout` and `/auth/ars/status`. The daemon registers `/auth/ars/callback` only. The team gateway implements the other two. The admin studio does not clear the session cookie on parent sign-out.
-- Spent SSO `jti` values live in a process-local map. Two replicas can each accept one replay inside the 90 second window.
-- Agent OAuth homes on a shared data volume are one identity for everyone who can use that studio.
-- Origin checks skip a missing or `null` Origin. The JWT, TTL, and `jti` are the real control.
+## Unfixed Findings
+
+Ticket signature check inside team mode. Durable jti store. Shared agent OAuth on the data volume.
+
+## Security
+
+Cookie flags for an https audience are `__Host-`, Secure, HttpOnly, SameSite=Lax. API mutations still require Origin to match the audience.
+
+## Database Integrity
+
+Daemon SQLite was not re-audited.
+
+## Authentication
+
+SSO assertion rules were read: HS256, type `ars+sso`, 90 second life, roles limited to super_admin, admin, developer.
+
+## Authorization
+
+Team runtime does not scope files by member `sub`. One data directory is shared by the team. That matches the “shared team studio” comment and is a product fact, not an accident.
 
 ## Bugs
 
-Missing logout/status routes on the daemon for the admin embed path.
+Missing logout and status routes. Fixed here.
 
-## Compatibility Findings
+## Race Conditions
 
-Team runtime throws if `OD_ARS_SSO_SECRET` is set. That is intentional isolation from admin SSO.
+In-memory jti map.
 
-## Dead/Vestigial Code
+## Vestigial Code
 
-Not searched upstream.
+No `registerArsSso` symbol. Wiring is inline. Not dead.
 
 ## Mapping/Consistency Problems
 
-Web embed paths and daemon routes do not match for logout and status.
+Embed client and daemon routes. Fixed for logout and status.
 
-## Performance/Reliability
+## Compatibility
 
-Not examined beyond the in-memory replay cache.
+Logout must keep the `__Host-` cookie name or the browser will ignore the clear.
 
-## Testing Gaps
+## Dependencies
 
-No new tests. Adding logout routes without a red spec in this large repo was deferred.
+Not upgraded.
 
-## Improvements
+## Performance
 
-None landed.
+Not examined.
 
-## Fixes Implemented
+## Accessibility
 
-None. A wrong verifier would be worse than the documented gateway assumption.
+Not examined.
 
-## Tests Added
+## Testing
 
-None.
+Existing SSO tests were not re-run in this pass. Daemon typecheck should be run before the final push.
 
-## Verification Performed
+## Cross-Repository Findings
 
-Read the team middleware, SSO callback, and the deploy notes in the ARS commits. Daemon tests were not run.
+AfriNexus team gateway implements a different cookie (`__Host-ars_studio`). Daemon logout clears `__Host-od_ars_session` only. Both are needed: the gateway for its own cookie, the daemon for the session it sets.
 
-## Findings Not Fixed
+## Product Decisions Required
 
-All of the security items above.
+Give the team runtime a verify key that is not the admin SSO secret, or keep the port private and accept header presence. Persist jti if more than one replica serves callbacks.
 
-## Items Requiring Human Decision
+## Remaining Risks
 
-- Keep the studio on a private network and treat the gateway as the only client, or give the daemon a ticket-verify secret that is not the admin SSO secret.
-- Add logout and status on the daemon for the admin studio.
-- Persist spent `jti` values if more than one replica will take callbacks.
+Direct access to the team studio port.
 
-## Recommended Future Work
+## Areas Where Audit Confidence Is Low
 
-A dedicated model-ticket public key in the team runtime, logout/status routes, and a shared `jti` store.
+Whether production binds the studio to localhost behind the gateway.
 
-## Statistics
+## Verification
 
-- Commits examined: 13.
-- Coverage: ARS delta, focused on auth and deploy.
-- Fixed: 0.
-- Dependencies changed: none.
-- Confidence is high on the header check as written, and medium on whether production networking already prevents direct access.
+Read the SSO module, team middleware, embed client, and the server registration. Logout routes added. Full daemon test suite not run in this note.
+
+## Metrics
+
+- Auth files traced: `ars-sso-auth.ts`, `ars-team.ts`, `ars-embed.ts`, server registration.
+- Template catalogue: excluded.
+- Code fixes: logout and status.

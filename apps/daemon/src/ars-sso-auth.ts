@@ -207,5 +207,19 @@ export function createArsSsoAuth(env: NodeJS.ProcessEnv = process.env): ArsSsoAu
     callback,
     isAuthenticated: sessionIsValid,
     loginUrl: ssoConfig.loginUrl,
+    async status(request, response) {
+      response.setHeader('Cache-Control', 'no-store');
+      if (await sessionIsValid(request)) response.status(204).end();
+      else response.status(401).end();
+    },
+    logout(_request, response) {
+      response.setHeader('Cache-Control', 'no-store');
+      response.setHeader(
+        'Set-Cookie',
+        `${cookieName}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`
+        + (ssoConfig.secureCookie ? '; Secure' : ''),
+      );
+      response.status(204).end();
+    },
   };
 }

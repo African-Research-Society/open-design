@@ -2614,6 +2614,12 @@ export async function startServer({
       express.urlencoded({ extended: false, limit: '8kb', parameterLimit: 4 }),
       arsSsoAuth.callback,
     );
+    app.get('/auth/ars/status', (req, res) => {
+      void arsSsoAuth.status(req, res);
+    });
+    app.post('/auth/ars/logout', (req, res) => {
+      arsSsoAuth.logout(req, res);
+    });
   }
   // Clipper page captures are self-contained HTML with inlined images plus a
   // Figma IR, which for an image-heavy site (The Economist, news front pages)

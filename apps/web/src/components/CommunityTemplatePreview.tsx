@@ -314,17 +314,17 @@ function templatePreviewHtml(template: TemplateDemo): string {
 </head>
 <body>
   <main class="shell">
-    <nav><span class="logo"><span class="mark"></span>${template.title}</span><span>${template.tags.join(' · ')}</span></nav>
+    <nav><span class="logo"><span class="mark"></span>${escapeHtmlAttribute(template.title)}</span><span>${escapeHtmlAttribute(template.tags.join(' · '))}</span></nav>
     <section class="hero">
       <div>
-        <h1>${template.title} template for polished product storytelling.</h1>
-        <p>${template.meta}</p>
+        <h1>${escapeHtmlAttribute(template.title)} template for polished product storytelling.</h1>
+        <p>${escapeHtmlAttribute(template.meta)}</p>
         <span class="cta">Preview template</span>
       </div>
       <aside class="card">
         <div class="stripe"></div>
         <div class="metric"><span>Primary outcome</span><strong>Clearer launch story</strong></div>
-        <div class="metric"><span>Format</span><strong>${template.meta}</strong></div>
+        <div class="metric"><span>Format</span><strong>${escapeHtmlAttribute(template.meta)}</strong></div>
         <div class="metric"><span>Style</span><strong>Modern editorial</strong></div>
       </aside>
     </section>

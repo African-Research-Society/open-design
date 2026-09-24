@@ -93,6 +93,10 @@
 /share/*
   Cache-Control: no-store
 
+# Share-out click log + 302. Same reason as /share/*: do not edge-cache it.
+/share-out/*
+  Cache-Control: no-store
+
 # Newsletter subscribe function writes to KV — must not be cached.
 /subscribe
   Cache-Control: no-store

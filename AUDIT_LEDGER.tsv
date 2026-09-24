@@ -493,126 +493,126 @@ apps/daemon/src/memory-connectors.ts	reviewed	batch 439 last-line length matched
 apps/daemon/src/memory-extractions.ts	reviewed	batch 439 last-line length matched; model not tool-verified grok
 apps/daemon/src/memory-llm.ts	reviewed	batch 439 last-line length matched; model not tool-verified grok
 apps/daemon/src/memory-rules.ts	reviewed	batch 439 last-line length matched; model not tool-verified grok
-apps/daemon/src/memory-verify.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/memory.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/metrics/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/metrics/workspace-authority.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/migration/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/migration/legacy-data-migrator.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/migration/update-apply-observations.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/native-folder-dialog.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/native-session-recovery.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/orbit-agent-summary.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/orbit.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/origin-validation.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/pdf-export.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/apply.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/atom-bodies.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/atoms.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/atoms/auto-surfaces.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/atoms/build-test.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/atoms/built-ins.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/atoms/code-import.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/atoms/design-extract.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/atoms/diff-review-genui-bridge.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/atoms/diff-review.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/atoms/figma-extract.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/atoms/handoff.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/atoms/patch-edit.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/atoms/registry.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/atoms/rewrite-plan.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/atoms/token-map.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/bundled.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/connector-gate.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/connector-probe.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/context-craft.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/diff.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/doctor.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/duplicate-project.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/ensure-core-stages.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/events.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/export.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/gc.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/installer.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/local-skill.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/local-source.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/lockfile.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/marketplace-doctor.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/marketplace-seed.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/marketplaces.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/pack.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/persistence.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/pipeline-runner.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/pipeline.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/plugin-asset-cache.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/plugin-preview-bakes.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/publish.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/registry.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/resolve-snapshot.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/scaffold.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/search.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/share-helpers.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/simulate.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/skill-candidates.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/snapshot-diff.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/snapshots.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/stats.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/trust.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/until.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/validate.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/plugins/verify.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/project-design-token-suggestions.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/project-file-versions.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/project-ignored-dirs.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/project-locations.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/project-root.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/project-watchers.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/projects.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/projects/archive-filename.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/prompt-telemetry.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/prompts/core-slim.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/prompts/deck-framework.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/prompts/directions.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/prompts/discovery.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/prompts/media-contract.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/prompts/official-system.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/prompts/panel.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/prompts/research-contract.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/prompts/stable-sections.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/prompts/system.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/qa/cta-hierarchy.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/qa/deck-layout.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/question-form-detect.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/reasoning-egress.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/redact.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/registry/database-backend.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/registry/github-backend.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/registry/static-backend.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/registry/versioning.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/research/cli-args.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/research/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/research/tavily.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/resource-cli.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/role-marker-guard.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/route-context-contract.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/route-registration-guard.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/routes/active-context.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/routes/attribution.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/routes/automation.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/routes/browser-sessions.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/routes/chat.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/routes/collab-context.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/routes/collab-presence.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/routes/collab-sync.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/routes/daemon.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/routes/deploy.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/routes/design-system-tool.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/routes/design-systems.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/routes/genui.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/routes/handoff.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/routes/host-tools.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/routes/library.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/daemon/src/memory-verify.ts	reviewed	batch 440 last-line length matched; model not tool-verified grok
+apps/daemon/src/memory.ts	reviewed	batch 440 last-line length matched; model not tool-verified grok
+apps/daemon/src/metrics/index.ts	reviewed	batch 440 last-line length matched; model not tool-verified grok
+apps/daemon/src/metrics/workspace-authority.ts	reviewed	batch 440 last-line length matched; model not tool-verified grok
+apps/daemon/src/migration/index.ts	reviewed	batch 440 last-line length matched; model not tool-verified grok
+apps/daemon/src/migration/legacy-data-migrator.ts	reviewed	batch 440 last-line length matched; model not tool-verified grok
+apps/daemon/src/migration/update-apply-observations.ts	reviewed	batch 440 last-line length matched; model not tool-verified grok
+apps/daemon/src/native-folder-dialog.ts	reviewed	batch 440 last-line length matched; model not tool-verified grok
+apps/daemon/src/native-session-recovery.ts	reviewed	batch 440 last-line length matched; model not tool-verified grok
+apps/daemon/src/orbit-agent-summary.ts	reviewed	batch 440 last-line length matched; model not tool-verified grok
+apps/daemon/src/orbit.ts	reviewed	batch 440 last-line length matched; model not tool-verified grok
+apps/daemon/src/origin-validation.ts	reviewed	batch 440 last-line length matched; model not tool-verified grok
+apps/daemon/src/pdf-export.ts	reviewed	batch 440 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/apply.ts	reviewed	batch 440 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/atom-bodies.ts	reviewed	batch 440 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/atoms.ts	reviewed	batch 441 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/atoms/auto-surfaces.ts	reviewed	batch 441 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/atoms/build-test.ts	reviewed	batch 441 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/atoms/built-ins.ts	reviewed	batch 441 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/atoms/code-import.ts	reviewed	batch 441 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/atoms/design-extract.ts	reviewed	batch 441 last-line length matched; model not tool-verified grok; main-session skips design-extract paths that leave the repo
+apps/daemon/src/plugins/atoms/diff-review-genui-bridge.ts	reviewed	batch 441 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/atoms/diff-review.ts	reviewed	batch 441 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/atoms/figma-extract.ts	reviewed	batch 441 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/atoms/handoff.ts	reviewed	batch 441 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/atoms/patch-edit.ts	reviewed	batch 441 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/atoms/registry.ts	reviewed	batch 441 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/atoms/rewrite-plan.ts	reviewed	batch 441 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/atoms/token-map.ts	reviewed	batch 441 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/bundled.ts	reviewed	batch 441 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/connector-gate.ts	reviewed	batch 442 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/connector-probe.ts	reviewed	batch 442 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/context-craft.ts	reviewed	batch 442 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/diff.ts	reviewed	batch 442 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/doctor.ts	reviewed	batch 442 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/duplicate-project.ts	reviewed	batch 442 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/ensure-core-stages.ts	reviewed	batch 442 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/events.ts	reviewed	batch 442 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/export.ts	reviewed	batch 442 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/gc.ts	reviewed	batch 442 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/index.ts	reviewed	batch 442 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/installer.ts	reviewed	batch 442 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/local-skill.ts	reviewed	batch 442 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/local-source.ts	reviewed	batch 442 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/lockfile.ts	reviewed	batch 442 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/marketplace-doctor.ts	reviewed	batch 443 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/marketplace-seed.ts	reviewed	batch 443 last-line length matched; model not tool-verified grok; main-session rejects registry ids that leave the plugin registry
+apps/daemon/src/plugins/marketplaces.ts	reviewed	batch 443 last-line length matched; model not tool-verified grok; main-session rejects registry ids that are . or ..
+apps/daemon/src/plugins/pack.ts	reviewed	batch 443 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/persistence.ts	reviewed	batch 443 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/pipeline-runner.ts	reviewed	batch 443 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/pipeline.ts	reviewed	batch 443 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/plugin-asset-cache.ts	reviewed	batch 443 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/plugin-preview-bakes.ts	reviewed	batch 443 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/publish.ts	reviewed	batch 443 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/registry.ts	reviewed	batch 443 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/resolve-snapshot.ts	reviewed	batch 443 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/scaffold.ts	reviewed	batch 443 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/search.ts	reviewed	batch 443 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/share-helpers.ts	reviewed	batch 443 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/simulate.ts	reviewed	batch 444 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/skill-candidates.ts	reviewed	batch 444 last-line length matched; model not tool-verified grok; main-session reads skill candidates only after realpath stays in the project
+apps/daemon/src/plugins/snapshot-diff.ts	reviewed	batch 444 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/snapshots.ts	reviewed	batch 444 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/stats.ts	reviewed	batch 444 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/trust.ts	reviewed	batch 444 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/until.ts	reviewed	batch 444 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/validate.ts	reviewed	batch 444 last-line length matched; model not tool-verified grok
+apps/daemon/src/plugins/verify.ts	reviewed	batch 444 last-line length matched; model not tool-verified grok
+apps/daemon/src/project-design-token-suggestions.ts	reviewed	batch 444 last-line length matched; model not tool-verified grok
+apps/daemon/src/project-file-versions.ts	reviewed	batch 444 last-line length matched; model not tool-verified grok
+apps/daemon/src/project-ignored-dirs.ts	reviewed	batch 444 last-line length matched; model not tool-verified grok
+apps/daemon/src/project-locations.ts	reviewed	batch 444 last-line length matched; model not tool-verified grok
+apps/daemon/src/project-root.ts	reviewed	batch 444 last-line length matched; model not tool-verified grok
+apps/daemon/src/project-watchers.ts	reviewed	batch 444 last-line length matched; model not tool-verified grok
+apps/daemon/src/projects.ts	reviewed	batch 445 last-line length matched; model not tool-verified grok
+apps/daemon/src/projects/archive-filename.ts	reviewed	batch 445 last-line length matched; model not tool-verified grok
+apps/daemon/src/prompt-telemetry.ts	reviewed	batch 445 last-line length matched; model not tool-verified grok
+apps/daemon/src/prompts/core-slim.ts	reviewed	batch 445 last-line length matched; model not tool-verified grok
+apps/daemon/src/prompts/deck-framework.ts	reviewed	batch 445 last-line length matched; model not tool-verified grok
+apps/daemon/src/prompts/directions.ts	reviewed	batch 445 last-line length matched; model not tool-verified grok
+apps/daemon/src/prompts/discovery.ts	reviewed	batch 445 last-line length matched; model not tool-verified grok
+apps/daemon/src/prompts/media-contract.ts	reviewed	batch 445 last-line length matched; model not tool-verified grok
+apps/daemon/src/prompts/official-system.ts	reviewed	batch 445 last-line length matched; model not tool-verified grok
+apps/daemon/src/prompts/panel.ts	reviewed	batch 445 last-line length matched; model not tool-verified grok
+apps/daemon/src/prompts/research-contract.ts	reviewed	batch 445 last-line length matched; model not tool-verified grok
+apps/daemon/src/prompts/stable-sections.ts	reviewed	batch 445 last-line length matched; model not tool-verified grok
+apps/daemon/src/prompts/system.ts	reviewed	batch 445 last-line length matched; model not tool-verified grok
+apps/daemon/src/qa/cta-hierarchy.ts	reviewed	batch 445 last-line length matched; model not tool-verified grok
+apps/daemon/src/qa/deck-layout.ts	reviewed	batch 445 last-line length matched; model not tool-verified grok
+apps/daemon/src/question-form-detect.ts	reviewed	batch 446 last-line length matched; model not tool-verified grok
+apps/daemon/src/reasoning-egress.ts	reviewed	batch 446 last-line length matched; model not tool-verified grok
+apps/daemon/src/redact.ts	reviewed	batch 446 last-line length matched; model not tool-verified grok
+apps/daemon/src/registry/database-backend.ts	reviewed	batch 446 last-line length matched; model not tool-verified grok
+apps/daemon/src/registry/github-backend.ts	reviewed	batch 446 last-line length matched; model not tool-verified grok
+apps/daemon/src/registry/static-backend.ts	reviewed	batch 446 last-line length matched; model not tool-verified grok
+apps/daemon/src/registry/versioning.ts	reviewed	batch 446 last-line length matched; model not tool-verified grok
+apps/daemon/src/research/cli-args.ts	reviewed	batch 446 last-line length matched; model not tool-verified grok
+apps/daemon/src/research/index.ts	reviewed	batch 446 last-line length matched; model not tool-verified grok
+apps/daemon/src/research/tavily.ts	reviewed	batch 446 last-line length matched; model not tool-verified grok
+apps/daemon/src/resource-cli.ts	reviewed	batch 446 last-line length matched; model not tool-verified grok
+apps/daemon/src/role-marker-guard.ts	reviewed	batch 446 last-line length matched; model not tool-verified grok
+apps/daemon/src/route-context-contract.ts	reviewed	batch 446 last-line length matched; model not tool-verified grok
+apps/daemon/src/route-registration-guard.ts	reviewed	batch 446 last-line length matched; model not tool-verified grok
+apps/daemon/src/routes/active-context.ts	reviewed	batch 446 last-line length matched; model not tool-verified grok
+apps/daemon/src/routes/attribution.ts	reviewed	batch 447 last-line length matched; model not tool-verified grok
+apps/daemon/src/routes/automation.ts	reviewed	batch 447 last-line length matched; model not tool-verified grok
+apps/daemon/src/routes/browser-sessions.ts	reviewed	batch 447 last-line length matched; model not tool-verified grok
+apps/daemon/src/routes/chat.ts	reviewed	batch 447 last-line length matched; model not tool-verified grok
+apps/daemon/src/routes/collab-context.ts	reviewed	batch 447 last-line length matched; model not tool-verified grok
+apps/daemon/src/routes/collab-presence.ts	reviewed	batch 447 last-line length matched; model not tool-verified grok
+apps/daemon/src/routes/collab-sync.ts	reviewed	batch 447 last-line length matched; model not tool-verified grok
+apps/daemon/src/routes/daemon.ts	reviewed	batch 447 last-line length matched; model not tool-verified grok
+apps/daemon/src/routes/deploy.ts	reviewed	batch 447 last-line length matched; model not tool-verified grok
+apps/daemon/src/routes/design-system-tool.ts	reviewed	batch 447 last-line length matched; model not tool-verified grok
+apps/daemon/src/routes/design-systems.ts	reviewed	batch 447 last-line length matched; model not tool-verified grok
+apps/daemon/src/routes/genui.ts	reviewed	batch 447 last-line length matched; model not tool-verified grok
+apps/daemon/src/routes/handoff.ts	reviewed	batch 447 last-line length matched; model not tool-verified grok
+apps/daemon/src/routes/host-tools.ts	reviewed	batch 447 last-line length matched; model not tool-verified grok
+apps/daemon/src/routes/library.ts	reviewed	batch 447 last-line length matched; model not tool-verified grok
 apps/daemon/src/routes/live-artifact.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/daemon/src/routes/media.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/daemon/src/routes/memory.ts	unreviewed	production-relevant until a pass-3 reviewer records it

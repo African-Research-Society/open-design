@@ -3,17 +3,26 @@ export function googleAnalyticsHeadHtml(
   pageName = 'landing_home',
 ): string {
   if (!measurementId) return '';
+  const measurementLiteral = JSON.stringify(measurementId)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026');
+  const pageLiteral = JSON.stringify(pageName)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026');
+  const measurementQuery = encodeURIComponent(measurementId);
   return `<!-- Google tag (gtag.js) -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   var gtagScript = document.createElement('script');
   gtagScript.async = true;
-  gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=${measurementId}';
+  gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=${measurementQuery}';
   document.head.appendChild(gtagScript);
   gtag('js', new Date());
 
-  gtag('config', ${JSON.stringify(measurementId)});
+  gtag('config', ${measurementLiteral});
 
   document.addEventListener('click', function (event) {
     if (typeof gtag !== 'function') return;
@@ -38,7 +47,7 @@ export function googleAnalyticsHeadHtml(
     if (!cta) return;
     var payload = {
       cta_name: cta,
-      page_name: ${JSON.stringify(pageName)},
+      page_name: ${pageLiteral},
       link_url: href,
       link_text: label.slice(0, 120),
     };

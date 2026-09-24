@@ -1597,81 +1597,81 @@ apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude
 apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude-design-first-look-community.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
 apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude-design-free-alternative-ai-fusion.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
 apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude-design-jeremy-de-campos.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
-apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude-design-landing-page-roy-shavit.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude-design-setup-eli-rigobeli-ai.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-open-source-ai-design-overview-ai.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-open-source-alternative-claude-design-nyndra-ai.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-open-source-alternative-claude-design-tony-xhepa.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-open-source-alternative-comparison-where-do-i-click.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-open-source-alternative-vs-claude-design-ai-teaches-better.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-open-source-claude-alternative-aicodeking.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-open-source-tools-roundup-chase-ai.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-overview-worldofai.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-replacing-claude-design-jack-roberts.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-revolutionary-approach-01coder.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-setup-gemini-cli-free-credits-sandeep-singh.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-vibe-coders-dream-sean-kochel.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-vs-claude-design-better-stack.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-vs-claude-design-comparison-panda-making-money.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-windows-wsl-installation-setup-ai-automation.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/blog-authors.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/blog-rss.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/blog-toc.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/bundled-plugins.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/catalog.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/clamp-description.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/codex-binding.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/codex-design.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/codex-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/codex-i18n/de.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/codex-i18n/es.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/codex-i18n/fr.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/codex-i18n/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/codex-i18n/it.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/codex-i18n/ja.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/codex-i18n/ko.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/codex-i18n/pt-br.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/codex-i18n/ru.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/codex-i18n/tr.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/codex-i18n/zh.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/curated-collection.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/deepseek-binding.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/deepseek-design.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/deepseek-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/deepseek-i18n/de.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/deepseek-i18n/es.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/deepseek-i18n/fr.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/deepseek-i18n/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/deepseek-i18n/it.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/deepseek-i18n/ja.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/deepseek-i18n/ko.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/deepseek-i18n/pt-br.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/deepseek-i18n/ru.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/deepseek-i18n/tr.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/deepseek-i18n/zh.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/deepseek-v4-pro-campaign.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/enterprise-lead-copy.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/github.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/google-analytics.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/home-campaign-content.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/home-copy.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/plugin-detail-l10n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/plugin-facets.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/plugin-slug.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/plugins-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/posthog-analytics.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/pricing-campaign-content.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/pricing-content.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/pricing-extras-content.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/pricing-team-content.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/pricing.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/release-metadata.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/solution-featured.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/system-l10n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_lib/system-tokens.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/comparison-v4.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/detail-bands.css	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude-design-landing-page-roy-shavit.ts	reviewed	batch 464 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude-design-setup-eli-rigobeli-ai.ts	reviewed	batch 464 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-open-source-ai-design-overview-ai.ts	reviewed	batch 464 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-open-source-alternative-claude-design-nyndra-ai.ts	reviewed	batch 464 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-open-source-alternative-claude-design-tony-xhepa.ts	reviewed	batch 464 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-open-source-alternative-comparison-where-do-i-click.ts	reviewed	batch 464 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-open-source-alternative-vs-claude-design-ai-teaches-better.ts	reviewed	batch 464 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-open-source-claude-alternative-aicodeking.ts	reviewed	batch 464 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-open-source-tools-roundup-chase-ai.ts	reviewed	batch 464 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-overview-worldofai.ts	reviewed	batch 464 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-replacing-claude-design-jack-roberts.ts	reviewed	batch 464 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-revolutionary-approach-01coder.ts	reviewed	batch 464 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-setup-gemini-cli-free-credits-sandeep-singh.ts	reviewed	batch 464 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-vibe-coders-dream-sean-kochel.ts	reviewed	batch 464 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-vs-claude-design-better-stack.ts	reviewed	batch 464 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-vs-claude-design-comparison-panda-making-money.ts	reviewed	batch 465 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-windows-wsl-installation-setup-ai-automation.ts	reviewed	batch 465 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/blog-authors.ts	reviewed	batch 465 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/blog-rss.ts	reviewed	batch 465 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/blog-toc.ts	reviewed	batch 465 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/bundled-plugins.ts	reviewed	batch 465 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/catalog.ts	reviewed	batch 465 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/clamp-description.ts	reviewed	batch 465 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/codex-binding.ts	reviewed	batch 465 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/codex-design.ts	reviewed	batch 465 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/codex-i18n.ts	reviewed	batch 465 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/codex-i18n/de.ts	reviewed	batch 465 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/codex-i18n/es.ts	reviewed	batch 465 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/codex-i18n/fr.ts	reviewed	batch 465 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/codex-i18n/index.ts	reviewed	batch 465 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/codex-i18n/it.ts	reviewed	batch 466 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/codex-i18n/ja.ts	reviewed	batch 466 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/codex-i18n/ko.ts	reviewed	batch 466 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/codex-i18n/pt-br.ts	reviewed	batch 466 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/codex-i18n/ru.ts	reviewed	batch 466 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/codex-i18n/tr.ts	reviewed	batch 466 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/codex-i18n/zh.ts	reviewed	batch 466 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/curated-collection.ts	reviewed	batch 466 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/deepseek-binding.ts	reviewed	batch 466 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/deepseek-design.ts	reviewed	batch 466 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/deepseek-i18n.ts	reviewed	batch 466 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/deepseek-i18n/de.ts	reviewed	batch 466 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/deepseek-i18n/es.ts	reviewed	batch 466 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/deepseek-i18n/fr.ts	reviewed	batch 466 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/deepseek-i18n/index.ts	reviewed	batch 466 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/deepseek-i18n/it.ts	reviewed	batch 467 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/deepseek-i18n/ja.ts	reviewed	batch 467 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/deepseek-i18n/ko.ts	reviewed	batch 467 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/deepseek-i18n/pt-br.ts	reviewed	batch 467 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/deepseek-i18n/ru.ts	reviewed	batch 467 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/deepseek-i18n/tr.ts	reviewed	batch 467 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/deepseek-i18n/zh.ts	reviewed	batch 467 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/deepseek-v4-pro-campaign.ts	reviewed	batch 467 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/enterprise-lead-copy.ts	reviewed	batch 467 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/github.ts	reviewed	batch 467 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/google-analytics.ts	reviewed	batch 467 last-line length matched; model not tool-verified grok; main-session encodes the measurement id before it enters the analytics script
+apps/landing-page/app/_lib/home-campaign-content.ts	reviewed	batch 467 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/home-copy.ts	reviewed	batch 467 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/i18n.ts	reviewed	batch 467 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/plugin-detail-l10n.ts	reviewed	batch 467 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/plugin-facets.ts	reviewed	batch 468 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/plugin-slug.ts	reviewed	batch 468 last-line length matched; model not tool-verified grok; main-session collapses dot-dot plugin slug segments; mirrored in contracts plugin-url.ts
+apps/landing-page/app/_lib/plugins-i18n.ts	reviewed	batch 468 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/posthog-analytics.ts	reviewed	batch 468 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/pricing-campaign-content.ts	reviewed	batch 468 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/pricing-content.ts	reviewed	batch 468 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/pricing-extras-content.ts	reviewed	batch 468 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/pricing-team-content.ts	reviewed	batch 468 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/pricing.ts	reviewed	batch 468 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/release-metadata.ts	reviewed	batch 468 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/solution-featured.ts	reviewed	batch 468 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/system-l10n.ts	reviewed	batch 468 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_lib/system-tokens.ts	reviewed	batch 468 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/comparison-v4.css	reviewed	batch 468 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/detail-bands.css	reviewed	batch 468 last-line length matched; model not tool-verified grok
 apps/landing-page/app/_partials/ikigai-one-i18n.ts	reviewed	batch 469 last-line length matched; model not tool-verified grok
 apps/landing-page/app/_partials/ikigai-one-main.ar.html	reviewed	batch 469 last-line length matched; model not tool-verified grok
 apps/landing-page/app/_partials/ikigai-one-main.de.html	reviewed	batch 469 last-line length matched; model not tool-verified grok
@@ -1717,21 +1717,21 @@ apps/landing-page/app/_partials/seungki-kim-main.ko.html	reviewed	batch 471 last
 apps/landing-page/app/_partials/seungki-kim-main.pt-br.html	reviewed	batch 471 last-line length matched; model not tool-verified grok
 apps/landing-page/app/_partials/seungki-kim-main.ru.html	reviewed	batch 471 last-line length matched; model not tool-verified grok
 apps/landing-page/app/_partials/seungki-kim-main.tr.html	reviewed	batch 471 last-line length matched; model not tool-verified grok
-apps/landing-page/app/_partials/seungki-kim-main.zh.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/seungki-kim.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/stuart-gardoll-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/stuart-gardoll-main.de.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/stuart-gardoll-main.es.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/stuart-gardoll-main.fr.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/stuart-gardoll-main.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/stuart-gardoll-main.it.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/stuart-gardoll-main.ja.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/stuart-gardoll-main.ko.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/stuart-gardoll-main.pt-br.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/stuart-gardoll-main.ru.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/stuart-gardoll-main.tr.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/stuart-gardoll-main.zh.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/stuart-gardoll.css	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/app/_partials/seungki-kim-main.zh.html	reviewed	batch 472 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/seungki-kim.css	reviewed	batch 472 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/stuart-gardoll-i18n.ts	reviewed	batch 472 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/stuart-gardoll-main.de.html	reviewed	batch 472 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/stuart-gardoll-main.es.html	reviewed	batch 472 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/stuart-gardoll-main.fr.html	reviewed	batch 472 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/stuart-gardoll-main.html	reviewed	batch 472 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/stuart-gardoll-main.it.html	reviewed	batch 472 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/stuart-gardoll-main.ja.html	reviewed	batch 472 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/stuart-gardoll-main.ko.html	reviewed	batch 472 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/stuart-gardoll-main.pt-br.html	reviewed	batch 472 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/stuart-gardoll-main.ru.html	reviewed	batch 472 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/stuart-gardoll-main.tr.html	reviewed	batch 472 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/stuart-gardoll-main.zh.html	reviewed	batch 472 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/stuart-gardoll.css	reviewed	batch 472 last-line length matched; model not tool-verified grok
 apps/landing-page/app/agent-guide-deepseek-harness.i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/agent-guides.en.i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/agent-guides.i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
@@ -1762,21 +1762,21 @@ apps/landing-page/app/alternatives-i18n.part-g.ts	unreviewed	production-relevant
 apps/landing-page/app/alternatives-i18n.part-h.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/alternatives-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/codex-slides-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/codex-slides-locales/de.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/codex-slides-locales/es.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/codex-slides-locales/fr.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/codex-slides-locales/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/codex-slides-locales/it.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/codex-slides-locales/ja.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/codex-slides-locales/ko.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/codex-slides-locales/pt-br.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/codex-slides-locales/ru.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/codex-slides-locales/tr.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/codex-slides-locales/zh.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/community-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/community-locales/de.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/community-locales/es.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/community-locales/fr.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/app/codex-slides-locales/de.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
+apps/landing-page/app/codex-slides-locales/es.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
+apps/landing-page/app/codex-slides-locales/fr.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
+apps/landing-page/app/codex-slides-locales/index.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
+apps/landing-page/app/codex-slides-locales/it.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
+apps/landing-page/app/codex-slides-locales/ja.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
+apps/landing-page/app/codex-slides-locales/ko.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
+apps/landing-page/app/codex-slides-locales/pt-br.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
+apps/landing-page/app/codex-slides-locales/ru.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
+apps/landing-page/app/codex-slides-locales/tr.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
+apps/landing-page/app/codex-slides-locales/zh.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
+apps/landing-page/app/community-i18n.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
+apps/landing-page/app/community-locales/de.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
+apps/landing-page/app/community-locales/es.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
+apps/landing-page/app/community-locales/fr.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
 apps/landing-page/app/community-locales/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/community-locales/it.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/community-locales/ja.ts	unreviewed	production-relevant until a pass-3 reviewer records it

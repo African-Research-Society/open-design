@@ -2272,46 +2272,46 @@ apps/landing-page/app/pages/tutorials/index.astro	reviewed	batch 508 last-line l
 apps/landing-page/app/plugin-registry.ts	reviewed	batch 508 last-line length matched; model not tool-verified grok
 apps/landing-page/app/showcase-i18n.ts	reviewed	batch 508 last-line length matched; model not tool-verified grok
 apps/landing-page/app/solution-pages-i18n.ts	reviewed	batch 508 last-line length matched; model not tool-verified grok
-apps/landing-page/app/solution-pages-i18n/ar.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/de.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/en.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/es.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/fr.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/id.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/it.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/ja.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/ko.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/nl.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/pl.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/pt-br.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/ru.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/tr.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/types.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/uk.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/vi.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/zh-tw.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solution-pages-i18n/zh.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/solutions-index-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/sub-pages.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/astro.config.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/functions/[os]/[arch]/[token]/[asset].ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/functions/_lib/attribution.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/functions/api/attribution/bridge/consume.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/functions/api/attribution/bridge/mint.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/functions/api/attribution/consume.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/functions/api/attribution/mint.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/functions/codex-plugin.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/functions/contact-sales.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/functions/launch-week/drops.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/functions/release-metadata.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/functions/share-out/[eventId].ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/functions/share/[eventId].ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/functions/subscribe.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/migrations/0001_attribution_token_consumptions.sql	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/package.json	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/public/96b0928121e24fd7b4ef85ae0f8bf1d8.txt	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/public/_headers	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/public/_redirects	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/app/solution-pages-i18n/ar.ts	reviewed	batch 509 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/de.ts	reviewed	batch 509 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/en.ts	reviewed	batch 509 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/es.ts	reviewed	batch 509 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/fr.ts	reviewed	batch 509 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/id.ts	reviewed	batch 509 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/it.ts	reviewed	batch 509 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/ja.ts	reviewed	batch 509 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/ko.ts	reviewed	batch 509 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/nl.ts	reviewed	batch 509 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/pl.ts	reviewed	batch 509 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/pt-br.ts	reviewed	batch 509 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/ru.ts	reviewed	batch 509 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/tr.ts	reviewed	batch 509 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/types.ts	reviewed	batch 509 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/uk.ts	reviewed	batch 510 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/vi.ts	reviewed	batch 510 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/zh-tw.ts	reviewed	batch 510 last-line length matched; model not tool-verified
+apps/landing-page/app/solution-pages-i18n/zh.ts	reviewed	batch 510 last-line length matched; model not tool-verified
+apps/landing-page/app/solutions-index-i18n.ts	reviewed	batch 510 last-line length matched; model not tool-verified
+apps/landing-page/app/sub-pages.css	reviewed	batch 510 last-line length matched; model not tool-verified
+apps/landing-page/astro.config.ts	reviewed	batch 510 last-line length matched; model not tool-verified
+apps/landing-page/functions/[os]/[arch]/[token]/[asset].ts	reviewed	batch 510 last-line length matched; model not tool-verified
+apps/landing-page/functions/_lib/attribution.ts	reviewed	batch 510 last-line length matched; model not tool-verified
+apps/landing-page/functions/api/attribution/bridge/consume.ts	reviewed	batch 510 last-line length matched; model not tool-verified
+apps/landing-page/functions/api/attribution/bridge/mint.ts	reviewed	batch 510 last-line length matched; model not tool-verified
+apps/landing-page/functions/api/attribution/consume.ts	reviewed	batch 510 last-line length matched; model not tool-verified
+apps/landing-page/functions/api/attribution/mint.ts	reviewed	batch 510 last-line length matched; model not tool-verified
+apps/landing-page/functions/codex-plugin.ts	reviewed	batch 510 last-line length matched; model not tool-verified
+apps/landing-page/functions/contact-sales.ts	reviewed	batch 510 last-line length matched; model not tool-verified
+apps/landing-page/functions/launch-week/drops.ts	reviewed	batch 511 last-line length matched; model not tool-verified
+apps/landing-page/functions/release-metadata.ts	reviewed	batch 511 last-line length matched; model not tool-verified
+apps/landing-page/functions/share-out/[eventId].ts	reviewed	batch 511 last-line length matched; model not tool-verified
+apps/landing-page/functions/share/[eventId].ts	reviewed	batch 511 last-line length matched; model not tool-verified
+apps/landing-page/functions/subscribe.ts	reviewed	batch 511 last-line length matched; model not tool-verified
+apps/landing-page/migrations/0001_attribution_token_consumptions.sql	reviewed	batch 511 last-line length matched; model not tool-verified
+apps/landing-page/package.json	reviewed	batch 511 last-line length matched; model not tool-verified
+apps/landing-page/public/96b0928121e24fd7b4ef85ae0f8bf1d8.txt	reviewed	batch 511 last-line length matched; model not tool-verified
+apps/landing-page/public/_headers	reviewed	batch 511 last-line length matched; model not tool-verified
+apps/landing-page/public/_redirects	reviewed	batch 511 last-line length matched; model not tool-verified
 apps/landing-page/public/about/access-agent.webp	asset	binary or font asset, not executable logic
 apps/landing-page/public/about/desktop-native.webp	asset	binary or font asset, not executable logic
 apps/landing-page/public/about/self-evolution.webp	asset	binary or font asset, not executable logic
@@ -2590,7 +2590,7 @@ apps/landing-page/public/contributors/alchemistklk.jpg	asset	binary or font asse
 apps/landing-page/public/contributors/bulai0408.jpg	asset	binary or font asset, not executable logic
 apps/landing-page/public/contributors/cursoragent.png	asset	binary or font asset, not executable logic
 apps/landing-page/public/contributors/lefarcen.jpg	asset	binary or font asset, not executable logic
-apps/landing-page/public/contributors/manifest.json	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/public/contributors/manifest.json	reviewed	batch 511 last-line length matched; model not tool-verified
 apps/landing-page/public/contributors/mrcfps.png	asset	binary or font asset, not executable logic
 apps/landing-page/public/contributors/nettee.png	asset	binary or font asset, not executable logic
 apps/landing-page/public/contributors/pftom.jpg	asset	binary or font asset, not executable logic
@@ -2635,10 +2635,10 @@ apps/landing-page/public/image-generation/skyward.webp	asset	binary or font asse
 apps/landing-page/public/image-generation/tennis-editorial.webp	asset	binary or font asset, not executable logic
 apps/landing-page/public/image-generation/tidal-crown.webp	asset	binary or font asset, not executable logic
 apps/landing-page/public/image-generation/verdant.webp	asset	binary or font asset, not executable logic
-apps/landing-page/public/install-dsh.cmd	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/public/install-dsh.ps1	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/public/install-dsh.sh	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/public/install.sh	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/public/install-dsh.cmd	reviewed	batch 511 last-line length matched; model not tool-verified
+apps/landing-page/public/install-dsh.ps1	reviewed	batch 511 last-line length matched; model not tool-verified
+apps/landing-page/public/install-dsh.sh	reviewed	batch 511 last-line length matched; model not tool-verified
+apps/landing-page/public/install.sh	reviewed	batch 511 last-line length matched; model not tool-verified
 apps/landing-page/public/lab-cards/card-1.webp	asset	binary or font asset, not executable logic
 apps/landing-page/public/lab-cards/card-2.webp	asset	binary or font asset, not executable logic
 apps/landing-page/public/lab-cards/card-3.webp	asset	binary or font asset, not executable logic
@@ -3003,22 +3003,22 @@ apps/landing-page/scripts/blog-indexing/lib.ts	reviewed	batch 512 last-line leng
 apps/landing-page/scripts/blog-indexing/lint-blog-seo.ts	reviewed	batch 512 last-line length matched; model not tool-verified
 apps/landing-page/scripts/blog-indexing/query-search-analytics.ts	reviewed	batch 512 last-line length matched; model not tool-verified
 apps/landing-page/scripts/blog-indexing/render-status.ts	reviewed	batch 512 last-line length matched; model not tool-verified
-apps/landing-page/scripts/blog-indexing/submit-indexnow.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/blog-indexing/submit-sitemap.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/blog-indexing/verify-readiness.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/copy-example-html.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/fallback-preview-card.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/generate-previews.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/vendor-contributors.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/vendor-enhancers.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/verify-localized-template-routes.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/scripts/blog-indexing/submit-indexnow.ts	reviewed	batch 513 last-line length matched; model not tool-verified
+apps/landing-page/scripts/blog-indexing/submit-sitemap.ts	reviewed	batch 513 last-line length matched; model not tool-verified
+apps/landing-page/scripts/blog-indexing/verify-readiness.ts	reviewed	batch 513 last-line length matched; model not tool-verified
+apps/landing-page/scripts/copy-example-html.ts	reviewed	batch 513 last-line length matched; model not tool-verified
+apps/landing-page/scripts/fallback-preview-card.ts	reviewed	batch 513 last-line length matched; model not tool-verified
+apps/landing-page/scripts/generate-previews.ts	reviewed	batch 513 last-line length matched; model not tool-verified
+apps/landing-page/scripts/vendor-contributors.ts	reviewed	batch 513 last-line length matched; model not tool-verified
+apps/landing-page/scripts/vendor-enhancers.ts	reviewed	batch 513 last-line length matched; model not tool-verified
+apps/landing-page/scripts/verify-localized-template-routes.ts	reviewed	batch 513 last-line length matched; model not tool-verified
 apps/landing-page/scripts/youtube-tutorials/README.md	doc	readme
-apps/landing-page/scripts/youtube-tutorials/backfill-tutorials.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/youtube-tutorials/generate-selected.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/youtube-tutorials/github-submissions.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/youtube-tutorials/lib.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/youtube-tutorials/notify-candidates.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/youtube-tutorials/youtube.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/scripts/youtube-tutorials/backfill-tutorials.ts	reviewed	batch 513 last-line length matched; model not tool-verified
+apps/landing-page/scripts/youtube-tutorials/generate-selected.ts	reviewed	batch 513 last-line length matched; model not tool-verified
+apps/landing-page/scripts/youtube-tutorials/github-submissions.ts	reviewed	batch 513 last-line length matched; model not tool-verified
+apps/landing-page/scripts/youtube-tutorials/lib.ts	reviewed	batch 513 last-line length matched; model not tool-verified
+apps/landing-page/scripts/youtube-tutorials/notify-candidates.ts	reviewed	batch 513 last-line length matched; model not tool-verified
+apps/landing-page/scripts/youtube-tutorials/youtube.ts	reviewed	batch 513 last-line length matched; model not tool-verified
 apps/landing-page/tests/attribution-functions.test.ts	test-fixture	test or fixture path
 apps/landing-page/tests/blog-new-listicles.test.ts	test-fixture	test or fixture path
 apps/landing-page/tests/campaign-attribution.test.ts	test-fixture	test or fixture path
@@ -3044,34 +3044,34 @@ apps/landing-page/tests/subscribe.test.ts	test-fixture	test or fixture path
 apps/landing-page/tests/youtube-tutorials-scoring.test.ts	test-fixture	test or fixture path
 apps/landing-page/tests/youtube-tutorials-submissions.test.ts	test-fixture	test or fixture path
 apps/landing-page/tests/youtube-tutorials-watermark.test.ts	test-fixture	test or fixture path
-apps/landing-page/tsconfig.json	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/wrangler.staging.toml	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/wrangler.toml	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/AGENTS.md	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/tsconfig.json	reviewed	batch 514 last-line length matched; model not tool-verified
+apps/landing-page/wrangler.staging.toml	reviewed	batch 514 last-line length matched; model not tool-verified
+apps/landing-page/wrangler.toml	reviewed	batch 514 last-line length matched; model not tool-verified
+apps/packaged/AGENTS.md	reviewed	batch 514 last-line length matched; model not tool-verified
 apps/packaged/README.md	doc	readme
-apps/packaged/esbuild.config.mjs	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/package.json	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/config.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/download-attribution.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/errors.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/headless-runtime.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/headless.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/identity.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/launch.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/launcher-after-quit.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/launcher-runtime.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/logging.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/obsolete-installed-outer.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/paths.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/payload-desktop-launch.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/prewarm.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/protocol.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/sidecars.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/startup-telemetry.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/window-title.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/windows-lifecycle.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/src/workspace-team.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/packaged/esbuild.config.mjs	reviewed	batch 514 last-line length matched; model not tool-verified
+apps/packaged/package.json	reviewed	batch 514 last-line length matched; model not tool-verified
+apps/packaged/src/config.ts	reviewed	batch 514 last-line length matched; model not tool-verified
+apps/packaged/src/download-attribution.ts	reviewed	batch 514 last-line length matched; model not tool-verified
+apps/packaged/src/errors.ts	reviewed	batch 514 last-line length matched; model not tool-verified
+apps/packaged/src/headless-runtime.ts	reviewed	batch 514 last-line length matched; model not tool-verified
+apps/packaged/src/headless.ts	reviewed	batch 514 last-line length matched; model not tool-verified
+apps/packaged/src/identity.ts	reviewed	batch 514 last-line length matched; model not tool-verified
+apps/packaged/src/index.ts	reviewed	batch 514 last-line length matched; model not tool-verified
+apps/packaged/src/launch.ts	reviewed	batch 514 last-line length matched; model not tool-verified
+apps/packaged/src/launcher-after-quit.ts	reviewed	batch 514 last-line length matched; model not tool-verified
+apps/packaged/src/launcher-runtime.ts	reviewed	batch 515 last-line length matched; model not tool-verified
+apps/packaged/src/logging.ts	reviewed	batch 515 last-line length matched; model not tool-verified
+apps/packaged/src/obsolete-installed-outer.ts	reviewed	batch 515 last-line length matched; model not tool-verified
+apps/packaged/src/paths.ts	reviewed	batch 515 last-line length matched; model not tool-verified
+apps/packaged/src/payload-desktop-launch.ts	reviewed	batch 515 last-line length matched; model not tool-verified
+apps/packaged/src/prewarm.ts	reviewed	batch 515 last-line length matched; model not tool-verified
+apps/packaged/src/protocol.ts	reviewed	batch 515 last-line length matched; model not tool-verified
+apps/packaged/src/sidecars.ts	reviewed	batch 515 last-line length matched; model not tool-verified
+apps/packaged/src/startup-telemetry.ts	reviewed	batch 515 last-line length matched; model not tool-verified
+apps/packaged/src/window-title.ts	reviewed	batch 515 last-line length matched; model not tool-verified
+apps/packaged/src/windows-lifecycle.ts	reviewed	batch 515 last-line length matched; model not tool-verified
+apps/packaged/src/workspace-team.ts	reviewed	batch 515 last-line length matched; model not tool-verified
 apps/packaged/tests/config.test.ts	test-fixture	test or fixture path
 apps/packaged/tests/desktop-pick-and-import.test.ts	test-fixture	test or fixture path
 apps/packaged/tests/desktop-project-root-gate.test.ts	test-fixture	test or fixture path
@@ -3094,18 +3094,18 @@ apps/packaged/tests/startup-telemetry.test.ts	test-fixture	test or fixture path
 apps/packaged/tests/window-title.test.ts	test-fixture	test or fixture path
 apps/packaged/tests/windows-lifecycle.test.ts	test-fixture	test or fixture path
 apps/packaged/tests/workspace-team.test.ts	test-fixture	test or fixture path
-apps/packaged/tsconfig.json	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/tsconfig.tests.json	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/packaged/vitest.config.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/app/[[...slug]]/client-app.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/app/[[...slug]]/page.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/app/desktop-pet/client.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/app/desktop-pet/page.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/app/layout.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/next-env.d.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/next.config.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/package.json	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/postcss.config.mjs	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/packaged/tsconfig.json	reviewed	batch 515 last-line length matched; model not tool-verified
+apps/packaged/tsconfig.tests.json	reviewed	batch 515 last-line length matched; model not tool-verified
+apps/packaged/vitest.config.ts	reviewed	batch 515 last-line length matched; model not tool-verified
+apps/web/app/[[...slug]]/client-app.tsx	reviewed	batch 516 last-line length matched; model not tool-verified
+apps/web/app/[[...slug]]/page.tsx	reviewed	batch 516 last-line length matched; model not tool-verified
+apps/web/app/desktop-pet/client.tsx	reviewed	batch 516 last-line length matched; model not tool-verified
+apps/web/app/desktop-pet/page.tsx	reviewed	batch 516 last-line length matched; model not tool-verified
+apps/web/app/layout.tsx	reviewed	batch 516 last-line length matched; model not tool-verified
+apps/web/next-env.d.ts	reviewed	batch 516 last-line length matched; model not tool-verified
+apps/web/next.config.ts	reviewed	batch 516 last-line length matched; model not tool-verified
+apps/web/package.json	reviewed	batch 516 last-line length matched; model not tool-verified
+apps/web/postcss.config.mjs	reviewed	batch 516 last-line length matched; model not tool-verified
 apps/web/public/agent-icons/aider.png	asset	binary or font asset, not executable logic
 apps/web/public/agent-icons/amr.svg	asset	binary or font asset, not executable logic
 apps/web/public/agent-icons/antigravity.svg	asset	binary or font asset, not executable logic
@@ -3165,7 +3165,7 @@ apps/web/public/editor-icons/xcode.png	asset	binary or font asset, not executabl
 apps/web/public/editor-icons/zed.png	asset	binary or font asset, not executable logic
 apps/web/public/fonts/AlbertSans-Italic-VariableFont_wght.ttf	asset	binary or font asset, not executable logic
 apps/web/public/fonts/AlbertSans-VariableFont_wght.ttf	asset	binary or font asset, not executable logic
-apps/web/public/fonts/JiduMonoPro-Regular.otf	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/web/public/fonts/JiduMonoPro-Regular.otf	reviewed	batch 516 last-line length matched; model not tool-verified
 apps/web/public/logo-03.svg	asset	binary or font asset, not executable logic
 apps/web/public/logo-mark.svg	asset	binary or font asset, not executable logic
 apps/web/public/logo-scan.svg	asset	binary or font asset, not executable logic
@@ -3196,141 +3196,141 @@ apps/web/public/model-icons/openai.svg	asset	binary or font asset, not executabl
 apps/web/public/model-icons/openrouter.svg	asset	binary or font asset, not executable logic
 apps/web/public/model-icons/suno.svg	asset	binary or font asset, not executable logic
 apps/web/public/model-icons/x.svg	asset	binary or font asset, not executable logic
-apps/web/public/od-notifications-sw.js	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/web/public/od-notifications-sw.js	reviewed	batch 516 last-line length matched; model not tool-verified
 apps/web/public/official_badge.svg	asset	binary or font asset, not executable logic
 apps/web/public/onboarding/onboarding-cloud-art.webp	asset	binary or font asset, not executable logic
 apps/web/public/remixicon.ttf	asset	binary or font asset, not executable logic
 apps/web/public/remixicon.woff2	asset	binary or font asset, not executable logic
-apps/web/public/startup-animation.webm	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/web/public/startup-animation.webm	reviewed	batch 516 last-line length matched; model not tool-verified
 apps/web/public/team-avatars/a1.png	asset	binary or font asset, not executable logic
 apps/web/public/team-avatars/a2.png	asset	binary or font asset, not executable logic
 apps/web/public/team-avatars/a4.png	asset	binary or font asset, not executable logic
 apps/web/public/team-avatars/a6.png	asset	binary or font asset, not executable logic
 apps/web/public/upgrade/cloud-signin-aurora.jpg	asset	binary or font asset, not executable logic
 apps/web/public/upgrade/creative-capacity-warm.jpg	asset	binary or font asset, not executable logic
-apps/web/sidecar/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/sidecar/server.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/App.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/amr-attribution.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/amr-auth.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/app-version.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/byok-error-code.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/byok-run.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/client.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/deploy-error-code.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/ds-create-entry.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/error-tracking.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/events.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/experience-survey-contract.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/export-error-code.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/identity.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/onboarding-session.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/provider.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/publish-error-code.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/run-task.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/scrub.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/source-attribution.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/upload-tracking.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/analytics/workspace.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/api-attachment-context.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/artifacts/manifest.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/artifacts/markdown-context.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/artifacts/markdown.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/artifacts/parser.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/artifacts/pointer.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/artifacts/question-form.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/artifacts/recover.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/artifacts/renderer-registry.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/artifacts/strip.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/artifacts/types.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/artifacts/validate.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/artifacts/version-origin.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/branding.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/campaigns/deepseek-v4-flash.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/campaigns/use-deepseek-v4-flash-campaign.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/CollabDemoView.module.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/CollabDemoView.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/CommentDriftDemo.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/FileSyncBadge.module.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/FileSyncBadge.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/PresenceBar.module.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/PresenceBar.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/WorkspaceMemberDirectoryPreloader.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/all-projects-list.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/collab-client.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/collab-context.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/collab-session.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/comment-anchor-client.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/invite-continuation.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/invite-error-copy.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/optimistic-project-ownership.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/project-shared-status.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/public-file-publish.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/settings-access.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/tab-scope.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/team-members-store.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/team-plan.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/team-projects-catalog.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/useCollab.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/useProjectCollab.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/useProjectRouteWorkspaceContext.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/useProjectWorkspaceScope.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/useTeamMembers.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/useWorkspaceContext.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/workspace-billing-interests.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/workspace-events.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/workspace-identity.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/collab/workspace-snapshot-activation.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/comments.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AgentDiagnosticRow.module.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AgentDiagnosticRow.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AgentIcon.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AgentPicker.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AmrArtifactUpgradeDialog.module.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AmrArtifactUpgradeDialog.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AmrArtifactUpgradeGate.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AmrArtifactUpgradeHomeCard.module.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AmrArtifactUpgradeHomeCard.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AmrBalanceDialog.module.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AmrBalanceDialog.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AmrGuidance.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AmrLoginPill.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AmrLowBalanceDialog.module.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AmrLowBalanceDialog.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AppChromeHeader.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AppWashKineticGrid.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AssistantMessage.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/AvatarMenu.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/BoardComposerPopover.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/BrandEnrichmentBanner.module.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/BrandEnrichmentBanner.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/BrandPickerModal.module.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/BrandPickerModal.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/BrandPreviewCard.module.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/BrandPreviewCard.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/BrandReadyPrompt.module.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/BrandReadyPrompt.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/BrandReferencePicker.module.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/BrandReferencePicker.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/BrandsTab.module.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/BrandsTab.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/ChatComposer.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/ChatPane.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/CloudSignInTip.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/CommunityTemplatePreview.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/CommunityView.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/ComposerModePicker.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/ComposerPluginPreview.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/ComposerPlusMenu.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/ConnectorLogo.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/ConnectorsBrowser.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/ContextChipHoverCard.module.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/ContextChipHoverCard.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/ContextChipStrip.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/ContinueInCliButton.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/ConversationsMenu.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/CustomSelect.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/web/src/components/DeckSlideThumbnail.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/web/sidecar/index.ts	reviewed	batch 516 last-line length matched; model not tool-verified
+apps/web/sidecar/server.ts	reviewed	batch 516 last-line length matched; model not tool-verified
+apps/web/src/App.tsx	reviewed	batch 516 last-line length matched; model not tool-verified
+apps/web/src/analytics/amr-attribution.ts	reviewed	batch 517 last-line length matched; model not tool-verified
+apps/web/src/analytics/amr-auth.ts	reviewed	batch 517 last-line length matched; model not tool-verified
+apps/web/src/analytics/app-version.ts	reviewed	batch 517 last-line length matched; model not tool-verified
+apps/web/src/analytics/byok-error-code.ts	reviewed	batch 517 last-line length matched; model not tool-verified
+apps/web/src/analytics/byok-run.ts	reviewed	batch 517 last-line length matched; model not tool-verified
+apps/web/src/analytics/client.ts	reviewed	batch 517 last-line length matched; model not tool-verified
+apps/web/src/analytics/deploy-error-code.ts	reviewed	batch 517 last-line length matched; model not tool-verified
+apps/web/src/analytics/ds-create-entry.ts	reviewed	batch 517 last-line length matched; model not tool-verified
+apps/web/src/analytics/error-tracking.ts	reviewed	batch 517 last-line length matched; model not tool-verified
+apps/web/src/analytics/events.ts	reviewed	batch 517 last-line length matched; model not tool-verified
+apps/web/src/analytics/experience-survey-contract.ts	reviewed	batch 517 last-line length matched; model not tool-verified
+apps/web/src/analytics/export-error-code.ts	reviewed	batch 517 last-line length matched; model not tool-verified
+apps/web/src/analytics/identity.ts	reviewed	batch 517 last-line length matched; model not tool-verified
+apps/web/src/analytics/onboarding-session.ts	reviewed	batch 517 last-line length matched; model not tool-verified
+apps/web/src/analytics/provider.tsx	reviewed	batch 517 last-line length matched; model not tool-verified
+apps/web/src/analytics/publish-error-code.ts	reviewed	batch 518 last-line length matched; model not tool-verified
+apps/web/src/analytics/run-task.ts	reviewed	batch 518 last-line length matched; model not tool-verified
+apps/web/src/analytics/scrub.ts	reviewed	batch 518 last-line length matched; model not tool-verified
+apps/web/src/analytics/source-attribution.ts	reviewed	batch 518 last-line length matched; model not tool-verified
+apps/web/src/analytics/upload-tracking.ts	reviewed	batch 518 last-line length matched; model not tool-verified
+apps/web/src/analytics/workspace.ts	reviewed	batch 518 last-line length matched; model not tool-verified
+apps/web/src/api-attachment-context.ts	reviewed	batch 518 last-line length matched; model not tool-verified
+apps/web/src/artifacts/manifest.ts	reviewed	batch 518 last-line length matched; model not tool-verified
+apps/web/src/artifacts/markdown-context.ts	reviewed	batch 518 last-line length matched; model not tool-verified
+apps/web/src/artifacts/markdown.ts	reviewed	batch 518 last-line length matched; model not tool-verified
+apps/web/src/artifacts/parser.ts	reviewed	batch 518 last-line length matched; model not tool-verified
+apps/web/src/artifacts/pointer.ts	reviewed	batch 518 last-line length matched; model not tool-verified
+apps/web/src/artifacts/question-form.ts	reviewed	batch 518 last-line length matched; model not tool-verified
+apps/web/src/artifacts/recover.ts	reviewed	batch 518 last-line length matched; model not tool-verified
+apps/web/src/artifacts/renderer-registry.ts	reviewed	batch 518 last-line length matched; model not tool-verified
+apps/web/src/artifacts/strip.ts	reviewed	batch 519 last-line length matched; model not tool-verified
+apps/web/src/artifacts/types.ts	reviewed	batch 519 last-line length matched; model not tool-verified
+apps/web/src/artifacts/validate.ts	reviewed	batch 519 last-line length matched; model not tool-verified
+apps/web/src/artifacts/version-origin.ts	reviewed	batch 519 last-line length matched; model not tool-verified
+apps/web/src/branding.ts	reviewed	batch 519 last-line length matched; model not tool-verified
+apps/web/src/campaigns/deepseek-v4-flash.ts	reviewed	batch 519 last-line length matched; model not tool-verified
+apps/web/src/campaigns/use-deepseek-v4-flash-campaign.ts	reviewed	batch 519 last-line length matched; model not tool-verified
+apps/web/src/collab/CollabDemoView.module.css	reviewed	batch 519 last-line length matched; model not tool-verified
+apps/web/src/collab/CollabDemoView.tsx	reviewed	batch 519 last-line length matched; model not tool-verified
+apps/web/src/collab/CommentDriftDemo.tsx	reviewed	batch 519 last-line length matched; model not tool-verified
+apps/web/src/collab/FileSyncBadge.module.css	reviewed	batch 519 last-line length matched; model not tool-verified
+apps/web/src/collab/FileSyncBadge.tsx	reviewed	batch 519 last-line length matched; model not tool-verified
+apps/web/src/collab/PresenceBar.module.css	reviewed	batch 519 last-line length matched; model not tool-verified
+apps/web/src/collab/PresenceBar.tsx	reviewed	batch 519 last-line length matched; model not tool-verified
+apps/web/src/collab/WorkspaceMemberDirectoryPreloader.tsx	reviewed	batch 519 last-line length matched; model not tool-verified
+apps/web/src/collab/all-projects-list.ts	reviewed	batch 520 last-line length matched; model not tool-verified
+apps/web/src/collab/collab-client.ts	reviewed	batch 520 last-line length matched; model not tool-verified
+apps/web/src/collab/collab-context.tsx	reviewed	batch 520 last-line length matched; model not tool-verified
+apps/web/src/collab/collab-session.ts	reviewed	batch 520 last-line length matched; model not tool-verified
+apps/web/src/collab/comment-anchor-client.ts	reviewed	batch 520 last-line length matched; model not tool-verified
+apps/web/src/collab/invite-continuation.ts	reviewed	batch 520 last-line length matched; model not tool-verified
+apps/web/src/collab/invite-error-copy.ts	reviewed	batch 520 last-line length matched; model not tool-verified
+apps/web/src/collab/optimistic-project-ownership.ts	reviewed	batch 520 last-line length matched; model not tool-verified
+apps/web/src/collab/project-shared-status.ts	reviewed	batch 520 last-line length matched; model not tool-verified
+apps/web/src/collab/public-file-publish.ts	reviewed	batch 520 last-line length matched; model not tool-verified
+apps/web/src/collab/settings-access.ts	reviewed	batch 520 last-line length matched; model not tool-verified
+apps/web/src/collab/tab-scope.ts	reviewed	batch 520 last-line length matched; model not tool-verified
+apps/web/src/collab/team-members-store.ts	reviewed	batch 520 last-line length matched; model not tool-verified
+apps/web/src/collab/team-plan.ts	reviewed	batch 520 last-line length matched; model not tool-verified
+apps/web/src/collab/team-projects-catalog.ts	reviewed	batch 520 last-line length matched; model not tool-verified
+apps/web/src/collab/useCollab.ts	reviewed	batch 521 last-line length matched; model not tool-verified
+apps/web/src/collab/useProjectCollab.ts	reviewed	batch 521 last-line length matched; model not tool-verified
+apps/web/src/collab/useProjectRouteWorkspaceContext.ts	reviewed	batch 521 last-line length matched; model not tool-verified
+apps/web/src/collab/useProjectWorkspaceScope.ts	reviewed	batch 521 last-line length matched; model not tool-verified
+apps/web/src/collab/useTeamMembers.ts	reviewed	batch 521 last-line length matched; model not tool-verified
+apps/web/src/collab/useWorkspaceContext.ts	reviewed	batch 521 last-line length matched; model not tool-verified
+apps/web/src/collab/workspace-billing-interests.ts	reviewed	batch 521 last-line length matched; model not tool-verified
+apps/web/src/collab/workspace-events.ts	reviewed	batch 521 last-line length matched; model not tool-verified
+apps/web/src/collab/workspace-identity.ts	reviewed	batch 521 last-line length matched; model not tool-verified
+apps/web/src/collab/workspace-snapshot-activation.ts	reviewed	batch 521 last-line length matched; model not tool-verified
+apps/web/src/comments.ts	reviewed	batch 521 last-line length matched; model not tool-verified
+apps/web/src/components/AgentDiagnosticRow.module.css	reviewed	batch 521 last-line length matched; model not tool-verified
+apps/web/src/components/AgentDiagnosticRow.tsx	reviewed	batch 521 last-line length matched; model not tool-verified
+apps/web/src/components/AgentIcon.tsx	reviewed	batch 521 last-line length matched; model not tool-verified
+apps/web/src/components/AgentPicker.tsx	reviewed	batch 521 last-line length matched; model not tool-verified
+apps/web/src/components/AmrArtifactUpgradeDialog.module.css	reviewed	batch 522 last-line length matched; model not tool-verified
+apps/web/src/components/AmrArtifactUpgradeDialog.tsx	reviewed	batch 522 last-line length matched; model not tool-verified
+apps/web/src/components/AmrArtifactUpgradeGate.tsx	reviewed	batch 522 last-line length matched; model not tool-verified
+apps/web/src/components/AmrArtifactUpgradeHomeCard.module.css	reviewed	batch 522 last-line length matched; model not tool-verified
+apps/web/src/components/AmrArtifactUpgradeHomeCard.tsx	reviewed	batch 522 last-line length matched; model not tool-verified
+apps/web/src/components/AmrBalanceDialog.module.css	reviewed	batch 522 last-line length matched; model not tool-verified
+apps/web/src/components/AmrBalanceDialog.tsx	reviewed	batch 522 last-line length matched; model not tool-verified
+apps/web/src/components/AmrGuidance.tsx	reviewed	batch 522 last-line length matched; model not tool-verified
+apps/web/src/components/AmrLoginPill.tsx	reviewed	batch 522 last-line length matched; model not tool-verified
+apps/web/src/components/AmrLowBalanceDialog.module.css	reviewed	batch 522 last-line length matched; model not tool-verified
+apps/web/src/components/AmrLowBalanceDialog.tsx	reviewed	batch 522 last-line length matched; model not tool-verified
+apps/web/src/components/AppChromeHeader.tsx	reviewed	batch 522 last-line length matched; model not tool-verified
+apps/web/src/components/AppWashKineticGrid.tsx	reviewed	batch 522 last-line length matched; model not tool-verified
+apps/web/src/components/AssistantMessage.tsx	reviewed	batch 522 last-line length matched; model not tool-verified
+apps/web/src/components/AvatarMenu.tsx	reviewed	batch 522 last-line length matched; model not tool-verified
+apps/web/src/components/BoardComposerPopover.tsx	reviewed	batch 523 last-line length matched; model not tool-verified
+apps/web/src/components/BrandEnrichmentBanner.module.css	reviewed	batch 523 last-line length matched; model not tool-verified
+apps/web/src/components/BrandEnrichmentBanner.tsx	reviewed	batch 523 last-line length matched; model not tool-verified
+apps/web/src/components/BrandPickerModal.module.css	reviewed	batch 523 last-line length matched; model not tool-verified
+apps/web/src/components/BrandPickerModal.tsx	reviewed	batch 523 last-line length matched; model not tool-verified
+apps/web/src/components/BrandPreviewCard.module.css	reviewed	batch 523 last-line length matched; model not tool-verified
+apps/web/src/components/BrandPreviewCard.tsx	reviewed	batch 523 last-line length matched; model not tool-verified
+apps/web/src/components/BrandReadyPrompt.module.css	reviewed	batch 523 last-line length matched; model not tool-verified
+apps/web/src/components/BrandReadyPrompt.tsx	reviewed	batch 523 last-line length matched; model not tool-verified
+apps/web/src/components/BrandReferencePicker.module.css	reviewed	batch 523 last-line length matched; model not tool-verified
+apps/web/src/components/BrandReferencePicker.tsx	reviewed	batch 523 last-line length matched; model not tool-verified
+apps/web/src/components/BrandsTab.module.css	reviewed	batch 523 last-line length matched; model not tool-verified
+apps/web/src/components/BrandsTab.tsx	reviewed	batch 523 last-line length matched; model not tool-verified
+apps/web/src/components/ChatComposer.tsx	reviewed	batch 523 last-line length matched; model not tool-verified
+apps/web/src/components/ChatPane.tsx	reviewed	batch 523 last-line length matched; model not tool-verified
+apps/web/src/components/CloudSignInTip.tsx	reviewed	batch 524 last-line length matched; model not tool-verified
+apps/web/src/components/CommunityTemplatePreview.tsx	reviewed	batch 524 last-line length matched; model not tool-verified
+apps/web/src/components/CommunityView.tsx	reviewed	batch 524 last-line length matched; model not tool-verified
+apps/web/src/components/ComposerModePicker.tsx	reviewed	batch 524 last-line length matched; model not tool-verified
+apps/web/src/components/ComposerPluginPreview.tsx	reviewed	batch 524 last-line length matched; model not tool-verified
+apps/web/src/components/ComposerPlusMenu.tsx	reviewed	batch 524 last-line length matched; model not tool-verified
+apps/web/src/components/ConnectorLogo.tsx	reviewed	batch 524 last-line length matched; model not tool-verified
+apps/web/src/components/ConnectorsBrowser.tsx	reviewed	batch 524 last-line length matched; model not tool-verified
+apps/web/src/components/ContextChipHoverCard.module.css	reviewed	batch 524 last-line length matched; model not tool-verified
+apps/web/src/components/ContextChipHoverCard.tsx	reviewed	batch 524 last-line length matched; model not tool-verified
+apps/web/src/components/ContextChipStrip.tsx	reviewed	batch 524 last-line length matched; model not tool-verified
+apps/web/src/components/ContinueInCliButton.tsx	reviewed	batch 524 last-line length matched; model not tool-verified
+apps/web/src/components/ConversationsMenu.tsx	reviewed	batch 524 last-line length matched; model not tool-verified
+apps/web/src/components/CustomSelect.tsx	reviewed	batch 524 last-line length matched; model not tool-verified
+apps/web/src/components/DeckSlideThumbnail.tsx	reviewed	batch 524 last-line length matched; model not tool-verified
 apps/web/src/components/DeckThumbnailRail.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/web/src/components/DeepSeekHarnessSetupDialog.module.css	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/web/src/components/DeepSeekHarnessSetupDialog.tsx	unreviewed	production-relevant until a pass-3 reviewer records it

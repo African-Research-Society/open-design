@@ -105,3 +105,7 @@ Read the SSO module, team middleware, embed client, and the server registration.
 - Auth files traced: `ars-sso-auth.ts`, `ars-team.ts`, `ars-embed.ts`, server registration.
 - Template catalogue: excluded.
 - Code fixes: logout and status.
+
+## Pass 3 — stopped before completion
+
+open-design unreviewed is 8498 of 12850 ledger rows. Reviewed rows are 1395. Batches through 498, plus 501 and 502, were length-checked and ledgered where reports had landed. Batches 499, 500, and 503–508 were still running at the stop and are not reviewed. Local unpushed fixes include project-path confinement, escaped updater notes, http(s)-only browser open, OAuth script escaping, owner-only MCP files, hashed runtime cache key, JSON-LD escaping, launch-week keyframes, plugin slug `..` collapse, locale blog RSS aligned with blog locales, and the English DeepSeek provider link. `OD_DISABLE_API_AUTH` and cross-repo protocol changes were left. Waves 2 and 3 were not run.

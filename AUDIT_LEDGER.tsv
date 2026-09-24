@@ -2651,11 +2651,11 @@ apps/landing-page/public/lab-cards/quest.webp	asset	binary or font asset, not ex
 apps/landing-page/public/lab-cards/slides.png	asset	binary or font asset, not executable logic
 apps/landing-page/public/lab-cards/slides.webp	asset	binary or font asset, not executable logic
 apps/landing-page/public/lab-hyperframes.mp4	asset	binary or font asset, not executable logic
-apps/landing-page/public/lab-hyperframes.webm	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/public/lab-hyperframes.webm	reviewed	batch 512 last-line length matched; model not tool-verified
 apps/landing-page/public/lab-stage-art.webp	asset	binary or font asset, not executable logic
 apps/landing-page/public/lab-stage-bg.webp	asset	binary or font asset, not executable logic
 apps/landing-page/public/lab-video.mp4	asset	binary or font asset, not executable logic
-apps/landing-page/public/lab-video.webm	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/public/lab-video.webm	reviewed	batch 512 last-line length matched; model not tool-verified
 apps/landing-page/public/launch-week/canva-icon.png	asset	binary or font asset, not executable logic
 apps/landing-page/public/launch-week/codex-icon.svg	asset	binary or font asset, not executable logic
 apps/landing-page/public/launch-week/deepseek-icon.svg	asset	binary or font asset, not executable logic
@@ -2682,7 +2682,7 @@ apps/landing-page/public/launch-week/stroke-09-olive-bottom.webp	asset	binary or
 apps/landing-page/public/launch-week/stroke-r2-01-cyan-vertical.webp	asset	binary or font asset, not executable logic
 apps/landing-page/public/launch-week/stroke-r2-04-coral-horizontal.webp	asset	binary or font asset, not executable logic
 apps/landing-page/public/launch-week/tape-02.svg	asset	binary or font asset, not executable logic
-apps/landing-page/public/llms.txt	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/public/llms.txt	reviewed	batch 512 last-line length matched; model not tool-verified
 apps/landing-page/public/logo-lockup.svg	asset	binary or font asset, not executable logic
 apps/landing-page/public/logo.png	asset	binary or font asset, not executable logic
 apps/landing-page/public/logo.svg	asset	binary or font asset, not executable logic
@@ -2782,12 +2782,12 @@ apps/landing-page/public/plugins/deepseek-harness-design/skills/dsh-web-preview.
 apps/landing-page/public/plugins/deepseek-harness-design/skills/dsh-web-review.webp	asset	binary or font asset, not executable logic
 apps/landing-page/public/plugins/deepseek-harness-design/skills/dsh-web-ui.webp	asset	binary or font asset, not executable logic
 apps/landing-page/public/plugins/deepseek-harness-design/skills/modlens.webp	asset	binary or font asset, not executable logic
-apps/landing-page/public/pricing.md	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/public/pricing.md	reviewed	batch 512 last-line length matched; model not tool-verified
 apps/landing-page/public/pricing/plan-max.svg	asset	binary or font asset, not executable logic
 apps/landing-page/public/pricing/plan-plus.svg	asset	binary or font asset, not executable logic
 apps/landing-page/public/pricing/plan-pro.svg	asset	binary or font asset, not executable logic
-apps/landing-page/public/pricing/plans.json	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/public/robots.txt	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/public/pricing/plans.json	reviewed	batch 512 last-line length matched; model not tool-verified
+apps/landing-page/public/robots.txt	reviewed	batch 512 last-line length matched; model not tool-verified
 apps/landing-page/public/showcase/cloud-fable5.jpg	asset	binary or font asset, not executable logic
 apps/landing-page/public/showcase/event-osaka.jpg	asset	binary or font asset, not executable logic
 apps/landing-page/public/showcase/event-shanghai.jpg	asset	binary or font asset, not executable logic
@@ -2796,7 +2796,7 @@ apps/landing-page/public/showcase/launch-0-10-0.jpg	asset	binary or font asset, 
 apps/landing-page/public/showcase/launch-0-9-0.jpg	asset	binary or font asset, not executable logic
 apps/landing-page/public/showcase/opendesign-y2k.jpg	asset	binary or font asset, not executable logic
 apps/landing-page/public/showcase/oryzo-replica.jpg	asset	binary or font asset, not executable logic
-apps/landing-page/public/site.webmanifest	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/public/site.webmanifest	reviewed	batch 512 last-line length matched; model not tool-verified
 apps/landing-page/public/skill-assets/AlbertSans-Italic-VariableFont_wght.ttf	asset	binary or font asset, not executable logic
 apps/landing-page/public/skill-assets/AlbertSans-Italic-VariableFont_wght.woff2	asset	binary or font asset, not executable logic
 apps/landing-page/public/skill-assets/AlbertSans-VariableFont_wght.ttf	asset	binary or font asset, not executable logic
@@ -2995,14 +2995,14 @@ apps/landing-page/public/work-cards/card-3.webp	asset	binary or font asset, not 
 apps/landing-page/public/work-cards/card-4.webp	asset	binary or font asset, not executable logic
 apps/landing-page/public/work-cards/card-5.webp	asset	binary or font asset, not executable logic
 apps/landing-page/public/work-cards/card-6.webp	asset	binary or font asset, not executable logic
-apps/landing-page/scripts/blog-indexing/authorize-gsc-oauth.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/blog-indexing/check-blog-url-changes.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/blog-indexing/detect-changed-urls.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/blog-indexing/inspect-urls.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/blog-indexing/lib.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/blog-indexing/lint-blog-seo.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/blog-indexing/query-search-analytics.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/scripts/blog-indexing/render-status.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/scripts/blog-indexing/authorize-gsc-oauth.ts	reviewed	batch 512 last-line length matched; model not tool-verified
+apps/landing-page/scripts/blog-indexing/check-blog-url-changes.ts	reviewed	batch 512 last-line length matched; model not tool-verified
+apps/landing-page/scripts/blog-indexing/detect-changed-urls.ts	reviewed	batch 512 last-line length matched; model not tool-verified
+apps/landing-page/scripts/blog-indexing/inspect-urls.ts	reviewed	batch 512 last-line length matched; model not tool-verified
+apps/landing-page/scripts/blog-indexing/lib.ts	reviewed	batch 512 last-line length matched; model not tool-verified
+apps/landing-page/scripts/blog-indexing/lint-blog-seo.ts	reviewed	batch 512 last-line length matched; model not tool-verified
+apps/landing-page/scripts/blog-indexing/query-search-analytics.ts	reviewed	batch 512 last-line length matched; model not tool-verified
+apps/landing-page/scripts/blog-indexing/render-status.ts	reviewed	batch 512 last-line length matched; model not tool-verified
 apps/landing-page/scripts/blog-indexing/submit-indexnow.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/scripts/blog-indexing/submit-sitemap.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/scripts/blog-indexing/verify-readiness.ts	unreviewed	production-relevant until a pass-3 reviewer records it

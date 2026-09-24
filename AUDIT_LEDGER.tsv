@@ -1672,51 +1672,51 @@ apps/landing-page/app/_lib/system-l10n.ts	unreviewed	production-relevant until a
 apps/landing-page/app/_lib/system-tokens.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/_partials/comparison-v4.css	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/_partials/detail-bands.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.ar.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.de.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.es.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.fr.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.id.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.it.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.ja.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.ko.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.nl.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.pl.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.pt-br.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.ru.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.tr.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.uk.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.vi.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.zh-tw.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one-main.zh.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/ikigai-one.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/launch-week-drops.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/launch-week-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/launch-week-main.de.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/launch-week-main.es.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/launch-week-main.fr.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/launch-week-main.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/launch-week-main.it.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/launch-week-main.ja.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/launch-week-main.ko.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/launch-week-main.pt-br.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/launch-week-main.ru.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/launch-week-main.tr.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/launch-week-main.zh.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/launch-week.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/seungki-kim-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/seungki-kim-main.de.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/seungki-kim-main.es.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/seungki-kim-main.fr.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/seungki-kim-main.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/seungki-kim-main.it.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/seungki-kim-main.ja.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/seungki-kim-main.ko.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/seungki-kim-main.pt-br.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/seungki-kim-main.ru.html	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_partials/seungki-kim-main.tr.html	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/app/_partials/ikigai-one-i18n.ts	reviewed	batch 469 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.ar.html	reviewed	batch 469 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.de.html	reviewed	batch 469 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.es.html	reviewed	batch 469 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.fr.html	reviewed	batch 469 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.html	reviewed	batch 469 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.id.html	reviewed	batch 469 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.it.html	reviewed	batch 469 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.ja.html	reviewed	batch 469 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.ko.html	reviewed	batch 469 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.nl.html	reviewed	batch 469 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.pl.html	reviewed	batch 469 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.pt-br.html	reviewed	batch 469 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.ru.html	reviewed	batch 469 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.tr.html	reviewed	batch 469 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.uk.html	reviewed	batch 470 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.vi.html	reviewed	batch 470 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.zh-tw.html	reviewed	batch 470 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one-main.zh.html	reviewed	batch 470 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/ikigai-one.css	reviewed	batch 470 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/launch-week-drops.ts	reviewed	batch 470 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/launch-week-i18n.ts	reviewed	batch 470 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/launch-week-main.de.html	reviewed	batch 470 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/launch-week-main.es.html	reviewed	batch 470 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/launch-week-main.fr.html	reviewed	batch 470 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/launch-week-main.html	reviewed	batch 470 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/launch-week-main.it.html	reviewed	batch 470 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/launch-week-main.ja.html	reviewed	batch 470 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/launch-week-main.ko.html	reviewed	batch 470 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/launch-week-main.pt-br.html	reviewed	batch 470 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/launch-week-main.ru.html	reviewed	batch 471 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/launch-week-main.tr.html	reviewed	batch 471 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/launch-week-main.zh.html	reviewed	batch 471 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/launch-week.css	reviewed	batch 471 last-line length matched; model not tool-verified grok; main-session restored the rise, pulse, and tapeBreathe keyframes
+apps/landing-page/app/_partials/seungki-kim-i18n.ts	reviewed	batch 471 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/seungki-kim-main.de.html	reviewed	batch 471 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/seungki-kim-main.es.html	reviewed	batch 471 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/seungki-kim-main.fr.html	reviewed	batch 471 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/seungki-kim-main.html	reviewed	batch 471 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/seungki-kim-main.it.html	reviewed	batch 471 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/seungki-kim-main.ja.html	reviewed	batch 471 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/seungki-kim-main.ko.html	reviewed	batch 471 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/seungki-kim-main.pt-br.html	reviewed	batch 471 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/seungki-kim-main.ru.html	reviewed	batch 471 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_partials/seungki-kim-main.tr.html	reviewed	batch 471 last-line length matched; model not tool-verified grok
 apps/landing-page/app/_partials/seungki-kim-main.zh.html	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/_partials/seungki-kim.css	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/_partials/stuart-gardoll-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it

@@ -733,24 +733,24 @@ apps/daemon/src/sidecar/payload-desktop-handoff.ts	reviewed	batch 455 last-line 
 apps/daemon/src/sidecar/server.ts	reviewed	batch 455 last-line length matched; model not tool-verified grok
 apps/daemon/src/skills.ts	reviewed	batch 455 last-line length matched; model not tool-verified grok
 apps/daemon/src/skills/workspace-team-binding.ts	reviewed	batch 455 last-line length matched; model not tool-verified grok
-apps/daemon/src/static-spa.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/storage/aws-sigv4.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/storage/daemon-db.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/storage/db-inspect.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/storage/project-storage.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/telemetry-environment.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/terminals.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/title-marker.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/tool-loop-guard.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/tool-tokens.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/tools-connectors-cli.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/tools-design-systems-cli.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/tools-live-artifacts-cli.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/tools/connectors.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/trace-object-manifest.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/transcript-export.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/user-facing-agent-label.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/src/workspace-contract.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/daemon/src/static-spa.ts	reviewed	batch 456 last-line length matched; model not tool-verified grok
+apps/daemon/src/storage/aws-sigv4.ts	reviewed	batch 456 last-line length matched; model not tool-verified grok
+apps/daemon/src/storage/daemon-db.ts	reviewed	batch 456 last-line length matched; model not tool-verified grok
+apps/daemon/src/storage/db-inspect.ts	reviewed	batch 456 last-line length matched; model not tool-verified grok
+apps/daemon/src/storage/project-storage.ts	reviewed	batch 456 last-line length matched; model not tool-verified grok
+apps/daemon/src/telemetry-environment.ts	reviewed	batch 456 last-line length matched; model not tool-verified grok
+apps/daemon/src/terminals.ts	reviewed	batch 456 last-line length matched; model not tool-verified grok
+apps/daemon/src/title-marker.ts	reviewed	batch 456 last-line length matched; model not tool-verified grok
+apps/daemon/src/tool-loop-guard.ts	reviewed	batch 456 last-line length matched; model not tool-verified grok
+apps/daemon/src/tool-tokens.ts	reviewed	batch 456 last-line length matched; model not tool-verified grok
+apps/daemon/src/tools-connectors-cli.ts	reviewed	batch 456 last-line length matched; model not tool-verified grok
+apps/daemon/src/tools-design-systems-cli.ts	reviewed	batch 456 last-line length matched; model not tool-verified grok
+apps/daemon/src/tools-live-artifacts-cli.ts	reviewed	batch 456 last-line length matched; model not tool-verified grok
+apps/daemon/src/tools/connectors.ts	reviewed	batch 456 last-line length matched; model not tool-verified grok
+apps/daemon/src/trace-object-manifest.ts	reviewed	batch 456 last-line length matched; model not tool-verified grok
+apps/daemon/src/transcript-export.ts	reviewed	batch 457 last-line length matched; model not tool-verified grok
+apps/daemon/src/user-facing-agent-label.ts	reviewed	batch 457 last-line length matched; model not tool-verified grok
+apps/daemon/src/workspace-contract.ts	reviewed	batch 457 last-line length matched; model not tool-verified grok
 apps/daemon/tests/acp-format-usage.test.ts	test-fixture	test or fixture path
 apps/daemon/tests/acp-timeout-env.test.ts	test-fixture	test or fixture path
 apps/daemon/tests/acp.test.ts	test-fixture	test or fixture path
@@ -1455,43 +1455,43 @@ apps/daemon/tests/workspace-billing-server-wiring.test.ts	test-fixture	test or f
 apps/daemon/tests/workspace-context-authority-server-wiring.test.ts	test-fixture	test or fixture path
 apps/daemon/tests/workspace-project-analytics.test.ts	test-fixture	test or fixture path
 apps/daemon/tests/workspace-resource-read-authority.test.ts	test-fixture	test or fixture path
-apps/daemon/tsconfig.json	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/tsconfig.tests.json	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/vitest.config.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/daemon/vitest.parallel.config.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/package.json	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/artifact-export.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/crash-diagnostics.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/deck-capture.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/deeplink-focus.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/diagnostics-fetch.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/diagnostics.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/external-show.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/installer-observations.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/invite-deeplink-core.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/invite-deeplink.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/mailto-open.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/observability.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/open-path.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/pdf-export.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/preload.cts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/renderer-crash-loop.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/runtime.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/session-lifecycle.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/splash-video.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/uncaught-exception.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/update-menu.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/update-preflight.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/updater.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/updater/config.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/updater/deferred-launch.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/updater/feed.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/updater/payload.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/updater/release-lifecycle.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/updater/scheduler.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/updater/store.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/src/main/updater/support.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/daemon/tsconfig.json	reviewed	batch 457 last-line length matched; model not tool-verified grok
+apps/daemon/tsconfig.tests.json	reviewed	batch 457 last-line length matched; model not tool-verified grok
+apps/daemon/vitest.config.ts	reviewed	batch 457 last-line length matched; model not tool-verified grok
+apps/daemon/vitest.parallel.config.ts	reviewed	batch 457 last-line length matched; model not tool-verified grok
+apps/desktop/package.json	reviewed	batch 457 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/artifact-export.ts	reviewed	batch 457 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/crash-diagnostics.ts	reviewed	batch 457 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/deck-capture.ts	reviewed	batch 457 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/deeplink-focus.ts	reviewed	batch 457 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/diagnostics-fetch.ts	reviewed	batch 457 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/diagnostics.ts	reviewed	batch 457 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/external-show.ts	reviewed	batch 457 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/index.ts	reviewed	batch 458 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/installer-observations.ts	reviewed	batch 458 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/invite-deeplink-core.ts	reviewed	batch 458 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/invite-deeplink.ts	reviewed	batch 458 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/mailto-open.ts	reviewed	batch 458 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/observability.ts	reviewed	batch 458 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/open-path.ts	reviewed	batch 458 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/pdf-export.ts	reviewed	batch 458 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/preload.cts	reviewed	batch 458 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/renderer-crash-loop.ts	reviewed	batch 458 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/runtime.ts	reviewed	batch 458 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/session-lifecycle.ts	reviewed	batch 458 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/splash-video.ts	reviewed	batch 458 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/uncaught-exception.ts	reviewed	batch 458 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/update-menu.ts	reviewed	batch 458 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/update-preflight.ts	reviewed	batch 459 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/updater.ts	reviewed	batch 459 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/updater/config.ts	reviewed	batch 459 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/updater/deferred-launch.ts	reviewed	batch 459 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/updater/feed.ts	reviewed	batch 459 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/updater/payload.ts	reviewed	batch 459 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/updater/release-lifecycle.ts	reviewed	batch 459 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/updater/scheduler.ts	reviewed	batch 459 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/updater/store.ts	reviewed	batch 459 last-line length matched; model not tool-verified grok
+apps/desktop/src/main/updater/support.ts	reviewed	batch 459 last-line length matched; model not tool-verified grok
 apps/desktop/tests/main/amr-environment-profile-menu.test.ts	test-fixture	test or fixture path
 apps/desktop/tests/main/artifact-export-image-height.test.ts	test-fixture	test or fixture path
 apps/desktop/tests/main/base-href-precedence.test.ts	test-fixture	test or fixture path
@@ -1529,74 +1529,74 @@ apps/desktop/tests/main/updater/config.test.ts	test-fixture	test or fixture path
 apps/desktop/tests/main/updater/feed.test.ts	test-fixture	test or fixture path
 apps/desktop/tests/main/updater/scheduler.test.ts	test-fixture	test or fixture path
 apps/desktop/tests/main/window-chrome.test.ts	test-fixture	test or fixture path
-apps/desktop/tsconfig.json	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/desktop/tsconfig.tests.json	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/desktop/tsconfig.json	reviewed	batch 459 last-line length matched; model not tool-verified grok
+apps/desktop/tsconfig.tests.json	reviewed	batch 459 last-line length matched; model not tool-verified grok
 apps/desktop/vendor/dom-to-pptx/LICENSE	vendor	third-party tree
 apps/desktop/vendor/dom-to-pptx/README.md	vendor	third-party tree
 apps/desktop/vendor/dom-to-pptx/dom-to-pptx.bundle.js.gz	vendor	third-party tree
-apps/desktop/vitest.config.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/.env.example	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/AGENTS.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/alternative-detail.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/attribution-cookie.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/blog-toc.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/codex-skill-detail.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/curated-collection-hub.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/curated-skill-detail.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/deepseek-skill-detail.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/download-engagement-prompt.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/enterprise-lead-form.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/favicon-links.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/google-analytics.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/gradual-blur.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/header-enhancer.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/header.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/home-enhancer.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/home-launch-week-float.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/lazy-img.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/locale-switcher-enhancer.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/locale-switcher-script.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/plugin-contribute.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/plugin-row.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/posthog-analytics.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/precise-lazyload.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/resource-hints.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/seo-head.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/site-analytics.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/site-footer.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/skill-row.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/solution-proof-media.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/sub-page-layout.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/system-card.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/system-preview.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/template-card-autoplay.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/template-card.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/topbar.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_components/wire.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-31-skills-72-systems-popular-ai.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-alternativa-gratis-claude-design-maestros-da-ia.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-claude-alternative-wordpress-design-dan-davies.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-claude-design-alternative-local-ai-fire-academy.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-claude-design-alternative-open-source-brendan-o-connell.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-claude-design-rebuild-beginner-assets-parth-jadav.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-cloud-deployment-sealos-sealos.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-design-engine-codedigipt.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-feature-tour-silicon-hotpot.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-free-claude-alternative-local-compile-future.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-free-claude-alternative-local-dylan-michael-ai-automation.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-free-open-source-alternative-code-a-program.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-full-overview-vs-figma-purpleschool-anton-larichev.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-full-walkthrough-self-hosted-alternative-ai-stack-engineer.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-in-20-minutes-coding-menace.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-instalacao-alternativa-gratis-fabricando-sua-ideia-tutoriais.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-install-demo-systems-chase-ai.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-install-setup-free-alternative-ai-unlocked.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-local-setup-ollama-alternative-ai-automation-station.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude-design-demo-justyn-the-ai-guy.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude-design-first-look-community.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude-design-free-alternative-ai-fusion.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude-design-jeremy-de-campos.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/desktop/vitest.config.ts	reviewed	batch 459 last-line length matched; model not tool-verified grok
+apps/landing-page/.env.example	reviewed	batch 459 last-line length matched; model not tool-verified grok
+apps/landing-page/AGENTS.md	reviewed	batch 459 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/alternative-detail.astro	reviewed	batch 460 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/attribution-cookie.astro	reviewed	batch 460 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/blog-toc.astro	reviewed	batch 460 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/codex-skill-detail.astro	reviewed	batch 460 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/curated-collection-hub.astro	reviewed	batch 460 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/curated-skill-detail.astro	reviewed	batch 460 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/deepseek-skill-detail.astro	reviewed	batch 460 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/download-engagement-prompt.astro	reviewed	batch 460 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/enterprise-lead-form.astro	reviewed	batch 460 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/favicon-links.astro	reviewed	batch 460 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/google-analytics.astro	reviewed	batch 460 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/gradual-blur.tsx	reviewed	batch 460 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/header-enhancer.astro	reviewed	batch 460 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/header.tsx	reviewed	batch 460 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/home-enhancer.astro	reviewed	batch 460 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/home-launch-week-float.astro	reviewed	batch 461 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/lazy-img.astro	reviewed	batch 461 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/locale-switcher-enhancer.astro	reviewed	batch 461 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/locale-switcher-script.astro	reviewed	batch 461 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/plugin-contribute.astro	reviewed	batch 461 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/plugin-row.astro	reviewed	batch 461 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/posthog-analytics.astro	reviewed	batch 461 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/precise-lazyload.astro	reviewed	batch 461 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/resource-hints.astro	reviewed	batch 461 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/seo-head.astro	reviewed	batch 461 last-line length matched; model not tool-verified grok; main-session escapes JSON-LD before it is placed in a script
+apps/landing-page/app/_components/site-analytics.astro	reviewed	batch 461 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/site-footer.astro	reviewed	batch 461 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/skill-row.astro	reviewed	batch 461 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/solution-proof-media.astro	reviewed	batch 461 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/sub-page-layout.astro	reviewed	batch 461 last-line length matched; model not tool-verified grok; main-session escapes JSON-LD before it is placed in a script
+apps/landing-page/app/_components/system-card.astro	reviewed	batch 462 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/system-preview.astro	reviewed	batch 462 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/template-card-autoplay.astro	reviewed	batch 462 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/template-card.astro	reviewed	batch 462 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/topbar.astro	reviewed	batch 462 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_components/wire.tsx	reviewed	batch 462 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform-i18n.ts	reviewed	batch 462 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-31-skills-72-systems-popular-ai.ts	reviewed	batch 462 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-alternativa-gratis-claude-design-maestros-da-ia.ts	reviewed	batch 462 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-claude-alternative-wordpress-design-dan-davies.ts	reviewed	batch 462 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-claude-design-alternative-local-ai-fire-academy.ts	reviewed	batch 462 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-claude-design-alternative-open-source-brendan-o-connell.ts	reviewed	batch 462 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-claude-design-rebuild-beginner-assets-parth-jadav.ts	reviewed	batch 462 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-cloud-deployment-sealos-sealos.ts	reviewed	batch 462 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-design-engine-codedigipt.ts	reviewed	batch 462 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-feature-tour-silicon-hotpot.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-free-claude-alternative-local-compile-future.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-free-claude-alternative-local-dylan-michael-ai-automation.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-free-open-source-alternative-code-a-program.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-full-overview-vs-figma-purpleschool-anton-larichev.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-full-walkthrough-self-hosted-alternative-ai-stack-engineer.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-in-20-minutes-coding-menace.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-instalacao-alternativa-gratis-fabricando-sua-ideia-tutoriais.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-install-demo-systems-chase-ai.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-install-setup-free-alternative-ai-unlocked.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-local-setup-ollama-alternative-ai-automation-station.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude-design-demo-justyn-the-ai-guy.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude-design-first-look-community.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude-design-free-alternative-ai-fusion.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
+apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude-design-jeremy-de-campos.ts	reviewed	batch 463 last-line length matched; model not tool-verified grok
 apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude-design-landing-page-roy-shavit.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/_data/tutorials-longform/open-design-open-design-vs-claude-design-setup-eli-rigobeli-ai.ts	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/_data/tutorials-longform/open-design-open-source-ai-design-overview-ai.ts	unreviewed	production-relevant until a pass-3 reviewer records it

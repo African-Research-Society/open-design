@@ -37,11 +37,19 @@ function isoDay(d: Date): string {
   return d.toISOString().slice(0, 10);
 }
 
+function assertPathSegment(value: string, label: string): void {
+  if (!value || value.includes('/') || value.includes('\\') || value.includes('..')) {
+    throw new Error(`conformance ${label} must be a single path segment`);
+  }
+}
+
 function adapterDir(dataDir: string, adapter: string): string {
+  assertPathSegment(adapter, 'adapter');
   return path.join(conformanceHistoryDir(dataDir), adapter);
 }
 
 function dayFile(dataDir: string, adapter: string, date: string): string {
+  assertPathSegment(date, 'date');
   return path.join(adapterDir(dataDir, adapter), `${date}.jsonl`);
 }
 

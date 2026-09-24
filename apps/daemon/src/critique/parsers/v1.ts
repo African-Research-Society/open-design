@@ -427,9 +427,9 @@ function* drain(state: State): Generator<PanelEvent> {
       const rawStatus = attrs['status'] ?? '';
       const validStatuses = ['shipped', 'below_threshold', 'timed_out', 'interrupted'] as const;
       const status = (
-        validStatuses.includes(rawStatus as (typeof validStatuses)[number])
-          ? rawStatus
-          : 'shipped'
+        rawStatus === '' || validStatuses.includes(rawStatus as (typeof validStatuses)[number])
+          ? (rawStatus === '' ? 'shipped' : rawStatus)
+          : 'below_threshold'
       ) as 'shipped' | 'below_threshold' | 'timed_out' | 'interrupted';
 
       const shipRound = Number(attrs['round'] ?? '0');

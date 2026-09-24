@@ -1747,21 +1747,21 @@ apps/landing-page/app/agent-guides.part-i.i18n.ts	reviewed	batch 473 last-line l
 apps/landing-page/app/agent-guides.part-j.i18n.ts	reviewed	batch 473 last-line length matched; model not tool-verified grok
 apps/landing-page/app/agent-guides.part-k.i18n.ts	reviewed	batch 473 last-line length matched; model not tool-verified grok
 apps/landing-page/app/agent-guides.part-l.i18n.ts	reviewed	batch 473 last-line length matched; model not tool-verified grok
-apps/landing-page/app/agent-guides.part-m.i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/agent-guides.part-n.i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/agent-guides.part-o.i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/agent-guides.part-p.i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/agent-guides.zh.i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/alternatives-i18n.part-a.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/alternatives-i18n.part-b.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/alternatives-i18n.part-c.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/alternatives-i18n.part-d.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/alternatives-i18n.part-e.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/alternatives-i18n.part-f.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/alternatives-i18n.part-g.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/alternatives-i18n.part-h.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/alternatives-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/codex-slides-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/app/agent-guides.part-m.i18n.ts	reviewed	batch 474 last-line length matched; model not tool-verified grok
+apps/landing-page/app/agent-guides.part-n.i18n.ts	reviewed	batch 474 last-line length matched; model not tool-verified grok
+apps/landing-page/app/agent-guides.part-o.i18n.ts	reviewed	batch 474 last-line length matched; model not tool-verified grok
+apps/landing-page/app/agent-guides.part-p.i18n.ts	reviewed	batch 474 last-line length matched; model not tool-verified grok
+apps/landing-page/app/agent-guides.zh.i18n.ts	reviewed	batch 474 last-line length matched; model not tool-verified grok
+apps/landing-page/app/alternatives-i18n.part-a.ts	reviewed	batch 474 last-line length matched; model not tool-verified grok
+apps/landing-page/app/alternatives-i18n.part-b.ts	reviewed	batch 474 last-line length matched; model not tool-verified grok
+apps/landing-page/app/alternatives-i18n.part-c.ts	reviewed	batch 474 last-line length matched; model not tool-verified grok
+apps/landing-page/app/alternatives-i18n.part-d.ts	reviewed	batch 474 last-line length matched; model not tool-verified grok
+apps/landing-page/app/alternatives-i18n.part-e.ts	reviewed	batch 474 last-line length matched; model not tool-verified grok
+apps/landing-page/app/alternatives-i18n.part-f.ts	reviewed	batch 474 last-line length matched; model not tool-verified grok
+apps/landing-page/app/alternatives-i18n.part-g.ts	reviewed	batch 474 last-line length matched; model not tool-verified grok
+apps/landing-page/app/alternatives-i18n.part-h.ts	reviewed	batch 474 last-line length matched; model not tool-verified grok
+apps/landing-page/app/alternatives-i18n.ts	reviewed	batch 474 last-line length matched; model not tool-verified grok
+apps/landing-page/app/codex-slides-i18n.ts	reviewed	batch 474 last-line length matched; model not tool-verified grok
 apps/landing-page/app/codex-slides-locales/de.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
 apps/landing-page/app/codex-slides-locales/es.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
 apps/landing-page/app/codex-slides-locales/fr.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
@@ -1882,81 +1882,81 @@ apps/landing-page/app/content/tutorials/open-design-vibe-coders-dream-sean-koche
 apps/landing-page/app/content/tutorials/open-design-vs-claude-design-alternatives-ia-raph-fages.md	reviewed	batch 482 last-line length matched; model not tool-verified grok
 apps/landing-page/app/content/tutorials/open-design-vs-claude-design-better-stack.md	reviewed	batch 482 last-line length matched; model not tool-verified grok
 apps/landing-page/app/content/tutorials/open-design-vs-claude-design-comparison-panda-making-money.md	reviewed	batch 482 last-line length matched; model not tool-verified grok
-apps/landing-page/app/content/tutorials/open-design-vs-claude-design-unlimited-ai-andy.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-windows-wsl-installation-setup-ai-automation.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/cta-actions.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/data/image-generation-data.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/deepseek-harness-page.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/download-prompt-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/env.d.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/footer-legal-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/globals.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/home-page-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/home-translations.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/image-assets.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/info-page-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/landing-ui-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/open-design-plugin-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/open-design-plugin-locales/de.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/open-design-plugin-locales/es.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/open-design-plugin-locales/fr.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/open-design-plugin-locales/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/open-design-plugin-locales/it.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/open-design-plugin-locales/ja.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/open-design-plugin-locales/ko.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/open-design-plugin-locales/pt-br.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/open-design-plugin-locales/ru.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/open-design-plugin-locales/tr.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/open-design-plugin-locales/zh.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/open-design-pugin.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/page.tsx	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/404.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/[...path].astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/about/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/aider-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/antigravity-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/claude-code-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/codex-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/copilot-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/cursor-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/deepseek-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/deepseek-harness-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/devin-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/gemini-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/grok-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/hermes-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/kilo-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/kimi-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/kiro-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/opencode-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/pi-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/qoder-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/qwen-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/reasonix-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/trae-cli-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/agents/vibe-cli-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/alternatives/bolt/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/alternatives/claude-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/alternatives/figma-make/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/alternatives/figma/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/alternatives/framer/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/alternatives/genspark/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/alternatives/lovable/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/alternatives/pencil-dev/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/alternatives/qoder/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/alternatives/stitch/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/alternatives/trae/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/alternatives/v0/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/blog/[slug].astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/blog/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/blog/rss.xml.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/careers/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/codex-plugin/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/codex-slides/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/community/ambassadors/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/community/contributors/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/app/content/tutorials/open-design-vs-claude-design-unlimited-ai-andy.md	reviewed	batch 483 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/tutorials/open-design-windows-wsl-installation-setup-ai-automation.md	reviewed	batch 483 last-line length matched; model not tool-verified grok
+apps/landing-page/app/cta-actions.ts	reviewed	batch 483 last-line length matched; model not tool-verified grok
+apps/landing-page/app/data/image-generation-data.ts	reviewed	batch 483 last-line length matched; model not tool-verified grok
+apps/landing-page/app/deepseek-harness-page.ts	reviewed	batch 483 last-line length matched; model not tool-verified grok
+apps/landing-page/app/download-prompt-i18n.ts	reviewed	batch 483 last-line length matched; model not tool-verified grok
+apps/landing-page/app/env.d.ts	reviewed	batch 483 last-line length matched; model not tool-verified grok
+apps/landing-page/app/footer-legal-i18n.ts	reviewed	batch 483 last-line length matched; model not tool-verified grok
+apps/landing-page/app/globals.css	reviewed	batch 483 last-line length matched; model not tool-verified grok
+apps/landing-page/app/home-page-i18n.ts	reviewed	batch 483 last-line length matched; model not tool-verified grok
+apps/landing-page/app/home-translations.ts	reviewed	batch 483 last-line length matched; model not tool-verified grok
+apps/landing-page/app/i18n.ts	reviewed	batch 483 last-line length matched; model not tool-verified grok
+apps/landing-page/app/image-assets.ts	reviewed	batch 483 last-line length matched; model not tool-verified grok
+apps/landing-page/app/info-page-i18n.ts	reviewed	batch 483 last-line length matched; model not tool-verified grok
+apps/landing-page/app/landing-ui-i18n.ts	reviewed	batch 483 last-line length matched; model not tool-verified grok
+apps/landing-page/app/open-design-plugin-i18n.ts	reviewed	batch 484 last-line length matched; model not tool-verified grok
+apps/landing-page/app/open-design-plugin-locales/de.ts	reviewed	batch 484 last-line length matched; model not tool-verified grok
+apps/landing-page/app/open-design-plugin-locales/es.ts	reviewed	batch 484 last-line length matched; model not tool-verified grok
+apps/landing-page/app/open-design-plugin-locales/fr.ts	reviewed	batch 484 last-line length matched; model not tool-verified grok
+apps/landing-page/app/open-design-plugin-locales/index.ts	reviewed	batch 484 last-line length matched; model not tool-verified grok
+apps/landing-page/app/open-design-plugin-locales/it.ts	reviewed	batch 484 last-line length matched; model not tool-verified grok
+apps/landing-page/app/open-design-plugin-locales/ja.ts	reviewed	batch 484 last-line length matched; model not tool-verified grok
+apps/landing-page/app/open-design-plugin-locales/ko.ts	reviewed	batch 484 last-line length matched; model not tool-verified grok
+apps/landing-page/app/open-design-plugin-locales/pt-br.ts	reviewed	batch 484 last-line length matched; model not tool-verified grok
+apps/landing-page/app/open-design-plugin-locales/ru.ts	reviewed	batch 484 last-line length matched; model not tool-verified grok
+apps/landing-page/app/open-design-plugin-locales/tr.ts	reviewed	batch 484 last-line length matched; model not tool-verified grok
+apps/landing-page/app/open-design-plugin-locales/zh.ts	reviewed	batch 484 last-line length matched; model not tool-verified grok
+apps/landing-page/app/open-design-pugin.css	reviewed	batch 484 last-line length matched; model not tool-verified grok
+apps/landing-page/app/page.tsx	reviewed	batch 484 last-line length matched; model not tool-verified grok; main-session keeps the contributors link on the current locale
+apps/landing-page/app/pages/404.astro	reviewed	batch 484 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/[...path].astro	reviewed	batch 485 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/about/index.astro	reviewed	batch 485 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/aider-design/index.astro	reviewed	batch 485 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/antigravity-design/index.astro	reviewed	batch 485 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/claude-code-design/index.astro	reviewed	batch 485 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/codex-design/index.astro	reviewed	batch 485 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/copilot-design/index.astro	reviewed	batch 485 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/cursor-design/index.astro	reviewed	batch 485 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/deepseek-design/index.astro	reviewed	batch 485 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/deepseek-harness-design/index.astro	reviewed	batch 485 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/devin-design/index.astro	reviewed	batch 485 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/gemini-design/index.astro	reviewed	batch 485 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/grok-design/index.astro	reviewed	batch 485 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/hermes-design/index.astro	reviewed	batch 485 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/index.astro	reviewed	batch 485 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/kilo-design/index.astro	reviewed	batch 486 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/kimi-design/index.astro	reviewed	batch 486 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/kiro-design/index.astro	reviewed	batch 486 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/opencode-design/index.astro	reviewed	batch 486 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/pi-design/index.astro	reviewed	batch 486 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/qoder-design/index.astro	reviewed	batch 486 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/qwen-design/index.astro	reviewed	batch 486 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/reasonix-design/index.astro	reviewed	batch 486 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/trae-cli-design/index.astro	reviewed	batch 486 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/agents/vibe-cli-design/index.astro	reviewed	batch 486 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/alternatives/bolt/index.astro	reviewed	batch 486 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/alternatives/claude-design/index.astro	reviewed	batch 486 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/alternatives/figma-make/index.astro	reviewed	batch 486 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/alternatives/figma/index.astro	reviewed	batch 486 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/alternatives/framer/index.astro	reviewed	batch 486 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/alternatives/genspark/index.astro	reviewed	batch 487 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/alternatives/lovable/index.astro	reviewed	batch 487 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/alternatives/pencil-dev/index.astro	reviewed	batch 487 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/alternatives/qoder/index.astro	reviewed	batch 487 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/alternatives/stitch/index.astro	reviewed	batch 487 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/alternatives/trae/index.astro	reviewed	batch 487 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/alternatives/v0/index.astro	reviewed	batch 487 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/blog/[slug].astro	reviewed	batch 487 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/blog/index.astro	reviewed	batch 487 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/blog/rss.xml.ts	reviewed	batch 487 last-line length matched; model not tool-verified grok; main-session builds locale RSS for the same locales as the blog pages
+apps/landing-page/app/pages/[locale]/careers/index.astro	reviewed	batch 487 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/codex-plugin/index.astro	reviewed	batch 487 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/codex-slides/index.astro	reviewed	batch 487 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/community/ambassadors/index.astro	reviewed	batch 487 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/community/contributors/index.astro	reviewed	batch 487 last-line length matched; model not tool-verified grok
 apps/landing-page/app/pages/[locale]/community/events/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/pages/[locale]/community/events/launch-week/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/pages/[locale]/community/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
@@ -1972,66 +1972,66 @@ apps/landing-page/app/pages/[locale]/html-video/index.astro	unreviewed	productio
 apps/landing-page/app/pages/[locale]/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/pages/[locale]/official/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/pages/[locale]/plugins/[slug]/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/agency-grid-layout-minimal/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/animation-review/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/animation-vocabulary/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/apple-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/beautiful-shadows/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/bento-ui-style/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/brandkit/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/brutalism-ui-style/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/cinematic-scroll-storytelling/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/claymorphism-ui-style/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/codex-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/container-lines/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/craft/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/css-border-gradient/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/deepseek-harness-design-plugins/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/deepseek-harness-genui/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/design-dna/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/design-system-tokens/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/design-taste-frontend/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dither-background/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dithered-ui-style/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dsh-annotate/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dsh-better-sidebar/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dsh-diagram/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dsh-figma-to-lottie/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dsh-genui/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dsh-hyperframes/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dsh-media-skills/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dsh-openmaic/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dsh-openpencil/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dsh-plugin-claude-bridge/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dsh-ui-spec/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dsh-vision-router/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dsh-vision-toolkit/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dsh-visualize/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dsh-web-preview/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dsh-web-review/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/dsh-web-ui/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/editorial-ui-style/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/emil-design-eng/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/framed-grid-layout/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/glass-dark-mode-clock/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/gpt-taste/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/gsap-skills/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/hallmark-design-skill/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/high-end-visual-design/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/image-to-code/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/imagegen-frontend-mobile/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/imagegen-frontend-web/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/impeccable/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/industrial-brutalist-ui/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/kami/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/make-interfaces-feel-better/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/masked-reveal/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/material-3/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/mesh-gradient-dark-blue-clean/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/minimalist-ui/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/modlens/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/pages/[locale]/plugins/neumorphism-ui-style/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/app/pages/[locale]/plugins/agency-grid-layout-minimal/index.astro	reviewed	batch 489 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/animation-review/index.astro	reviewed	batch 489 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/animation-vocabulary/index.astro	reviewed	batch 489 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/apple-design/index.astro	reviewed	batch 489 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/beautiful-shadows/index.astro	reviewed	batch 489 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/bento-ui-style/index.astro	reviewed	batch 489 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/brandkit/index.astro	reviewed	batch 489 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/brutalism-ui-style/index.astro	reviewed	batch 489 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/cinematic-scroll-storytelling/index.astro	reviewed	batch 489 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/claymorphism-ui-style/index.astro	reviewed	batch 489 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/codex-design/index.astro	reviewed	batch 489 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/container-lines/index.astro	reviewed	batch 489 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/craft/index.astro	reviewed	batch 489 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/css-border-gradient/index.astro	reviewed	batch 489 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/deepseek-harness-design-plugins/index.astro	reviewed	batch 489 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/deepseek-harness-genui/index.astro	reviewed	batch 490 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/design-dna/index.astro	reviewed	batch 490 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/design-system-tokens/index.astro	reviewed	batch 490 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/design-taste-frontend/index.astro	reviewed	batch 490 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dither-background/index.astro	reviewed	batch 490 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dithered-ui-style/index.astro	reviewed	batch 490 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dsh-annotate/index.astro	reviewed	batch 490 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dsh-better-sidebar/index.astro	reviewed	batch 490 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dsh-diagram/index.astro	reviewed	batch 490 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dsh-figma-to-lottie/index.astro	reviewed	batch 490 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dsh-genui/index.astro	reviewed	batch 490 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dsh-hyperframes/index.astro	reviewed	batch 490 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dsh-media-skills/index.astro	reviewed	batch 490 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dsh-openmaic/index.astro	reviewed	batch 490 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dsh-openpencil/index.astro	reviewed	batch 490 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dsh-plugin-claude-bridge/index.astro	reviewed	batch 491 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dsh-ui-spec/index.astro	reviewed	batch 491 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dsh-vision-router/index.astro	reviewed	batch 491 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dsh-vision-toolkit/index.astro	reviewed	batch 491 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dsh-visualize/index.astro	reviewed	batch 491 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dsh-web-preview/index.astro	reviewed	batch 491 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dsh-web-review/index.astro	reviewed	batch 491 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/dsh-web-ui/index.astro	reviewed	batch 491 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/editorial-ui-style/index.astro	reviewed	batch 491 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/emil-design-eng/index.astro	reviewed	batch 491 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/framed-grid-layout/index.astro	reviewed	batch 491 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/glass-dark-mode-clock/index.astro	reviewed	batch 491 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/gpt-taste/index.astro	reviewed	batch 491 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/gsap-skills/index.astro	reviewed	batch 491 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/hallmark-design-skill/index.astro	reviewed	batch 491 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/high-end-visual-design/index.astro	reviewed	batch 492 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/image-to-code/index.astro	reviewed	batch 492 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/imagegen-frontend-mobile/index.astro	reviewed	batch 492 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/imagegen-frontend-web/index.astro	reviewed	batch 492 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/impeccable/index.astro	reviewed	batch 492 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/index.astro	reviewed	batch 492 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/industrial-brutalist-ui/index.astro	reviewed	batch 492 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/kami/index.astro	reviewed	batch 492 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/make-interfaces-feel-better/index.astro	reviewed	batch 492 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/masked-reveal/index.astro	reviewed	batch 492 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/material-3/index.astro	reviewed	batch 492 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/mesh-gradient-dark-blue-clean/index.astro	reviewed	batch 492 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/minimalist-ui/index.astro	reviewed	batch 492 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/modlens/index.astro	reviewed	batch 492 last-line length matched; model not tool-verified grok
+apps/landing-page/app/pages/[locale]/plugins/neumorphism-ui-style/index.astro	reviewed	batch 492 last-line length matched; model not tool-verified grok
 apps/landing-page/app/pages/[locale]/plugins/pick-ui-library/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/pages/[locale]/plugins/redesign-existing-projects/index.astro	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/pages/[locale]/plugins/search.json.ts	unreviewed	production-relevant until a pass-3 reviewer records it

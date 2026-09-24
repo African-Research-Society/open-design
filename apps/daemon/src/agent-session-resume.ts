@@ -318,8 +318,10 @@ export function isAgentResumeFailure(
       isAmrOpencodeEventStreamResumeFailure(`${stderr}\n${stdout}`)
     );
   }
-  // claude + codebuddy share Claude Code's stream-json result shape.
-  return isClaudeResumeFailure(stderr, stdout);
+  if (agentId === 'claude' || agentId === 'amp' || agentId === 'codebuddy') {
+    return isClaudeResumeFailure(stderr, stdout);
+  }
+  return false;
 }
 
 // vela (AMR) reports a missing resumed session as a structured ACP JSON-RPC

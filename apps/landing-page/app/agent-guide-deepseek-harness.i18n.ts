@@ -254,7 +254,7 @@ export const DEEPSEEK_HARNESS_EN_GUIDE: AgentGuideCopy = {
           },
           {
             kind: 'p',
-            text: 'DeepSeek Harness stores provider credentials as write-only secrets: the UI can report whether a key is configured, but cannot read or display the plaintext key. OpenDesign reuses this user-installed dsh and its model configuration without copying the key into OpenDesign. For a dependable workflow, keep dsh pinned to the tested `0.1.0-rc.6` release. See the [official provider guide](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/guide/providers.zh.md) for the upstream credential behavior.',
+            text: 'DeepSeek Harness stores provider credentials as write-only secrets: the UI can report whether a key is configured, but cannot read or display the plaintext key. OpenDesign reuses this user-installed dsh and its model configuration without copying the key into OpenDesign. For a dependable workflow, keep dsh pinned to the tested `0.1.0-rc.6` release. See the [official provider guide](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/guide/providers.md) for the upstream credential behavior.',
           },
         ],
       },

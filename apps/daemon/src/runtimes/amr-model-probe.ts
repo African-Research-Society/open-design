@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import {
   applyAgentLaunchEnv,
   getAgentDef,
@@ -31,7 +32,7 @@ export function buildAmrModelCacheKey({
     openDesignAmrProfile: env.OPEN_DESIGN_AMR_PROFILE ?? '',
     velaProfile: env.VELA_PROFILE ?? '',
     velaLinkUrl: env.VELA_LINK_URL ?? '',
-    velaRuntimeKey: env.VELA_RUNTIME_KEY ?? '',
+    velaRuntimeKey: createHash('sha256').update(env.VELA_RUNTIME_KEY ?? '').digest('hex'),
     velaOpencodeBin: env.VELA_OPENCODE_BIN ?? '',
     credentialRevision,
   });

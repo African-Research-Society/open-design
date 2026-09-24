@@ -453,6 +453,7 @@ function cloneBoundedJsonObject(value: BoundedJsonObject): BoundedJsonObject {
 
 function deepMergeBoundedJsonObject(target: BoundedJsonObject, source: BoundedJsonObject): void {
   for (const [key, value] of Object.entries(source)) {
+    if (UNSAFE_MAPPING_SEGMENTS.has(key)) continue;
     const current = target[key];
     if (isJsonObject(current) && isJsonObject(value)) {
       deepMergeBoundedJsonObject(current, value);

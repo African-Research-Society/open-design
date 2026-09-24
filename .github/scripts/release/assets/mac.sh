@@ -61,6 +61,10 @@ version_prefix="${RELEASE_VERSION_PREFIX:-$RELEASE_CHANNEL/versions/$RELEASE_VER
 zip_url="$public_origin/$version_prefix/$versioned_zip"
 release_date="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 release_notes="${RELEASE_NOTES:-Open Design $RELEASE_VERSION$asset_suffix}"
+release_notes="${release_notes//$'\r'/}"
+release_notes="${release_notes//$'\n'/ }"
+release_notes="${release_notes//\\/\\\\}"
+release_notes="${release_notes//\"/\\\"}"
 cat > "$release_dir/latest-mac.yml" <<EOF
 version: "$RELEASE_VERSION"
 files:

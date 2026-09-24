@@ -60,6 +60,9 @@ od::workdir_for() {
 od::assert_in_workroot() {
   local path="$1"
   case "$path" in
+    *..*) od::die "refusing a workdir path that contains ..: $path" ;;
+  esac
+  case "$path" in
     "$OD_WORK_ROOT"/*) return 0 ;;
     *) od::die "refusing to operate on path outside OD_WORK_ROOT: $path" ;;
   esac

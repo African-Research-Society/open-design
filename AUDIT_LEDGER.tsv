@@ -1777,21 +1777,21 @@ apps/landing-page/app/community-i18n.ts	reviewed	batch 475 last-line length matc
 apps/landing-page/app/community-locales/de.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
 apps/landing-page/app/community-locales/es.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
 apps/landing-page/app/community-locales/fr.ts	reviewed	batch 475 last-line length matched; model not tool-verified grok
-apps/landing-page/app/community-locales/index.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/community-locales/it.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/community-locales/ja.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/community-locales/ko.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/community-locales/pt-br.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/community-locales/ru.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/community-locales/tr.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/community-locales/zh.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/community.css	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content-i18n.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content.config.ts	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/blog/31-skills-72-systems-how-the-library-works.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/blog/_topics.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/blog/ai-design-agents.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/blog/ai-prototyping-tools.md	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/app/community-locales/index.ts	reviewed	batch 476 last-line length matched; model not tool-verified grok
+apps/landing-page/app/community-locales/it.ts	reviewed	batch 476 last-line length matched; model not tool-verified grok
+apps/landing-page/app/community-locales/ja.ts	reviewed	batch 476 last-line length matched; model not tool-verified grok
+apps/landing-page/app/community-locales/ko.ts	reviewed	batch 476 last-line length matched; model not tool-verified grok
+apps/landing-page/app/community-locales/pt-br.ts	reviewed	batch 476 last-line length matched; model not tool-verified grok
+apps/landing-page/app/community-locales/ru.ts	reviewed	batch 476 last-line length matched; model not tool-verified grok
+apps/landing-page/app/community-locales/tr.ts	reviewed	batch 476 last-line length matched; model not tool-verified grok
+apps/landing-page/app/community-locales/zh.ts	reviewed	batch 476 last-line length matched; model not tool-verified grok
+apps/landing-page/app/community.css	reviewed	batch 476 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content-i18n.ts	reviewed	batch 476 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content.config.ts	reviewed	batch 476 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/blog/31-skills-72-systems-how-the-library-works.md	reviewed	batch 476 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/blog/_topics.md	reviewed	batch 476 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/blog/ai-design-agents.md	reviewed	batch 476 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/blog/ai-prototyping-tools.md	reviewed	batch 476 last-line length matched; model not tool-verified grok
 apps/landing-page/app/content/blog/best-ai-design-tools.md	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/content/blog/bolt-new-alternatives.md	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/content/blog/byok-design-workflow-claude-codex-qwen.md	unreviewed	production-relevant until a pass-3 reviewer records it
@@ -1822,21 +1822,21 @@ apps/landing-page/app/content/blog/open-design-0-19-1-design-with-deepseek-harne
 apps/landing-page/app/content/blog/open-design-0-8-0-everything-is-a-plugin.md	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/content/blog/open-design-0-9-0-design-for-everyone.md	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/content/blog/open-design-osaka-kyoto-meetup.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/blog/open-design-shanghai-ai-workshop.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/blog/open-source-alternative-to-claude-design.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/blog/port-figma-workflow-open-design-plugin.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/blog/ppt-master.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/blog/reveal-js.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/blog/slidev.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/blog/v0-alternatives.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/blog/vibe-design-tools.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/blog/vibe-design-vs-vibe-coding.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/blog/vibe-design-with-stitch.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/blog/what-is-vibe-design.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/blog/why-we-built-open-design-as-a-skill-layer.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-31-skills-72-systems-popular-ai.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-ai-ppt-tutorial.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-alternativa-gratis-claude-design-maestros-da-ia.md	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/app/content/blog/open-design-shanghai-ai-workshop.md	reviewed	batch 479 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/blog/open-source-alternative-to-claude-design.md	reviewed	batch 479 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/blog/port-figma-workflow-open-design-plugin.md	reviewed	batch 479 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/blog/ppt-master.md	reviewed	batch 479 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/blog/reveal-js.md	reviewed	batch 479 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/blog/slidev.md	reviewed	batch 479 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/blog/v0-alternatives.md	reviewed	batch 479 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/blog/vibe-design-tools.md	reviewed	batch 479 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/blog/vibe-design-vs-vibe-coding.md	reviewed	batch 479 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/blog/vibe-design-with-stitch.md	reviewed	batch 479 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/blog/what-is-vibe-design.md	reviewed	batch 479 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/blog/why-we-built-open-design-as-a-skill-layer.md	reviewed	batch 479 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/tutorials/open-design-31-skills-72-systems-popular-ai.md	reviewed	batch 479 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/tutorials/open-design-ai-ppt-tutorial.md	reviewed	batch 479 last-line length matched; model not tool-verified grok; main-session uses a real background style on tutorial table headers
+apps/landing-page/app/content/tutorials/open-design-alternativa-gratis-claude-design-maestros-da-ia.md	reviewed	batch 479 last-line length matched; model not tool-verified grok
 apps/landing-page/app/content/tutorials/open-design-claude-alternative-wordpress-design-dan-davies.md	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/content/tutorials/open-design-claude-design-alternative-local-ai-fire-academy.md	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/content/tutorials/open-design-claude-design-alternative-open-source-brendan-o-connell.md	unreviewed	production-relevant until a pass-3 reviewer records it
@@ -1852,21 +1852,21 @@ apps/landing-page/app/content/tutorials/open-design-full-overview-vs-figma-purpl
 apps/landing-page/app/content/tutorials/open-design-full-walkthrough-self-hosted-alternative-ai-stack-engineer.md	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/content/tutorials/open-design-full-walkthrough-yuya-mei.md	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/content/tutorials/open-design-in-20-minutes-coding-menace.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-instalacao-alternativa-gratis-fabricando-sua-ideia-tutoriais.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-install-demo-systems-chase-ai.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-install-open-source-alternative-riko-nazza-ai.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-install-setup-free-alternative-ai-unlocked.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-local-setup-ollama-alternative-ai-automation-station.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-open-design-vs-claude-design-demo-justyn-the-ai-guy.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-open-design-vs-claude-design-first-look-community.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-open-design-vs-claude-design-free-alternative-ai-fusion.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-open-design-vs-claude-design-jeremy-de-campos.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-open-design-vs-claude-design-landing-page-roy-shavit.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-open-design-vs-claude-design-setup-eli-rigobeli-ai.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-open-design-vs-claude-design-test-ben-bk.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-open-source-ai-design-overview-ai.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-open-source-alternative-claude-design-nyndra-ai.md	unreviewed	production-relevant until a pass-3 reviewer records it
-apps/landing-page/app/content/tutorials/open-design-open-source-alternative-claude-design-tony-xhepa.md	unreviewed	production-relevant until a pass-3 reviewer records it
+apps/landing-page/app/content/tutorials/open-design-instalacao-alternativa-gratis-fabricando-sua-ideia-tutoriais.md	reviewed	batch 481 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/tutorials/open-design-install-demo-systems-chase-ai.md	reviewed	batch 481 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/tutorials/open-design-install-open-source-alternative-riko-nazza-ai.md	reviewed	batch 481 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/tutorials/open-design-install-setup-free-alternative-ai-unlocked.md	reviewed	batch 481 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/tutorials/open-design-local-setup-ollama-alternative-ai-automation-station.md	reviewed	batch 481 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/tutorials/open-design-open-design-vs-claude-design-demo-justyn-the-ai-guy.md	reviewed	batch 481 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/tutorials/open-design-open-design-vs-claude-design-first-look-community.md	reviewed	batch 481 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/tutorials/open-design-open-design-vs-claude-design-free-alternative-ai-fusion.md	reviewed	batch 481 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/tutorials/open-design-open-design-vs-claude-design-jeremy-de-campos.md	reviewed	batch 481 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/tutorials/open-design-open-design-vs-claude-design-landing-page-roy-shavit.md	reviewed	batch 481 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/tutorials/open-design-open-design-vs-claude-design-setup-eli-rigobeli-ai.md	reviewed	batch 481 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/tutorials/open-design-open-design-vs-claude-design-test-ben-bk.md	reviewed	batch 481 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/tutorials/open-design-open-source-ai-design-overview-ai.md	reviewed	batch 481 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/tutorials/open-design-open-source-alternative-claude-design-nyndra-ai.md	reviewed	batch 481 last-line length matched; model not tool-verified grok
+apps/landing-page/app/content/tutorials/open-design-open-source-alternative-claude-design-tony-xhepa.md	reviewed	batch 481 last-line length matched; model not tool-verified grok
 apps/landing-page/app/content/tutorials/open-design-open-source-alternative-comparison-where-do-i-click.md	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/content/tutorials/open-design-open-source-alternative-vs-claude-design-ai-teaches-better.md	unreviewed	production-relevant until a pass-3 reviewer records it
 apps/landing-page/app/content/tutorials/open-design-open-source-claude-alternative-aicodeking.md	unreviewed	production-relevant until a pass-3 reviewer records it

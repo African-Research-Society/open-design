@@ -64,7 +64,12 @@ export async function runDesignExtract(opts: DesignExtractOptions): Promise<Desi
         lang !== 'js' && lang !== 'jsx' && lang !== 'html' && lang !== 'json') {
       continue;
     }
-    const abs = path.join(repoPath, entry.path);
+    const abs = path.resolve(repoPath, entry.path);
+    const relativeToRepo = path.relative(repoPath, abs);
+    if (!entry.path || relativeToRepo.startsWith('..') || path.isAbsolute(relativeToRepo)) {
+      warnings.push(`skipped path outside repo: ${entry.path}`);
+      continue;
+    }
     let text: string;
     try {
       text = await fsp.readFile(abs, 'utf8');

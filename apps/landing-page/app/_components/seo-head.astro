@@ -186,6 +186,15 @@ const blogJsonLd =
         },
       }
     : null;
+
+function jsonLdScript(value: unknown): string {
+  return JSON.stringify(value)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
+}
 ---
 
 <title>{fullTitle}</title>
@@ -234,11 +243,11 @@ const blogJsonLd =
 <meta name='twitter:image' content={image} />
 
 {articleJsonLd && (
-  <script is:inline type='application/ld+json' set:html={JSON.stringify(articleJsonLd)} />
+  <script is:inline type='application/ld+json' set:html={jsonLdScript(articleJsonLd)} />
 )}
 {websiteJsonLd && (
-  <script is:inline type='application/ld+json' set:html={JSON.stringify(websiteJsonLd)} />
+  <script is:inline type='application/ld+json' set:html={jsonLdScript(websiteJsonLd)} />
 )}
 {blogJsonLd && (
-  <script is:inline type='application/ld+json' set:html={JSON.stringify(blogJsonLd)} />
+  <script is:inline type='application/ld+json' set:html={jsonLdScript(blogJsonLd)} />
 )}

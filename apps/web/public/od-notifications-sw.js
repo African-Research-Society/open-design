@@ -1,11 +1,24 @@
 // Browser service workers must be served as JavaScript files. This tiny
 // runtime exists only to display task-completion notifications and focus
 // the existing OpenDesign tab when the user clicks one.
+
+function sameOriginNotificationUrl(raw) {
+  const fallback = self.location.origin;
+  if (typeof raw !== 'string' || raw.length === 0) return fallback;
+  try {
+    const url = new URL(raw, self.location.origin);
+    if (url.origin !== self.location.origin) return fallback;
+    return url.href;
+  } catch {
+    return fallback;
+  }
+}
+
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
 
   const data = event.notification.data || {};
-  const targetUrl = typeof data.url === 'string' ? data.url : self.location.origin;
+  const targetUrl = sameOriginNotificationUrl(data.url);
 
   event.waitUntil((async () => {
     const windows = await self.clients.matchAll({

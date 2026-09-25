@@ -20,7 +20,7 @@
 // Token persistence lives in `mcp-tokens.ts`. This file is the protocol
 // layer; storage is somebody else's job.
 
-import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
+import { chmod, mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import { createHash, randomBytes } from 'node:crypto';
 import path from 'node:path';
 
@@ -234,8 +234,16 @@ async function writeClientCache(
   const file = clientsFile(dataDir);
   await mkdir(path.dirname(file), { recursive: true });
   const tmp = file + '.' + randomBytes(4).toString('hex') + '.tmp';
-  await writeFile(tmp, JSON.stringify(next, null, 2), 'utf8');
+  await writeFile(tmp, JSON.stringify(next, null, 2), { encoding: 'utf8', mode: 0o600 });
   await rename(tmp, file);
+  try {
+    await chmod(file, 0o600);
+  } catch (err: unknown) {
+    const code = (err as { code?: string }).code;
+    if (code !== 'ENOTSUP' && code !== 'EPERM') {
+      console.warn('[mcp-oauth] could not chmod 0600', err);
+    }
+  }
 }
 
 /**

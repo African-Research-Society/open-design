@@ -5,6 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import { SignJWT } from 'jose';
+import { createArsSsoAuth } from '../src/ars-sso-auth.js';
 import { startServer } from '../src/server.js';
 
 const ENV_NAMES = [
@@ -58,6 +59,31 @@ afterEach(async () => {
   }
 });
 
+describe('ARS SSO local trial issuer', () => {
+  it('accepts a loopback hub and refuses a remote http issuer', () => {
+    const local = createArsSsoAuth({
+      OD_ARS_SSO_SECRET: SECRET,
+      OD_ARS_SSO_ISSUER: 'http://localhost:3000',
+      OD_ARS_SSO_AUDIENCE: 'http://localhost:17573',
+      OD_ARS_SSO_LOGIN_URL: 'http://localhost:3000/admin/design',
+    });
+    expect(local?.loginUrl).toBe('http://localhost:3000/admin/design');
+    const ipv6 = createArsSsoAuth({
+      OD_ARS_SSO_SECRET: SECRET,
+      OD_ARS_SSO_ISSUER: 'http://[::1]:3000',
+      OD_ARS_SSO_AUDIENCE: 'http://[::1]:17573',
+      OD_ARS_SSO_LOGIN_URL: 'http://[::1]:3000/admin/design',
+    });
+    expect(ipv6?.loginUrl).toBe('http://[::1]:3000/admin/design');
+    expect(() => createArsSsoAuth({
+      OD_ARS_SSO_SECRET: SECRET,
+      OD_ARS_SSO_ISSUER: 'http://evil.example',
+      OD_ARS_SSO_AUDIENCE: 'http://localhost:17573',
+      OD_ARS_SSO_LOGIN_URL: 'http://evil.example/admin/design',
+    })).toThrow(/HTTPS origin/);
+  });
+});
+
 describe('ARS SSO browser authentication', () => {
   it('exchanges a one-time assertion for a secure browser session without a Basic prompt', async () => {
     process.env.OD_API_TOKEN = 'independent-cli-token';
@@ -104,6 +130,32 @@ describe('ARS SSO browser authentication', () => {
     expect(cookie).toContain('HttpOnly');
     expect(cookie).toContain('SameSite=Lax');
     expect(cookie).toContain('Secure');
+
+    const status = await fetch(`${started.url}/auth/ars/status`, {
+      headers: { cookie: cookie!.split(';', 1)[0]! },
+    });
+    expect(status.status).toBe(204);
+    const missing = await fetch(`${started.url}/auth/ars/status`);
+    expect(missing.status).toBe(401);
+
+    const crossSiteLogout = await fetch(`${started.url}/auth/ars/logout`, {
+      method: 'POST',
+      headers: { cookie: cookie!.split(';', 1)[0]!, origin: 'https://attacker.example' },
+    });
+    expect(crossSiteLogout.status).toBe(403);
+    expect(crossSiteLogout.headers.get('set-cookie')).toBeNull();
+
+    const logout = await fetch(`${started.url}/auth/ars/logout`, {
+      method: 'POST',
+      headers: { cookie: cookie!.split(';', 1)[0]!, origin: AUDIENCE },
+    });
+    expect(logout.status).toBe(204);
+    expect(logout.headers.get('cache-control')).toBe('no-store');
+    const cleared = logout.headers.get('set-cookie');
+    expect(cleared).toContain('__Host-od_ars_session=;');
+    expect(cleared).toContain('Max-Age=0');
+    expect(cleared).toContain('Path=/');
+    expect(cleared).toContain('Secure');
 
     const authenticated = await fetch(`${started.url}/`, {
       headers: { cookie: cookie!.split(';', 1)[0]! },

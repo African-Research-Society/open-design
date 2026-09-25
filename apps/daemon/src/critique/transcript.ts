@@ -2,7 +2,7 @@ import { createReadStream, createWriteStream } from 'node:fs';
 import { mkdir, rename, rm, open } from 'node:fs/promises';
 import { createGzip, createGunzip } from 'node:zlib';
 import { createInterface } from 'node:readline';
-import { join } from 'node:path';
+import { isAbsolute, join, relative, resolve } from 'node:path';
 import { pipeline } from 'node:stream/promises';
 import type { PanelEvent } from '@open-design/contracts/critique';
 
@@ -156,7 +156,20 @@ export async function* readTranscript(
     );
   }
 
-  const filePath = join(artifactDir, fileName);
+  const root = resolve(artifactDir);
+  const filePath = resolve(root, fileName);
+  const relativePath = relative(root, filePath);
+  if (
+    !fileName
+    || fileName.includes('/')
+    || fileName.includes('\\')
+    || fileName.includes('..')
+    || relativePath.startsWith('..')
+    || isAbsolute(relativePath)
+  ) {
+    throw new RangeError('readTranscript: fileName must stay inside the artifact directory');
+  }
+
   const isGz = fileName.endsWith('.ndjson.gz');
 
   const fileStream = createReadStream(filePath);

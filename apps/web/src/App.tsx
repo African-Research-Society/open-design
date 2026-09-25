@@ -292,8 +292,10 @@ export function shouldRouteToFirstRunOnboarding(
   pathname: string,
 ): boolean {
   if (config.onboardingCompleted === true) return false;
+  if (ARS_BRANDED && (pathname === '/' || pathname === '')) return false;
   if (
-    pathname.startsWith('/projects/')
+    pathname === '/projects'
+    || pathname.startsWith('/projects/')
     || pathname.startsWith('/collab-demo')
     || pathname.startsWith('/community')
   ) {

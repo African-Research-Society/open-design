@@ -98,7 +98,7 @@ After the image is generated, choose one style direction. Do not only choose the
 
 <table>
   <thead>
-    <tr><th background-color="light-gray">If Your Deck Needs...</th><th background-color="light-gray">Choose a Style That Feels...</th></tr>
+    <tr><th style="background:#f3f4f6">If Your Deck Needs...</th><th style="background:#f3f4f6">Choose a Style That Feels...</th></tr>
   </thead>
   <tbody>
     <tr><td>Trust, strategy, enterprise credibility</td><td>Clean, structured, restrained, editorial</td></tr>
@@ -363,7 +363,7 @@ After updating, summarize:
 
 <table>
   <thead>
-    <tr><th background-color="light-gray">Content Type</th><th background-color="light-gray">Suggested Chart</th><th background-color="light-gray">Why It Works</th></tr>
+    <tr><th style="background:#f3f4f6">Content Type</th><th style="background:#f3f4f6">Suggested Chart</th><th style="background:#f3f4f6">Why It Works</th></tr>
   </thead>
   <tbody>
     <tr><td>Market growth</td><td>Line chart or area chart</td><td>Shows direction and momentum.</td></tr>
@@ -487,7 +487,7 @@ After adding the animations and interactions, please summarize:
 
 <table>
   <thead>
-    <tr><th background-color="light-gray">Animation Type</th><th background-color="light-gray">Good Use</th><th background-color="light-gray">Avoid</th></tr>
+    <tr><th style="background:#f3f4f6">Animation Type</th><th style="background:#f3f4f6">Good Use</th><th style="background:#f3f4f6">Avoid</th></tr>
   </thead>
   <tbody>
     <tr><td>Slide transition</td><td>Signaling movement from one idea to the next</td><td>Using a different transition on every slide</td></tr>
@@ -504,7 +504,7 @@ Because this workflow can include real assets, generated images, charts, 3D effe
 
 <table>
   <thead>
-    <tr><th background-color="light-gray">Format</th><th background-color="light-gray">Best For</th><th background-color="light-gray">Trade-off</th></tr>
+    <tr><th style="background:#f3f4f6">Format</th><th style="background:#f3f4f6">Best For</th><th style="background:#f3f4f6">Trade-off</th></tr>
   </thead>
   <tbody>
     <tr><td>Present in OpenDesign</td><td>Keeping motion, HTML layout, charts, and interactive effects</td><td>Requires presenting from the OpenDesign environment</td></tr>
@@ -523,7 +523,7 @@ Use this section as a compact copy-and-paste reference. Replace the bracketed va
 
 <table>
   <thead>
-    <tr><th background-color="light-gray">Prompt</th><th background-color="light-gray">Use It When</th><th background-color="light-gray">Where</th></tr>
+    <tr><th style="background:#f3f4f6">Prompt</th><th style="background:#f3f4f6">Use It When</th><th style="background:#f3f4f6">Where</th></tr>
   </thead>
   <tbody>
     <tr><td><a href="#prompt-0">Prompt 0</a></td><td>You need to clarify the story and decision logic.</td><td>Any AI chat</td></tr>

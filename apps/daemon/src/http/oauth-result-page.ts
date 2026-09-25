@@ -15,6 +15,12 @@ export function renderOAuthResultPage(opts: OAuthResultPageOptions): string {
   const payload = ok
     ? { type: 'mcp-oauth', ok: true, serverId: opts.serverId ?? null }
     : { type: 'mcp-oauth', ok: false, message: opts.message ?? null };
+  const payloadJson = JSON.stringify(payload)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -61,7 +67,7 @@ export function renderOAuthResultPage(opts: OAuthResultPageOptions): string {
   </div>
   <script>
     try {
-      var payload = ${JSON.stringify(payload)};
+      var payload = ${payloadJson};
       if (window.opener && !window.opener.closed) {
         window.opener.postMessage(payload, '*');
       }

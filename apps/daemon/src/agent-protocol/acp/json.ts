@@ -39,7 +39,8 @@ export function resolveAcpTimeoutMs(env: NodeJS.ProcessEnv, fallbackMs: number):
  * @returns The value cast as `JsonObject`, or `null` when the cast is unsafe.
  */
 export function asObject(value: unknown): JsonObject | null {
-  return value && typeof value === 'object' ? value as JsonObject : null;
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+  return value as JsonObject;
 }
 /**
  * Returns a short diagnostic string describing the JSON kind of `value`:

@@ -7,7 +7,7 @@ import '../src/index.css';
 import '../src/styles/home/index.css';
 
 export const metadata: Metadata = {
-  title: 'ARS Design | African Research Society',
+  title: 'Kora Design | African Research Society',
   description: 'The African Research Society design workspace.',
   icons: {
     icon: '/ars-mark.svg',

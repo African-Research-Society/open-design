@@ -7,7 +7,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800;900&family=Noto+Sans+SC:wght@500;700;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   body { margin:0; background:#0a0a0a; font-family:'Inter Tight','Noto Sans SC',sans-serif; display:grid; place-items:center; padding:24px 0; }
-  .poster { position:relative; width:1080px; max-width:96vw; aspect-ratio:9/16; border-radius:32px; overflow:hidden; color:#fff;
+  /* Default 1080×1920. Recap briefs use Format: 1920x1080 — size .poster to that frame. */
+  .poster { position:relative; width:1080px; height:1920px; max-width:none; aspect-ratio:auto; border-radius:32px; overflow:hidden; color:#fff;
     background:
       radial-gradient(ellipse at 80% 0%, rgba(233,185,74,0.55), transparent 55%),
       radial-gradient(ellipse at 20% 100%, rgba(108,58,166,0.5), transparent 55%),

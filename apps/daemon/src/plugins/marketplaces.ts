@@ -102,6 +102,10 @@ export function marketplaceManifestUrlForRegistry(id: string): string {
   return `${marketplaceRegistryBaseUrl()}/${registryId}/open-design-marketplace.json`;
 }
 
+function isSingleRegistryId(id: string): boolean {
+  return Boolean(id) && id !== '.' && id !== '..' && !id.includes('/') && !id.includes('\\') && !id.includes('..');
+}
+
 function registryIdFromBaseUrl(url: string, baseUrl: string): string | null {
   const base = baseUrl.replace(/\/+$/, '');
   if (!url.startsWith(`${base}/`) || !url.endsWith('/open-design-marketplace.json')) {
@@ -110,7 +114,7 @@ function registryIdFromBaseUrl(url: string, baseUrl: string): string | null {
   const id = url
     .slice(base.length + 1)
     .replace(/\/open-design-marketplace\.json$/, '');
-  return id && !id.includes('/') ? id : null;
+  return isSingleRegistryId(id) ? id : null;
 }
 
 export function marketplaceRegistryIdFromUrl(url: string): string | null {
@@ -127,7 +131,7 @@ export function marketplaceRegistryIdFromUrl(url: string): string | null {
       const id = trimmed
         .slice(base.length + 1)
         .replace(/\/open-design-marketplace\.json$/, '');
-      if (id && !id.includes('/')) return id;
+      if (isSingleRegistryId(id)) return id;
     }
   }
 

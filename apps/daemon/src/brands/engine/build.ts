@@ -473,18 +473,27 @@ export async function buildFromUrl(url: string, opts?: { slug?: string }): Promi
  * written, sorted.
  */
 export function writeBrandSystem(system: BrandSystem, outDir: string): string[] {
-  const written: string[] = [];
+  const root = path.resolve(outDir);
+  const planned: Array<{ abs: string; content: string; isB64: boolean }> = [];
   for (const [rel, content] of Object.entries(system.files)) {
     const isB64 = rel.endsWith(".b64");
     const targetRel = isB64 ? rel.slice(0, -4) : rel;
-    const abs = path.join(outDir, targetRel);
-    fs.mkdirSync(path.dirname(abs), { recursive: true });
-    if (isB64) {
-      fs.writeFileSync(abs, Buffer.from(content, "base64"));
-    } else {
-      fs.writeFileSync(abs, content, "utf8");
+    const abs = path.resolve(root, targetRel);
+    const relative = path.relative(root, abs);
+    if (!targetRel || relative.startsWith("..") || path.isAbsolute(relative)) {
+      throw new Error(`brand file path escapes the output directory: ${rel}`);
     }
-    written.push(abs);
+    planned.push({ abs, content, isB64 });
+  }
+  const written: string[] = [];
+  for (const file of planned) {
+    fs.mkdirSync(path.dirname(file.abs), { recursive: true });
+    if (file.isB64) {
+      fs.writeFileSync(file.abs, Buffer.from(file.content, "base64"));
+    } else {
+      fs.writeFileSync(file.abs, file.content, "utf8");
+    }
+    written.push(file.abs);
   }
   return written.sort();
 }

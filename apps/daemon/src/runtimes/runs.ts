@@ -1065,7 +1065,12 @@ export function createChatRunService({
     if (run.eventsLogClosed) return null;
     try {
       fs.mkdirSync(path.dirname(run.eventsLogPath), { recursive: true });
-      run.eventsLogStream = fs.createWriteStream(run.eventsLogPath, { flags: 'a' });
+      run.eventsLogStream = fs.createWriteStream(run.eventsLogPath, { flags: 'a', mode: 0o600 });
+      try {
+        fs.chmodSync(run.eventsLogPath, 0o600);
+      } catch {
+        // Windows and some filesystems do not support this mode.
+      }
       // Don't crash the daemon on a stream-level error; just stop
       // trying to use this stream so subsequent emits silently skip.
       run.eventsLogStream.on('error', () => {

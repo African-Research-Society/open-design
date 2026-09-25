@@ -1041,7 +1041,7 @@ export default function Page({
                   <span style={{ whiteSpace: 'nowrap' }}>{t.testiPost}</span>
                 </h2>
                 <div className='cta-pair' style={{ marginTop: 16 }}>
-                  <a className='btn btn-ghost' href='/community/contributors/'>
+                  <a className='btn btn-ghost' href={href('/community/contributors/')}>
                     {cta.contributors}
                     <span className='arrow'>{arrowOut}</span>
                   </a>

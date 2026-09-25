@@ -64,6 +64,9 @@ export function createMarketplaceSeedHelpers(deps: MarketplaceSeedHelperDeps): M
     id: string,
     bundledMarketplaceEntries: readonly MarketplaceSeedEntry[],
   ): Promise<string | null> {
+    if (!id || id === '.' || id === '..' || id.includes('/') || id.includes('\\') || id.includes('..')) {
+      return null;
+    }
     const manifestPath = path.join(deps.pluginRegistryDir, id, 'open-design-marketplace.json');
     if (!fs.existsSync(manifestPath)) return null;
     let manifestText = await fs.promises.readFile(manifestPath, 'utf8');

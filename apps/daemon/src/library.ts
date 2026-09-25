@@ -449,7 +449,14 @@ export function resolveAssetBytesPath(
 ): string | null {
   if (asset.filePath && path.isAbsolute(asset.filePath)) return asset.filePath;
   if (asset.storage === 'referenced' && asset.originProjectId && asset.relPath) {
-    return path.join(projectsDir, asset.originProjectId, asset.relPath);
+    const projectId = asset.originProjectId;
+    // basename('.') and basename('..') equal the input, but resolve walks
+    // to the projects root or its parent.
+    if (projectId === '.' || projectId === '..' || projectId !== path.basename(projectId)) return null;
+    const root = path.resolve(projectsDir, projectId);
+    const candidate = path.resolve(root, asset.relPath);
+    if (candidate !== root && !candidate.startsWith(root + path.sep)) return null;
+    return candidate;
   }
   if (asset.filePath) return asset.filePath;
   return null;

@@ -527,12 +527,10 @@ html:has(main.lw) {
 }
 }
 /* house entrance: blur-in, matching open-design.ai's .blur-word */
-.lw @keyframes rise {.lw 0% { opacity: 0; filter: blur(10px); transform: translateY(-26px);
-}
-.lw 50% { opacity: .5; filter: blur(5px); transform: translateY(4px);
-}
-.lw 100% { opacity: 1; filter: blur(0); transform: translateY(0);
-}
+@keyframes rise {
+  0% { opacity: 0; filter: blur(10px); transform: translateY(-26px); }
+  50% { opacity: .5; filter: blur(5px); transform: translateY(4px); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0); }
 }
 /* the page sits inside the open-design.ai site header — no in-page nav bar */
 .lw #drops, .lw #inside, .lw #open-call, .lw #community, .lw .drop[id] { scroll-margin-top: 24px;
@@ -688,9 +686,9 @@ html:has(main.lw) {
   margin-top: 4px;
   transform: rotate(-4.5deg);
 }
-.lw .drop-meta .status--live { width: fit-content; padding: 5px 7px; color: var(--ink); background: var(--acid); animation: pulse 1.6s infinite;
-}@keyframes pulse {.lw 50% { opacity: .55;
-}
+.lw .drop-meta .status--live { width: fit-content; padding: 5px 7px; color: var(--ink); background: var(--acid); animation: lw-pulse 1.6s infinite;
+}@keyframes lw-pulse {
+  50% { opacity: .55; }
 }
 .lw .drop-content { position: relative; z-index: 2;
 }
@@ -1060,8 +1058,8 @@ html:has(main.lw) {
 }
 /* P2 · today's tape breathes in the kill list */
 .lw .killticker li.is-today a { animation: tapeBreathe 2.8s ease-in-out infinite;
-}@keyframes tapeBreathe {.lw 50% { transform: rotate(-1deg) scale(1.035);
-}
+}@keyframes tapeBreathe {
+  50% { transform: rotate(-1deg) scale(1.035); }
 }
 }
 /* the selection frame's handles grow on hover — outside the motion guard so the

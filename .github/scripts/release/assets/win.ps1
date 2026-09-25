@@ -55,6 +55,7 @@ $releaseNotes = if ([string]::IsNullOrWhiteSpace($env:RELEASE_NOTES)) {
 } else {
   $env:RELEASE_NOTES
 }
+$releaseNotes = $releaseNotes.Replace("`r", "").Replace("`n", " ").Replace("\", "\\").Replace('"', '\"')
 # latest.yml is the electron-updater auto-update feed; it only references the
 # NSIS installer because the portable zip is a manual-download convenience and
 # is not consumed by the in-app updater.

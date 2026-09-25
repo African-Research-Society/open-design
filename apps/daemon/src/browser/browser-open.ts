@@ -55,10 +55,18 @@ export function createBrowserOpenInvocation(
 }
 
 export function openBrowser(url: string, deps: OpenBrowserDeps = {}): ChildProcess | null {
+  let parsed: URL;
+  try {
+    parsed = new URL(url);
+  } catch {
+    return null;
+  }
+  if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return null;
+
   const platform = deps.platform ?? process.platform;
   const spawn = deps.spawn ?? nodeSpawn;
   const warn = deps.warn ?? ((message: string) => console.warn(message));
-  const invocation = createBrowserOpenInvocation(platform, url, deps.env);
+  const invocation = createBrowserOpenInvocation(platform, parsed.toString(), deps.env);
 
   try {
     const child = spawn(invocation.command, invocation.args, invocation.options);

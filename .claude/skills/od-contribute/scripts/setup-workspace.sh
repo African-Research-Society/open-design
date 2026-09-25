@@ -16,6 +16,10 @@ source "$(dirname "$0")/config.sh"
 TYPE="${1:?type required (skill|design-system|i18n|docs)}"
 SLUG="${2:?slug required}"
 
+if [[ ! "$SLUG" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]]; then
+  od::die "slug must be kebab-case (a-z, 0-9, hyphens): $SLUG"
+fi
+
 case "$TYPE" in
   skill|design-system|i18n|docs) ;;
   *) od::die "unknown type: $TYPE (expected skill|design-system|i18n|docs)" ;;

@@ -294,7 +294,9 @@ async function reconcileProjects(
         const produced = producedMap.has(rel);
         const sourceKind = classifySource(file.kind, produced);
         const conversationId = produced ? producedMap.get(rel) : undefined;
-        const absPath = path.join(projectDir, rel);
+        const absPath = path.resolve(projectDir, rel);
+        const relativeToProject = path.relative(projectDir, absPath);
+        if (relativeToProject.startsWith('..') || path.isAbsolute(relativeToProject)) continue;
         const res = await registerLibraryAsset({
           db,
           libraryDir: paths.LIBRARY_DIR,

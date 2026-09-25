@@ -273,9 +273,19 @@ async function readCandidateFile(projectRoot: string, rel: string): Promise<Skil
   const normalized = rel.split(/[\\/]+/u).filter(Boolean);
   if (normalized.length === 0 || normalized.some((seg) => seg === '..')) return null;
   const abs = path.join(projectRoot, ...normalized);
+  let realRoot: string;
+  let realFile: string;
+  try {
+    realRoot = await fs.realpath(projectRoot);
+    realFile = await fs.realpath(abs);
+  } catch {
+    return null;
+  }
+  const relativeToRoot = path.relative(realRoot, realFile);
+  if (relativeToRoot.startsWith('..') || path.isAbsolute(relativeToRoot)) return null;
   let stat;
   try {
-    stat = await fs.stat(abs);
+    stat = await fs.stat(realFile);
   } catch {
     return null;
   }
@@ -285,7 +295,7 @@ async function readCandidateFile(projectRoot: string, rel: string): Promise<Skil
   if (stat.size > MAX_SOURCE_BYTES) {
     return { kind: 'file', value: normalized.join('/'), label: normalized.join('/'), size: stat.size, reason: 'Source file is too large to copy safely.' };
   }
-  const content = await fs.readFile(abs, 'utf8');
+  const content = await fs.readFile(realFile, 'utf8');
   return { kind: 'file', value: normalized.join('/'), label: normalized.join('/'), content, size: stat.size, copied: true };
 }
 

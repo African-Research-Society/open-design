@@ -686,8 +686,8 @@ html:has(main.lw) {
   margin-top: 4px;
   transform: rotate(-4.5deg);
 }
-.lw .drop-meta .status--live { width: fit-content; padding: 5px 7px; color: var(--ink); background: var(--acid); animation: pulse 1.6s infinite;
-}@keyframes pulse {
+.lw .drop-meta .status--live { width: fit-content; padding: 5px 7px; color: var(--ink); background: var(--acid); animation: lw-pulse 1.6s infinite;
+}@keyframes lw-pulse {
   50% { opacity: .55; }
 }
 .lw .drop-content { position: relative; z-index: 2;
@@ -1060,6 +1060,7 @@ html:has(main.lw) {
 .lw .killticker li.is-today a { animation: tapeBreathe 2.8s ease-in-out infinite;
 }@keyframes tapeBreathe {
   50% { transform: rotate(-1deg) scale(1.035); }
+}
 }
 /* the selection frame's handles grow on hover — outside the motion guard so the
    state change still reads for reduced-motion users, just without the easing */

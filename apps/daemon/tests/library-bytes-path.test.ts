@@ -31,4 +31,9 @@ describe('resolveAssetBytesPath', () => {
   it('rejects a project id that is not a single path segment', () => {
     expect(resolveAssetBytesPath(referenced('a.png', '../other'), projects)).toBeNull();
   });
+
+  it('rejects dot and dot-dot project ids that basename leaves unchanged', () => {
+    expect(resolveAssetBytesPath(referenced('secrets/token', '.'), projects)).toBeNull();
+    expect(resolveAssetBytesPath(referenced('secrets/token', '..'), projects)).toBeNull();
+  });
 });

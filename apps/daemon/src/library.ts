@@ -450,7 +450,9 @@ export function resolveAssetBytesPath(
   if (asset.filePath && path.isAbsolute(asset.filePath)) return asset.filePath;
   if (asset.storage === 'referenced' && asset.originProjectId && asset.relPath) {
     const projectId = asset.originProjectId;
-    if (projectId !== path.basename(projectId)) return null;
+    // basename('.') and basename('..') equal the input, but resolve walks
+    // to the projects root or its parent.
+    if (projectId === '.' || projectId === '..' || projectId !== path.basename(projectId)) return null;
     const root = path.resolve(projectsDir, projectId);
     const candidate = path.resolve(root, asset.relPath);
     if (candidate !== root && !candidate.startsWith(root + path.sep)) return null;

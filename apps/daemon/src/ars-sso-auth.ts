@@ -28,7 +28,8 @@ export type ArsSsoAuth = {
 
 function parseOrigin(value: string, name: string, allowLocalHttp = false): URL {
   const url = new URL(value);
-  const local = ['localhost', '127.0.0.1', '::1'].includes(url.hostname);
+  // WHATWG URL keeps the brackets on an IPv6 hostname (`[::1]`).
+  const local = ['localhost', '127.0.0.1', '[::1]'].includes(url.hostname);
   if (
     (url.protocol !== 'https:' && !(allowLocalHttp && local))
     || url.username
@@ -194,9 +195,16 @@ export function createArsSsoAuth(env: NodeJS.ProcessEnv = process.env): ArsSsoAu
     }
   };
 
-  const logout: RequestHandler = (_request, response) => {
-    response.setHeader('Set-Cookie', `${cookieName}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0${ssoConfig.secureCookie ? '; Secure' : ''}`);
+  const logout: RequestHandler = (request, response) => {
     response.setHeader('Cache-Control', 'no-store');
+    // The embed posts from the studio's own origin. Refuse a cross-site form
+    // or fetch so another page cannot sign an administrator out.
+    const requestOrigin = request.get('origin');
+    if (requestOrigin != null && requestOrigin !== ssoConfig.audience) {
+      response.status(403).end();
+      return;
+    }
+    response.setHeader('Set-Cookie', `${cookieName}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0${ssoConfig.secureCookie ? '; Secure' : ''}`);
     response.status(204).end();
   };
 

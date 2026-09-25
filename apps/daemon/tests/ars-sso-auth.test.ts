@@ -68,6 +68,13 @@ describe('ARS SSO local trial issuer', () => {
       OD_ARS_SSO_LOGIN_URL: 'http://localhost:3000/admin/design',
     });
     expect(local?.loginUrl).toBe('http://localhost:3000/admin/design');
+    const ipv6 = createArsSsoAuth({
+      OD_ARS_SSO_SECRET: SECRET,
+      OD_ARS_SSO_ISSUER: 'http://[::1]:3000',
+      OD_ARS_SSO_AUDIENCE: 'http://[::1]:17573',
+      OD_ARS_SSO_LOGIN_URL: 'http://[::1]:3000/admin/design',
+    });
+    expect(ipv6?.loginUrl).toBe('http://[::1]:3000/admin/design');
     expect(() => createArsSsoAuth({
       OD_ARS_SSO_SECRET: SECRET,
       OD_ARS_SSO_ISSUER: 'http://evil.example',
@@ -130,6 +137,25 @@ describe('ARS SSO browser authentication', () => {
     expect(status.status).toBe(204);
     const missing = await fetch(`${started.url}/auth/ars/status`);
     expect(missing.status).toBe(401);
+
+    const crossSiteLogout = await fetch(`${started.url}/auth/ars/logout`, {
+      method: 'POST',
+      headers: { cookie: cookie!.split(';', 1)[0]!, origin: 'https://attacker.example' },
+    });
+    expect(crossSiteLogout.status).toBe(403);
+    expect(crossSiteLogout.headers.get('set-cookie')).toBeNull();
+
+    const logout = await fetch(`${started.url}/auth/ars/logout`, {
+      method: 'POST',
+      headers: { cookie: cookie!.split(';', 1)[0]!, origin: AUDIENCE },
+    });
+    expect(logout.status).toBe(204);
+    expect(logout.headers.get('cache-control')).toBe('no-store');
+    const cleared = logout.headers.get('set-cookie');
+    expect(cleared).toContain('__Host-od_ars_session=;');
+    expect(cleared).toContain('Max-Age=0');
+    expect(cleared).toContain('Path=/');
+    expect(cleared).toContain('Secure');
 
     const authenticated = await fetch(`${started.url}/`, {
       headers: { cookie: cookie!.split(';', 1)[0]! },

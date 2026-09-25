@@ -24,6 +24,11 @@ describe('pluginSlugSegment', () => {
     expect(pluginSlugSegment('keep.dots_and-dashes')).toBe('keep.dots_and-dashes');
     expect(pluginSlugSegment('!!!')).toBe('plugin');
   });
+  it('never yields a dot-dot path segment', () => {
+    expect(pluginSlugSegment('..')).toBe('plugin');
+    expect(pluginSlugSegment('a..b')).toBe('a-b');
+    expect(pluginSlugSegment('../../etc')).not.toContain('..');
+  });
 });
 
 describe('pluginDetailSlug (single segment = last id segment)', () => {

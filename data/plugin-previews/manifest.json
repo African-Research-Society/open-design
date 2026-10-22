@@ -1262,11 +1262,11 @@
       "hash": "560cd8e51ab3bbd0"
     },
     "example-motion-future": {
-      "video": "example-motion-future/8361f5456caf9df5/preview.mp4",
-      "poster": "example-motion-future/8361f5456caf9df5/poster.jpg",
-      "durationMs": 3000,
-      "holdMs": 2500,
-      "hash": "8361f5456caf9df5"
+      "video": "example-motion-future/e1341edad99e7794/preview.mp4",
+      "poster": "example-motion-future/e1341edad99e7794/poster.jpg",
+      "durationMs": 1267,
+      "holdMs": 1267,
+      "hash": "e1341edad99e7794"
     }
   }
 }

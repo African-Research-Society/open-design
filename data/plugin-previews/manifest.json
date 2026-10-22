@@ -1234,39 +1234,39 @@
       "hash": "0b5d9e1ea0c1c549"
     },
     "example-motion-visual-lesson": {
-      "video": "example-motion-visual-lesson/3224529b97a2b928/preview.mp4",
-      "poster": "example-motion-visual-lesson/3224529b97a2b928/poster.jpg",
+      "video": "example-motion-visual-lesson/fbdb750cfd76f0af/preview.mp4",
+      "poster": "example-motion-visual-lesson/fbdb750cfd76f0af/poster.jpg",
       "durationMs": 5033,
       "holdMs": 2500,
-      "hash": "3224529b97a2b928"
+      "hash": "fbdb750cfd76f0af"
     },
     "example-motion-showreel": {
-      "video": "example-motion-showreel/0a958b8c63cbce9e/preview.mp4",
-      "poster": "example-motion-showreel/0a958b8c63cbce9e/poster.jpg",
-      "durationMs": 5067,
+      "video": "example-motion-showreel/d91bcc6e0ae04507/preview.mp4",
+      "poster": "example-motion-showreel/d91bcc6e0ae04507/poster.jpg",
+      "durationMs": 5000,
       "holdMs": 2500,
-      "hash": "0a958b8c63cbce9e"
+      "hash": "d91bcc6e0ae04507"
     },
     "example-motion-ui-morph": {
-      "video": "example-motion-ui-morph/f65be4b8388ea9c2/preview.mp4",
-      "poster": "example-motion-ui-morph/f65be4b8388ea9c2/poster.jpg",
-      "durationMs": 5133,
-      "holdMs": 2500,
-      "hash": "f65be4b8388ea9c2"
-    },
-    "example-motion-product-promo": {
-      "video": "example-motion-product-promo/98c120f3447745d7/preview.mp4",
-      "poster": "example-motion-product-promo/98c120f3447745d7/poster.jpg",
+      "video": "example-motion-ui-morph/5d5bd658366ca7c4/preview.mp4",
+      "poster": "example-motion-ui-morph/5d5bd658366ca7c4/poster.jpg",
       "durationMs": 5033,
       "holdMs": 2500,
-      "hash": "98c120f3447745d7"
+      "hash": "5d5bd658366ca7c4"
+    },
+    "example-motion-product-promo": {
+      "video": "example-motion-product-promo/560cd8e51ab3bbd0/preview.mp4",
+      "poster": "example-motion-product-promo/560cd8e51ab3bbd0/poster.jpg",
+      "durationMs": 5000,
+      "holdMs": 2500,
+      "hash": "560cd8e51ab3bbd0"
     },
     "example-motion-future": {
-      "video": "example-motion-future/e2974a25e0f94aab/preview.mp4",
-      "poster": "example-motion-future/e2974a25e0f94aab/poster.jpg",
-      "durationMs": 4933,
+      "video": "example-motion-future/8361f5456caf9df5/preview.mp4",
+      "poster": "example-motion-future/8361f5456caf9df5/poster.jpg",
+      "durationMs": 3000,
       "holdMs": 2500,
-      "hash": "e2974a25e0f94aab"
+      "hash": "8361f5456caf9df5"
     }
   }
 }

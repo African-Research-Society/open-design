@@ -1,3 +1,4 @@
+import { ARS_BRANDED } from '../branding';
 import { validateCommentSaveTarget } from '../comments/validate-save-target';
 import { previewStorageKey, readPreviewStorage, savePreviewStorageMessage } from '../runtime/preview-storage';
 import { commentSelectorsMatch, commentUsesIdentity, ownerCommentNeedsLocation, resolveOwnerCommentAnchor } from '../comments/owner-anchor';
@@ -9414,11 +9415,13 @@ function HtmlViewer({
   const templateDescriptionId = useId();
   const imageExportTitleId = useId();
   const pptxExportTitleId = useId();
+  // ARS uses the authenticated inline-asset path for ordinary HTML previews.
+  // Direct iframe URL loads cannot use the parent gateway session reliably.
   // Opt back into the legacy inline-asset srcDoc path via `?forceInline=1`
   // on the host page. Lets users escape-hatch around the URL-load default
   // for non-deck HTML that depends on the in-iframe localStorage shim.
   const forceInline = useMemo(
-    () => (typeof window === 'undefined' ? false : parseForceInline(window.location.search)),
+    () => ARS_BRANDED || (typeof window === 'undefined' ? false : parseForceInline(window.location.search)),
     [],
   );
   const [activeCommentTarget, setActiveCommentTarget] = useState<PreviewCommentSnapshot | null>(null);

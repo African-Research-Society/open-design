@@ -27,7 +27,8 @@ import {
   DEFAULT_AMR_RECHARGE_URL,
   classifyAmrAccountFailure,
 } from '../src/integrations/vela-errors.js';
-import { AmrModelLoadingCache } from '../src/runtimes/amr-model-cache.js';
+import { AmrModelLoadingCache, amrRunModels } from '../src/runtimes/amr-model-cache.js';
+import { getRememberedLiveModels, resetLiveModelsForTests } from '../src/runtimes/models.js';
 import {
   amrAgentDef,
   fetchVelaPresetModels,
@@ -148,13 +149,8 @@ describe('AMR runtime def', () => {
     expect(def?.streamFormat).toBe('acp-json-rpc');
   });
 
-  it('builds the documented `vela agent run --runtime opencode` argv', () => {
-    expect(amrAgentDef.buildArgs()).toEqual([
-      'agent',
-      'run',
-      '--runtime',
-      'opencode',
-    ]);
+  it('builds the documented `vela agent run` argv', () => {
+    expect(amrAgentDef.buildArgs()).toEqual(['agent', 'run']);
   });
 
   it('fails closed instead of exposing static stale fallback models', () => {
@@ -202,6 +198,10 @@ describe('AMR runtime def', () => {
       'public_model_glm_5_1          vela',
       'public_model_claude_opus_4_6  vela',
       'public_model_gpt_image_2      vela',
+      'public_model_nano_banana_2    vela',
+      'public_model_nano_banana_2_lite vela',
+      'public_model_seedream_5_0     vela',
+      'public_model_seedream_5_0_pro vela',
       'vela/kimi-k2.6                vela',
       'public_model_seedance_2       vela',
       'public_model_deepseek_v3_2    vela',
@@ -216,7 +216,19 @@ describe('AMR runtime def', () => {
     ]);
     expect(models.every((model) => !model.label.includes('vela/'))).toBe(true);
     expect(models.map((model) => model.id)).not.toContain('gpt-image-2');
+    expect(models.map((model) => model.id)).not.toContain('nano-banana-2');
+    expect(models.map((model) => model.id)).not.toContain('nano-banana-2-lite');
+    expect(models.map((model) => model.id)).not.toContain('seedream-5-0');
+    expect(models.map((model) => model.id)).not.toContain('seedream-5-0-pro');
     expect(models.map((model) => model.id)).not.toContain('seedance-2');
+  });
+
+  it('orders the model every plan can use ahead of other DeepSeek defaults', () => {
+    const models = parseVelaModelJson(JSON.stringify({
+      source: 'preset',
+      data: [{ id: 'deepseek-v4-flash' }, { id: 'deepseek-v4-pro' }, { id: 'deepseek-v4.1-flash' }],
+    }), 'preset');
+    expect(models.map((model) => model.id)).toEqual(['deepseek-v4.1-flash', 'deepseek-v4-flash', 'deepseek-v4-pro']);
   });
 
   it('parses Vela JSON catalog ids through normalizeVelaModelId on the live AMR path', () => {
@@ -230,9 +242,17 @@ describe('AMR runtime def', () => {
           enabled: true,
           default: true,
           cost: { input: 0.14, output: 0.28 },
-          metadata: { cost: 'low', capability: 'standard' },
+          metadata: {
+            cost: 'low',
+            capability: 'standard',
+            contextWindowTokens: 200_000,
+          },
         },
         { id: 'gpt-image-2' },
+        { id: 'nano-banana-2' },
+        { id: 'nano-banana-2-lite' },
+        { id: 'seedream-5.0' },
+        { id: 'seedream-5.0-pro' },
         { id: 'deepseek-v4-flash' },
       ],
     }), 'remote');
@@ -244,12 +264,20 @@ describe('AMR runtime def', () => {
         default: true,
         inputPriceUsdPerMillion: 0.14,
         outputPriceUsdPerMillion: 0.28,
-        metadata: { cost: 'low', capability: 'standard' },
+        metadata: {
+          cost: 'low',
+          capability: 'standard',
+          contextWindowTokens: 200_000,
+        },
       },
       { id: 'deepseek-v3.2', label: 'deepseek-v3.2' },
       { id: 'kimi-k2.7-code', label: 'kimi-k2.7-code', enabled: false },
     ]);
     expect(models.map((m) => m.id)).not.toContain('gpt-image-2');
+    expect(models.map((m) => m.id)).not.toContain('nano-banana-2');
+    expect(models.map((m) => m.id)).not.toContain('nano-banana-2-lite');
+    expect(models.map((m) => m.id)).not.toContain('seedream-5.0');
+    expect(models.map((m) => m.id)).not.toContain('seedream-5.0-pro');
     expect(models.map((m) => m.id)).not.toContain('public_model_kimi_k2_7_code');
     expect(() => parseVelaModelJson(JSON.stringify({ source: 'preset', data: [] }), 'remote'))
       .toThrow(/expected remote/);
@@ -515,6 +543,44 @@ process.exit(2);
 });
 
 describe('AMR model loading cache', () => {
+  it('waits for the caller catalog instead of settling for the preset when asked', async () => {
+    const cache = new AmrModelLoadingCache(1_000);
+    const fetchers = {
+      fetchPreset: async () => [{ id: 'deepseek-v4-flash', label: 'deepseek-v4-flash' }],
+      fetchRemote: async () => {
+        await new Promise((resolve) => setTimeout(resolve, 30));
+        return [{ id: 'deepseek-v4.1-flash', label: 'deepseek-v4.1-flash', default: true }];
+      },
+    };
+    const catalog = await cache.getAuthoritative('vela:local', fetchers, 1_000);
+    expect(catalog.source).toBe('remote');
+    expect(catalog.models?.map((m) => m.id)).toEqual(['deepseek-v4.1-flash']);
+  });
+
+  it('falls back to the preset once the caller catalog wait runs out', async () => {
+    const cache = new AmrModelLoadingCache(1_000);
+    const catalog = await cache.getAuthoritative('vela:local', {
+      fetchPreset: async () => [{ id: 'preset-a', label: 'preset-a' }],
+      fetchRemote: () => new Promise(() => {}),
+    }, 20);
+    expect(catalog.source).toBe('preset');
+  });
+
+  it('prefers a remembered caller catalog over a later preset seed', () => {
+    resetLiveModelsForTests();
+    try {
+      const preset = { source: 'preset' as const, models: [{ id: 'deepseek-v4-flash', label: 'deepseek-v4-flash' }] };
+      expect(amrRunModels('amr', 'scope', preset).map((m) => m.id)).toEqual(['deepseek-v4-flash']);
+      expect(getRememberedLiveModels('amr', 'scope').map((m) => m.id)).toEqual(['deepseek-v4-flash']);
+
+      const remote = { source: 'remote' as const, models: [{ id: 'deepseek-v4.1-flash', label: 'deepseek-v4.1-flash', default: true }] };
+      amrRunModels('amr', 'scope', remote);
+      expect(amrRunModels('amr', 'scope', preset).map((m) => m.id)).toEqual(['deepseek-v4.1-flash']);
+    } finally {
+      resetLiveModelsForTests();
+    }
+  });
+
   it('returns preset immediately, coalesces remote refreshes, then serves remote', async () => {
     const cache = new AmrModelLoadingCache(1_000);
     let remoteCalls = 0;

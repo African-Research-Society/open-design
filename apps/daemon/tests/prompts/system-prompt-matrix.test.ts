@@ -47,9 +47,7 @@ const SECTION_MARKERS = [
   ['slim-core-charter', '# OpenDesign Charter'],
   ['slim-platform-contracts', '## Platform delivery contracts'],
   ['personal-memory', '## Personal memory (auto-extracted from past chats)'],
-  ['memory-intent-gateway', '## Intent gateway — turn short asks into a brief'],
   ['memory-verify-scorecard', '## Self-verify against your verified rules'],
-  ['memory-rule-proposal', '## Propose new verified rules from corrections'],
   ['custom-instructions-user', '## Custom instructions (user-level)'],
   ['custom-instructions-project', '## Custom instructions (project-level)'],
   ['design-system-usage', '## How to use this design system'],
@@ -58,8 +56,6 @@ const SECTION_MARKERS = [
   ['design-system-tokens', '## Active design system tokens'],
   ['design-system-components-manifest', '## Reference component manifest'],
   ['design-system-fixture', '## Reference fixture'],
-  ['design-system-intent-routing', '## Structured component intent routing'],
-  ['design-system-runtime-unavailable', '## Structured design-system runtime unavailable'],
   ['design-system-pull-index', '## Pull-layer files available on demand'],
   ['craft-references', '## Active craft references'],
   ['active-skill', '## Active skill'],
@@ -73,7 +69,9 @@ const SECTION_MARKERS = [
   ['critique-panel', '## Panelist role definitions'],
   ['active-ds-visual-direction-override', '## Active design system visual direction'],
   ['filesystem-handoff-override', '## Filesystem handoff'],
+  ['skill-write-boundary', '## Editing skills'],
   ['clarifying-questions', '## Structured clarification on any turn'],
+  ['comment-identity-edit', 'Only when editing HTML that already contains data-od-comment-id'],
   ['role-marker-guard', ROLE_MARKER_GUARD_SENTINEL],
 ] as const satisfies ReadonlyArray<readonly [string, string]>;
 
@@ -124,8 +122,6 @@ const designSystemInputs = {
   designSystemUsageMd: 'Read DESIGN.md first, then bind tokens.',
   designSystemTokensCss: ':root { --ink: #111; --bone: #f5f1e8; }',
   designSystemComponentsManifest: 'button.primary — solid ink pill',
-  designSystemIntentIndex:
-    'Canonical business intents declared by the active design system:\n- `account.settings.save` → Button.primary',
   designSystemPullIndex: 'reference/moodboard.html — full moodboard',
   designSystemImportMode: 'normalized',
 } satisfies Partial<ComposeInput>;
@@ -167,24 +163,6 @@ const SCENARIOS: ReadonlyArray<[name: string, input: ComposeInput]> = [
       ...designSystemInputs,
       designSystemComponentsManifest: undefined,
       designSystemFixtureHtml: '<button class="primary">Buy</button>',
-      designSystemIntentIndex: undefined,
-      executionProfile: 'filesystem',
-    },
-  ],
-  [
-    'design-ds-manifest-legacy',
-    {
-      ...designSystemInputs,
-      designSystemIntentIndex: undefined,
-      executionProfile: 'filesystem',
-    },
-  ],
-  [
-    'design-ds-invalid-runtime',
-    {
-      ...designSystemInputs,
-      designSystemIntentIndex: undefined,
-      designSystemRuntimeIssue: 'intent mapping references unknown component MissingButton',
       executionProfile: 'filesystem',
     },
   ],
@@ -263,7 +241,7 @@ const SCENARIOS: ReadonlyArray<[name: string, input: ComposeInput]> = [
   ['plan-mode', { metadata: { kind: 'prototype' }, sessionMode: 'plan', executionProfile: 'filesystem' }],
   // BYOK/plain adapters: API override pinned on top, no filesystem handoff.
   ['api-mode-byok', { metadata: { kind: 'prototype' }, streamFormat: 'plain' }],
-  // Two-loop memory hooks individually disabled; rule-proposal stays.
+  // Memory hooks disabled; the personal memory body stays.
   [
     'memory-hooks-off',
     { ...memoryInputs, memoryHooks: { rewrite: false, verify: false }, executionProfile: 'filesystem' },

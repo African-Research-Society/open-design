@@ -41,33 +41,79 @@ export const MEDIA_USER_REPLY_CONTRACT = `
 Keep operational details in the tool output and daemon logs. The tool trace
 retains the upstream failure, while the daemon logs a redacted error together
 with the media task id, run id, model, provider, and status. Never copy model
-or provider names, catalogue prefixes, CLI names, environment
-variables, filenames, paths, task ids, stderr, exit codes, credential advice,
-or diagnostic details into the visible assistant reply.
+or provider names, catalogue prefixes, CLI names, environment variables,
+filenames, paths, task ids, stderr, exit codes, credential advice, or
+diagnostic details into the visible assistant reply. An internal code is one of
+those diagnostic details: it is a support ticket, not a next step, so it never
+reaches the reply either.
 
-For an image request, the visible assistant reply contains exactly one short,
-localized sentence and nothing else:
+**Branch on \`error.nextStep\`, never on a code, a status, or wording.** Every
+media failure carries one -- on a failed task
+(\`{"status":"failed","error":{"nextStep":"..."}}\`) and on the \`{"error":{...}}\`
+line printed when dispatch never started. It is a closed set of nine values,
+and it is the only thing in the failure that answers "so what now?". Read it
+and act; never re-derive a verdict from wording, HTTP status, a placeholder/stub, missing output, or model-generated fallback text, and never claim a service outage that \`nextStep\` did not establish.
+
+First, what YOU do before replying at all:
+
+- \`switch-model\`: pick another allowed model for the same surface and dispatch once more. Report only if that attempt fails too.
+- \`retry-later\`: dispatch the identical request once more. Report only if the second attempt fails too.
+- every other value: report immediately. Do not re-dispatch -- a second call cannot change the outcome and may bill the user again.
+
+Then the visible assistant reply: exactly one short, localized sentence and
+nothing else. Every failure sentence names what happened AND what to do about
+it; a sentence that only says "it failed" is not an acceptable substitute.
 
 - Success: say the localized equivalent of "Image generated". For Simplified
   Chinese, reply exactly \`图片已生成\`.
-- Refused by a content safety policy — the structured result's error \`code\` is
-  \`safety_rejection\`: say the localized equivalent of "The image was not
-  generated because a content safety policy refused the request". For
-  Simplified Chinese, reply exactly \`图片未生成：内容安全策略拒绝了该请求\`.
-- A structured provider error — the result contains a non-empty error \`code\`
-  and \`message\`: include both safe fields so the user can understand the
-  actual failure. For Simplified Chinese, reply exactly
-  \`图片未生成：{message}（错误代码：{code}）\`, substituting the returned values.
-- Any other failure, including a placeholder/stub outcome: say the localized
-  equivalent of "The image generation service is temporarily unavailable". For
-  Simplified Chinese, reply exactly \`图片生成服务暂时不可用\`.
+- \`revise-request\` -- a content policy refused the request. Name what it
+  refused only when \`error.subject\` proves it; otherwise name both:
+  - \`subject: "prompt"\` -- "The wording didn't pass content review. Reword it,
+    drop the sensitive details, and try again." Simplified Chinese, exactly:
+    提示词没通过内容审核 —— 换个说法、去掉敏感内容再试。
+  - \`subject: "input_image"\` -- "The reference image didn't pass content
+    review. Try a different reference image." Simplified Chinese, exactly:
+    参考图没通过内容审核 —— 换一张参考图再试。
+  - \`subject\` absent -- "The request didn't pass content review. Reword it, or
+    use a different reference image." Simplified Chinese, exactly:
+    这次请求没通过内容审核 —— 换个说法,或者换一张参考图再试。
+- \`switch-model\` -- "This image model can't take the request. Pick a different
+  image model and try again." Simplified Chinese, exactly:
+  这个图片模型用不了 —— 换一个图片模型再试。
+- \`open-settings\` -- "The image model still needs its API key. Fill it in
+  under Settings and it will work." Simplified Chinese, exactly:
+  图片模型的 API key 还没填 —— 在设置里填好就能用。
+- \`sign-in\` -- "The sign-in expired before the image was made. Sign in again
+  and retry." Simplified Chinese, exactly:
+  登录已过期,图片没生成 —— 重新登录后再试一次。
+- \`add-credit\` -- "The image model is out of credit. Retrying won't bring it
+  back; top up, or switch to another image model." Simplified Chinese, exactly:
+  图片模型的额度用完了 —— 重试不会恢复,去充值或换一个图片模型。
+- \`retry-later\` -- "Image generation is unsteady right now. It isn't anything
+  you did; trying again shortly usually works." Simplified Chinese, exactly:
+  图片生成这会儿不稳定 —— 不是你的问题,过一会儿再试通常就好。
+- \`update-app\` -- "Open Design needs an update before it can generate images."
+  Simplified Chinese, exactly:
+  需要更新 Open Design 才能生成图片。
+- \`unsupported\` -- "This task doesn't generate images. Start an image project
+  if you need one." Simplified Chinese, exactly:
+  这次任务里不能生成图片 —— 需要图片的话,新建一个图片项目再试。
+- \`contact-support\` -- "The image didn't come out, and it isn't anything you
+  did. This one is on Open Design and we've logged it; trying again usually
+  recovers, and if it keeps happening, contact us." Simplified Chinese,
+  exactly:
+  图片没生成出来,不是你的操作有误 —— 这次是 Open Design 自己的问题,我们已经记下了。重试一般能恢复;反复出现的话联系我们。
+- No \`nextStep\` at all -- an older daemon, or a failure that never reached the
+  dispatcher: use the \`contact-support\` sentence. If image generation was
+  expected and you never invoked the dispatcher, that is your own miss and it
+  takes the same sentence; do not invent a cause for it.
 
-A provider verdict is not automatically an outage. Use its structured code
-and message without reclassifying either one from wording or HTTP status.
+Video and audio use the same sentences with the medium swapped -- 视频 / 音频 in
+place of 图片 -- and never a model or provider name in either.
 
-Do not add a filename, model, provider, remediation, retry offer, or follow-up
-question. For a structured provider error, expose only its safe \`message\` and
-\`code\`; retain all other diagnostics in the tool trace for debugging.`;
+Do not add a filename, model, provider, internal code, retry offer, or
+follow-up question to the reply. Every other diagnostic stays in the tool trace
+for debugging.`;
 
 export function renderMediaGenerationContract(
   mediaExecution?: MediaExecutionPolicy | undefined,
@@ -91,10 +137,13 @@ OD's behalf.
 
 External MCP media tools, when explicitly configured for this run, are outside
 this OD-owned media policy. If no such external tool is available and the user
-asks for media, describe the intended creative brief, prompt, surface, model
-preference, references, and output filename in chat, then stop. Do not claim a
-file was generated and do not emit an \`<artifact>\` block for media.
-${scope}`;
+asks for an image, use the fixed \`unsupported\` sentence from the user-reply
+contract below and stop. For a video or audio request, state briefly
+that media generation is disabled for this run and stop. Do not claim a file was
+generated and do not emit an \`<artifact>\` block for media.
+${scope}
+
+${MEDIA_USER_REPLY_CONTRACT}`;
   }
   return renderEnabledMediaGenerationContract(mediaExecution, byokMediaDefaults);
 }
@@ -274,7 +323,7 @@ capture. The daemon process is unsandboxed and renders reliably AND
 streams per-line progress to your stderr (so the user sees frame
 counts in chat instead of a silent spinner).
 
-**Default recipe — use \`hyperframes init\`, don't write from scratch.**
+**Default recipe — use Open Design's scaffold, don't write from scratch.**
 For most OD requests ("test video", "5s product reveal", "demo clip"),
 authoring an HF composition from zero costs minutes of model output and
 silent chat-tool time. The init scaffold gives you a valid GSAP-ready
@@ -285,8 +334,8 @@ actually changes.
 COMP_REL=".hyperframes-cache/$(date +%s)-$(openssl rand -hex 2)"
 COMP="$OD_PROJECT_DIR/$COMP_REL"
 
-# Pure file copy, no Chrome — works in any agent shell.
-npx hyperframes init "$COMP" --example blank --skip-skills --non-interactive
+# Open Design writes the required files itself; HyperFrames init is never run.
+"$OD_NODE_BIN" "$OD_BIN" media scaffold --project "$OD_PROJECT_ID" --composition-dir "$COMP_REL"
 
 # Edit ONLY $COMP/index.html: tweak data-duration on the root, swap
 # the placeholder palette, add 1–3 clip <div>s, and append matching
@@ -313,10 +362,11 @@ The chat surfaces the mp4 as a download/open chip automatically. Keep
 Only write the composition HTML from scratch when the user explicitly
 needs something the blank template clearly can't host (multi-comp
 timelines, audio-reactive visuals, TTS-synced captions on an existing
-track). For typical test renders, the init+edit path is the default.
+track). For typical test renders, the scaffold+edit path is the default.
 
-You MAY still run lighter HF subcommands from your own shell:
-\`npx hyperframes lint "$COMP"\`, \`transcribe\`, \`tts\` — none of
+You MAY still run lighter HF subcommands from your own shell through
+\`"$OD_NODE_BIN" "$OD_HYPERFRAMES_BIN"\`: \`lint "$COMP"\`, \`transcribe\`,
+\`tts\` — none of
 these spawn Chrome so the agent-side sandbox doesn't trip them.
 Reserve the daemon dispatch for anything Chrome-bound (\`render\`,
 \`inspect\`, \`preview\`).
@@ -455,10 +505,17 @@ path is given.
    or the user asks for "best"):
    - **Image, best quality (user says "best", "highest quality", "most realistic")**:
      use \`flux-pro-ultra\` — but tell the user it takes 60–180s
-   - **Image, default / no preference stated**: use the project metadata's
-     \`imageModel\` if set; otherwise use \`gpt-image-2\`
-   - **Video, best quality**: use project metadata \`videoModel\` if set; otherwise
-     \`doubao-seedance-2-0-260128\`
+   - **Image, default / no preference stated**: use an explicitly named model
+     in the current user message, then the run-scoped BYOK image default, then the project metadata's
+     \`imageModel\` if set; otherwise use \`vela/gpt-image-2\`
+   - **Video**: preserve an explicitly requested model and provider. Otherwise
+     prefer the configured run/project default if available. Before choosing an
+     OpenDesign Cloud video model, read the account/workspace catalogue using
+     \`"$OD_NODE_BIN" "$OD_BIN" media models --cloud --json\`. Choose only a returned
+     video model. An empty list means no cloud video capability for this account;
+     a failed read means unknown. Report either gap and do not silently change
+     an explicitly requested model or billing channel. Local Motion and configured
+     BYOK providers are independent of this cloud catalogue.
 
    Default aspect ratio (use when \`aspectRatio\` is unknown):
    - Landscape/outdoor scenes, cinematic, widescreen → \`16:9\`
@@ -477,10 +534,10 @@ path is given.
 
    For \`hyperframes-html\`, the discovery turn is the last turn before
    you start authoring. Once the user answers, create the composition
-   with \`npx hyperframes init\` under \`.hyperframes-cache/\`, edit the
+   with \`"$OD_NODE_BIN" "$OD_BIN" media scaffold\` under \`.hyperframes-cache/\`, edit the
    generated \`index.html\`, and dispatch through
    \`"$OD_NODE_BIN" "$OD_BIN" media generate --surface video --model hyperframes-html --composition-dir <rel>\`.
-   Do not run \`npx hyperframes render\` yourself; Chrome-bound rendering
+   Do not run HyperFrames \`render\` yourself; Chrome-bound rendering
    must happen in the daemon process. Do not add a second "plan" or
    "environment check" message first.
 3. **Generate by shell, then follow the user-facing completion contract.** When you invoke
@@ -518,8 +575,8 @@ stub/error signal as described below.
 
 The dispatcher tags every outcome explicitly. Treat the failure signals below
 as hard errors, keep their details in the tool trace and daemon logs, and use
-them only to select the generic visible failure sentence. Never narrate a stub
-as if it were the final result.
+them only to select the safe visible failure category in the user-reply contract.
+Never narrate a stub as if it were the final result.
 
 1. **HTTP status.** When stubs are disabled (the default release-build
    posture), the dispatcher returns \`503 provider not configured\` for
@@ -550,8 +607,9 @@ as if it were the final result.
    1×1 transparent PNG plus a \`providerNote\` that starts with
    \`[stub]\` is the placeholder renderer's signature. If you see one,
    either the integration is pending (\`intentionalStub: true\`) or the
-   provider call failed (\`providerError\` non-null). Keep that distinction in
-   diagnostics only; both outcomes use the generic visible failure sentence.
+   provider call failed (\`providerError\` non-null). Either way it is a failure:
+   report it through the failure's \`nextStep\` like any other outcome, never as
+   a delivered result.
 
 Some long-tail image/video/music providers are still intentional stubs. Treat
 their placeholder outcome as a failure for user-facing completion copy.

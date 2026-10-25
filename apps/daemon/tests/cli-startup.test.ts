@@ -20,7 +20,21 @@ describe('CLI startup boundaries', () => {
     ['config', ['config', 'get', 'apiProtocol', '--daemon-url', 'http://127.0.0.1:9']],
     ['diagnostics', ['diagnostics', 'export', '--daemon-url', 'http://127.0.0.1:9']],
     ['amr', ['amr', 'status', '--daemon-url', 'http://127.0.0.1:9']],
-  ])('initializes flag constants before dispatching od %s', async (_name, args) => {
+    ['automation create', [
+      'automation', 'create',
+      '--name', 'nightly',
+      '--prompt', 'refresh the board',
+      '--schedule', 'daily:03:00',
+      '--skill', 'alpha,beta',
+      '--daemon-url', 'http://127.0.0.1:9',
+    ]],
+    ['automation update', [
+      'automation', 'update', 'routine-1',
+      '--name', 'nightly',
+      '--skill', 'alpha,beta',
+      '--daemon-url', 'http://127.0.0.1:9',
+    ]],
+  ])('initializes module-level bindings before dispatching od %s', async (_name, args) => {
     let output = '';
     try {
       const result = await execFileAsync(
@@ -42,6 +56,7 @@ describe('CLI startup boundaries', () => {
     expect(output).not.toContain('CONFIG_STRING_FLAGS');
     expect(output).not.toContain('DIAGNOSTICS_STRING_FLAGS');
     expect(output).not.toContain('AMR_STRING_FLAGS');
+    expect(output).not.toContain('splitAutomationIds');
   });
 
   it('keeps od daemon start alive until SIGTERM and reports the actual listening port', async () => {
@@ -283,8 +298,15 @@ describe('CLI startup boundaries', () => {
       const failed = error as { code?: number; stderr?: string };
       const stderr = failed.stderr ?? '';
       expect(failed.code).toBe(3);
-      expect(stderr).toContain('failed to reach daemon');
+      expect(JSON.parse(stderr)).toEqual({
+        error: {
+          code: 'MEDIA_DISPATCHER_UNREACHABLE',
+          message: 'local media dispatcher could not be reached',
+          nextStep: 'retry-later',
+        },
+      });
       expect(stderr).not.toContain('OD_DATA_DIR');
+      expect(stderr).not.toContain('127.0.0.1');
     } finally {
       await chmod(dataDir, 0o700).catch(() => undefined);
       await rm(root, { recursive: true, force: true });

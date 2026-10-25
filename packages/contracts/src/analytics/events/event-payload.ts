@@ -1,3 +1,6 @@
+import type { ClientMetricEventPayload } from '../client-metrics.js';
+import type { UpdateLifecycleObservedProps } from '../update-lifecycle.js';
+import type { MediaStockRequestResultProps, MediaStockSlotResultProps } from '../media-stock.js';
 /**
  * @module analytics/events/event-payload
  * Discriminated union of all analytics event payloads.
@@ -7,7 +10,9 @@ import type { AmrAuthStageProps } from './amr-auth.js';
 import type { DesignSystemApplyResultProps, DesignSystemCreateResultProps, DesignSystemEnrichResultProps, DesignSystemReviewResultProps, DesignSystemSourceIngestResultProps, DesignSystemStatusResultProps } from './design-systems.js';
 import type { OnboardingCompletedProps, OnboardingCompleteResultProps, OnboardingFirstGenerationCompletedProps, OnboardingFirstPromptSentProps, OnboardingPromptPrefilledProps, OnboardingRuntimeScanResultProps } from './onboarding.js';
 import type { PageViewProps } from './page-view.js';
-import type { ArtifactDeployResultProps, ArtifactExportResultProps, ArtifactPublishResultProps, AssistantFeedbackClickProps, AssistantFeedbackReasonClickProps, AssistantFeedbackReasonSubmitProps, AssistantFeedbackReasonViewProps, ByokPreflightBlockedProps, ContextLinkResultProps, ConversationForkResultProps, FeedbackSubmitResultProps, FileUploadResultProps, FileVersionRestoreResultProps, LangfuseReportResultProps, MediaGenerationResultProps, PackagedRuntimeFailedProps, PluginImportResultProps, PluginReplacementResultProps, ProjectCreateResultProps, RunCreatedProps, RunFinishedProps, RunRetryAttemptedProps, RunRetryFinishedProps, SettingsByokModelsFetchResultProps, SettingsByokTestResultProps, SettingsCliTestResultProps, SettingsConnectorAuthResultProps, SettingsViewProps, SketchExportResultProps, SketchSaveResultProps, SpeakerNotesSaveResultProps, UpdateApplyObservedProps, UpdateCheckResultProps, UpdateInstallResultProps } from './result-events.js';
+import type {
+  AgentDetectDiagnosticProps, ArtifactDeployResultProps, ChatArtifactCaptureResultProps, ArtifactEditResultProps, ArtifactExportResultProps, ArtifactPublishResultProps, AssistantFeedbackClickProps, AssistantFeedbackReasonClickProps, AssistantFeedbackReasonSubmitProps, AssistantFeedbackReasonViewProps, ByokPreflightBlockedProps, ContextLinkResultProps, ConversationForkResultProps, FeedbackSubmitResultProps, FileUploadResultProps, FileVersionRestoreResultProps, LabsItemToggledProps, LangfuseReportResultProps, MediaGenerationResultProps, PackagedRuntimeFailedProps, PluginImportResultProps, PluginReplacementResultProps, ProjectCreateResultProps, RunCreatedProps, RunFinishedProps, RunRetryAttemptedProps, RunRetryFinishedProps, SettingsByokModelsFetchResultProps, SettingsByokTestResultProps, SettingsCliTestResultProps, SettingsConnectorAuthResultProps, SettingsViewProps, SketchExportResultProps, SketchSaveResultProps, SpeakerNotesSaveResultProps, UpdateApplyObservedProps, UpdateCheckResultProps, UpdateInstallResultProps } from './result-events.js';
+import type { ProjectCommentSendResultProps } from './result-events.js';
 import type { SurfaceViewProps } from './surface-view.js';
 import type { AmrAuthResultProps, UiClickProps } from './ui-click.js';
 import type {
@@ -19,6 +24,7 @@ import type { ProjectCommentCreateResultProps, WorkspaceInviteResultProps, Works
 // ---- Discriminated union of all event payloads ---------------------------
 
 export type AnalyticsEventPayload =
+  | ClientMetricEventPayload
   | { event: 'packaged_runtime_failed'; props: PackagedRuntimeFailedProps }
   | { event: 'page_view'; props: PageViewProps }
   | { event: 'ui_click'; props: UiClickProps }
@@ -35,12 +41,17 @@ export type AnalyticsEventPayload =
   | { event: 'mcp_tool_started'; props: McpToolStartedProps }
   | { event: 'mcp_tool_finished'; props: McpToolFinishedProps }
   | { event: 'media_generation_result'; props: MediaGenerationResultProps }
+  | { event: 'media_stock_request_result'; props: MediaStockRequestResultProps }
+  | { event: 'media_stock_slot_result'; props: MediaStockSlotResultProps }
+  | { event: 'chat_artifact_capture_result'; props: ChatArtifactCaptureResultProps }
   | { event: 'update_install_result'; props: UpdateInstallResultProps }
   | { event: 'update_check_result'; props: UpdateCheckResultProps }
   | { event: 'update_apply_observed'; props: UpdateApplyObservedProps }
+  | { event: 'update_lifecycle_observed'; props: UpdateLifecycleObservedProps }
   | { event: 'file_upload_result'; props: FileUploadResultProps }
   | { event: 'context_link_result'; props: ContextLinkResultProps }
   | { event: 'speaker_notes_save_result'; props: SpeakerNotesSaveResultProps }
+  | { event: 'artifact_edit_result'; props: ArtifactEditResultProps }
   | { event: 'artifact_export_result'; props: ArtifactExportResultProps }
   | { event: 'artifact_deploy_result'; props: ArtifactDeployResultProps }
   | { event: 'artifact_publish_result'; props: ArtifactPublishResultProps }
@@ -53,6 +64,7 @@ export type AnalyticsEventPayload =
   | { event: 'workspace_shared_project_open_result'; props: WorkspaceSharedProjectOpenResultProps }
   | { event: 'workspace_resource_action_result'; props: WorkspaceResourceActionResultProps }
   | { event: 'project_comment_create_result'; props: ProjectCommentCreateResultProps }
+  | { event: 'project_comment_send_result'; props: ProjectCommentSendResultProps }
   | { event: 'conversation_fork_result'; props: ConversationForkResultProps }
   | { event: 'feedback_submit_result'; props: FeedbackSubmitResultProps }
   | { event: 'assistant_feedback_click'; props: AssistantFeedbackClickProps }
@@ -69,6 +81,7 @@ export type AnalyticsEventPayload =
       props: AssistantFeedbackReasonSubmitProps;
     }
   | { event: 'settings_view'; props: SettingsViewProps }
+  | { event: 'labs_item_toggled'; props: LabsItemToggledProps }
   | { event: 'settings_cli_test_result'; props: SettingsCliTestResultProps }
   | { event: 'settings_byok_test_result'; props: SettingsByokTestResultProps }
   | {
@@ -77,6 +90,7 @@ export type AnalyticsEventPayload =
     }
   | { event: 'byok_preflight_blocked'; props: ByokPreflightBlockedProps }
   | { event: 'settings_connector_auth_result'; props: SettingsConnectorAuthResultProps }
+  | { event: 'agent_detect_diagnostic'; props: AgentDetectDiagnosticProps }
   | { event: 'amr_auth_stage'; props: AmrAuthStageProps }
   | { event: 'amr_auth_result'; props: AmrAuthResultProps }
   | { event: 'onboarding_runtime_scan_result'; props: OnboardingRuntimeScanResultProps }

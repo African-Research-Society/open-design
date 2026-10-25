@@ -1,3 +1,5 @@
+import { readCachedVisiblePlugins } from '../state/projects';
+import { usePageNavigationReady } from '../observability/navigation-timing';
 import {
   useCallback,
   useEffect,
@@ -29,7 +31,8 @@ import {
   type SkillImportInput,
   type SkillImportError,
 } from '../providers/registry';
-import { localizeSkillName } from '../i18n/content';
+import { localizeSkillDescription, localizeSkillName } from '../i18n/content';
+import type { Locale } from '../i18n/types';
 import { useAnalytics } from '../analytics/provider';
 import {
   trackPageView,
@@ -924,6 +927,26 @@ function skillCardCategory(skill: SkillSummary): MarketCardCategory | null {
   return { slug, label: humanizeCategory(slug) };
 }
 
+/**
+ * A card's headline and its summary always resolve through the SAME locale.
+ * A skill carries both halves — `displayName` from the `en_name` / `zh_name`
+ * frontmatter and `descriptionI18n` from `en_description` / `zh_description`,
+ * plus the built-in `skillCopy` translation tables in `i18n/content` — so
+ * pairing a localized title with the raw frontmatter `description` is what
+ * produced OPEND-2250's Chinese-title / English-summary card. The plugin
+ * builder above already holds this invariant through `localizePluginTitle` +
+ * `localizePluginDescription`; skills go through here for the same reason.
+ */
+function localizeSkillCardCopy(
+  locale: Locale,
+  skill: SkillSummary,
+): { title: string; description: string } {
+  return {
+    title: localizeSkillName(locale, skill),
+    description: localizeSkillDescription(locale, skill),
+  };
+}
+
 type MarketCardAction =
   | { kind: 'try'; record: InstalledPluginRecord }
   | { kind: 'install'; plugin: AvailableMarketplacePlugin }
@@ -1117,6 +1140,7 @@ export function ExtensionsMarketplace({
   const [marketplaces, setMarketplaces] = useState<PluginMarketplace[]>([]);
   const [skills, setSkills] = useState<SkillSummary[]>([]);
   const [loading, setLoading] = useState(true);
+  const [navigationCatalogVerified, setNavigationCatalogVerified] = useState(false);
   const [loadedMarketplaceIdentity, setLoadedMarketplaceIdentity] = useState<string | null>(null);
   const marketplaceCatalogRequestGenerationRef = useRef(0);
   const sharedResourcesRequestGenerationRef = useRef(0);
@@ -1354,6 +1378,7 @@ export function ExtensionsMarketplace({
       workspaceIdentityCacheKey(read.context),
       read.context ? 'scoped' : 'headerless',
     ]);
+    const previousPluginCache = readCachedVisiblePlugins({ workspaceContext: read.context });
     setLoading(true);
     const [rows, allRows, catalogs, skillRows] = await Promise.all([
       listPlugins({ workspaceContext: read.context }),
@@ -1374,6 +1399,9 @@ export function ExtensionsMarketplace({
       || currentWorkspaceAccountGeneration() !== accountGeneration
       || !read.isStillCurrent(emContextRef.current)
     ) return;
+    const pluginCache = readCachedVisiblePlugins({ workspaceContext: read.context });
+    setNavigationCatalogVerified(pluginCache !== null && pluginCache !== previousPluginCache
+      && pluginCache.every(plugin => allRows.includes(plugin)));
     setPlugins(rows);
     setAllInstalledPlugins(allRows);
     setMarketplaces(catalogs);
@@ -1838,13 +1866,13 @@ export function ExtensionsMarketplace({
       };
     };
     const skillCard = (skill: SkillSummary, personal: boolean): MarketCard => {
-      const title = localizeSkillName(locale, skill);
+      const { title, description } = localizeSkillCardCopy(locale, skill);
       const shared = sharedSkillIds.has(skill.id);
       const canUnshare = sharedSkillMeta.get(skill.id)?.canUnshare === true;
       return {
         id: skill.id,
         title,
-        description: skill.description || '',
+        description,
         accent: marketAccent(skill.id),
         // #5517's skill row carries a "试一试" action just like a plugin row;
         // the port dropped it, which left every skill card with no way to use
@@ -1946,11 +1974,15 @@ export function ExtensionsMarketplace({
       const meta = sharedSkillMeta.get(id);
       const canUnshare = meta?.canUnshare === true;
       const skill = skills.find((row) => row.id === id) ?? null;
-      const title = skill ? localizeSkillName(locale, skill) : meta?.title || id;
+      // A team-shared skill that is also on this machine resolves through the
+      // same locale invariant as a local one; a shared row we have no local
+      // copy of falls back to the share record, which carries no translations.
+      const localized = skill ? localizeSkillCardCopy(locale, skill) : null;
+      const title = localized?.title ?? (meta?.title || id);
       return {
         id,
         title,
-        description: skill?.description || meta?.description || '',
+        description: localized?.description || meta?.description || '',
         accent: marketAccent(id),
         action: skill ? { kind: 'use-skill', skill } : { kind: 'none' },
         detail: skill ? { kind: 'skill', skill } : null,
@@ -2019,6 +2051,10 @@ export function ExtensionsMarketplace({
     loading
     || loadedMarketplaceIdentity !== marketplaceIdentity
     || (scope !== 'official' && loadedSharedIdentity !== marketplaceIdentity);
+
+  usePageNavigationReady({ page: 'plugins', visible: isActive && !catalogLoading,
+    ready: isActive && !workspaceContextLoading && !catalogLoading && navigationCatalogVerified,
+    failure: isActive && (workspaceContextFailure === 'unavailable' || (!catalogLoading && !navigationCatalogVerified)), scopeKey: marketplaceIdentity });
 
   if (cardDetail?.kind === 'skill') {
     const selectedSkill = cardDetail.skill;

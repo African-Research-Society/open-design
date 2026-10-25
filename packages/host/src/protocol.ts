@@ -133,6 +133,18 @@ export type OpenDesignHostCaptureOptions = { clip?: OpenDesignHostCaptureClip };
 export type OpenDesignHostCaptureSuccess = { dataUrl: string; h: number; ok: true; w: number };
 export type OpenDesignHostCaptureResult = OpenDesignHostCaptureSuccess | OpenDesignHostFailure;
 
+export type OpenDesignHostPreviewNavigationFailure = {
+  errorCode: number;
+  eventId: number;
+  frameName?: string;
+  occurredAtMs: number;
+  validatedUrl: string;
+};
+
+export type OpenDesignHostPreviewNavigationFailureListener = (
+  failure: OpenDesignHostPreviewNavigationFailure,
+) => void;
+
 export type OpenDesignHostBrowserClearDataOptions = {
   cookies?: boolean;
   storage?: boolean;
@@ -360,7 +372,21 @@ export type OpenDesignHostUpdaterOpenDialogRequest = {
 
 export type OpenDesignHostUpdaterOpenDialogListener = (request: OpenDesignHostUpdaterOpenDialogRequest) => void;
 
+export type OpenDesignHostDownloadResult = {
+  url: string;
+  state: "completed" | "cancelled" | "interrupted";
+};
+
 export type OpenDesignHostBridge = {
+  startup?: {
+    context(): Promise<{ launch_attempt_id: string; app_session_id: string } | null>;
+    signal(value: { launch_attempt_id: string; app_session_id: string;
+      readiness_point: 'first_visible' | 'interactive_ready'; required_data_ready?: boolean; actions_ready?: boolean }): Promise<boolean>;
+  };
+  /** Optional on older hosts. Reports actual disk completion, never initiation. */
+  downloads?: {
+    subscribe(listener: (result: OpenDesignHostDownloadResult) => void): () => void;
+  };
   // Optional so older host builds still satisfy the bridge shape; callers
   // must feature-detect before invoking.
   appearance?: {
@@ -379,6 +405,13 @@ export type OpenDesignHostBridge = {
   pet: {
     setVisible(visible: boolean): void;
   };
+  // Optional so web builds and older desktop hosts keep the same contract.
+  // Electron is the only layer that can observe a compositor-affecting
+  // subframe navigation failure after the iframe DOM remains healthy.
+  preview?: {
+    getLatestNavigationFailure(): OpenDesignHostPreviewNavigationFailure | null;
+    subscribeNavigationFailure(listener: OpenDesignHostPreviewNavigationFailureListener): () => void;
+  };
   project: {
     pickAndImport(init?: OpenDesignHostProjectImportInit): Promise<OpenDesignHostProjectImportResult>;
     pickAndReplaceWorkingDir(projectId: string): Promise<OpenDesignHostProjectReplaceWorkingDirResult>;
@@ -390,6 +423,7 @@ export type OpenDesignHostBridge = {
     openExternal(url: string): Promise<OpenDesignHostActionResult>;
     openPath(projectId: string): Promise<OpenDesignHostActionResult>;
   };
+  // Desktop only. Absent in Web and old clients; callers must fail closed.
   updater: {
     check(options?: OpenDesignHostUpdaterActionOptions): Promise<OpenDesignHostUpdaterStatusSnapshot>;
     "clear-cache"(options?: OpenDesignHostUpdaterActionOptions): Promise<OpenDesignHostUpdaterStatusSnapshot>;

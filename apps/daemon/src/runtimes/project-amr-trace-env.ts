@@ -7,7 +7,9 @@ export type PinnedRunWorkspaceScope = Readonly<{
   schemaVersion: 1;
   projectId: string;
   workspaceId: string;
-  workspaceMemberId?: string;
+  // Project writes are creator-gated. Freeze the same member for dynamic
+  // library reads; older persisted Runs may not carry this field.
+  workspaceMemberId?: string | null;
   source: 'persisted_project_binding';
 }>;
 
@@ -87,16 +89,11 @@ export function pinRunWorkspaceScopeForProject(
       ? binding.workspaceId.trim()
       : null;
   if (!workspaceId) return null;
-  const workspaceMemberId =
-    typeof binding?.createdByWorkspaceMemberId === 'string'
-    && binding.createdByWorkspaceMemberId.trim()
-      ? binding.createdByWorkspaceMemberId.trim()
-      : null;
   return Object.freeze({
     schemaVersion: 1,
     projectId: normalizedProjectId,
     workspaceId,
-    ...(workspaceMemberId ? { workspaceMemberId } : {}),
+    workspaceMemberId: binding?.createdByWorkspaceMemberId?.trim() || null,
     source: 'persisted_project_binding',
   });
 }

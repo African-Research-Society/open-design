@@ -16,21 +16,15 @@ import JSZip from 'jszip';
 import type Database from 'better-sqlite3';
 
 import {
+  type Brand,
   type ComponentsManifest,
-  DesignSystemRuntimePathsSchema,
   extractComponentsManifest,
   summarizeComponentsManifestForPrompt,
-  type DesignSystemRuntimePaths,
 } from '@open-design/contracts';
 
 import { parseFrontmatter } from './frontmatter.js';
 import type { FrontmatterObject, FrontmatterValue } from './frontmatter.js';
 import { extractSwiftColors } from './swift-colors.js';
-import {
-  loadDesignSystemRuntimePackage,
-  summarizeDesignSystemIntentMapForPrompt,
-  type DesignSystemRuntimeLoadResult,
-} from './runtime.js';
 import { workspaceTeamDesignSystemBindingResourceId } from './workspace-team-binding.js';
 import {
   ensureWorkspaceResource,
@@ -201,7 +195,6 @@ type DesignSystemProjectManifest = {
     suggested?: string[];
     exemptions?: string[];
   };
-  runtime?: DesignSystemRuntimePaths;
 };
 
 export type DesignSystemProvenance = {
@@ -523,94 +516,6 @@ export async function readDesignSystemPackageInfo(
   };
 }
 
-export async function readDesignSystemRuntime(
-  root: string,
-  id: string,
-  options: { idPrefix?: string } = {},
-): Promise<DesignSystemRuntimeLoadResult> {
-  const dirId = stripPrefixAndValidateId(id, options.idPrefix);
-  if (!dirId) return { mode: 'legacy' };
-  const brandRoot = path.join(root, dirId);
-  const raw = await readFileOptional(path.join(brandRoot, 'manifest.json'));
-  if (raw === undefined) return { mode: 'legacy' };
-
-  let value: unknown;
-  try {
-    value = JSON.parse(raw) as unknown;
-  } catch (error) {
-    return {
-      mode: 'invalid',
-      errors: [`manifest.json: ${error instanceof Error ? error.message : String(error)}`],
-    };
-  }
-  if (typeof value !== 'object' || value === null || Array.isArray(value)) {
-    return { mode: 'invalid', errors: ['manifest.json must contain an object'] };
-  }
-  const record = value as Record<string, unknown>;
-  if (record.id !== dirId) {
-    return { mode: 'invalid', errors: [`manifest.json id must match ${dirId}`] };
-  }
-  if (record.runtime === undefined) return { mode: 'legacy' };
-  const parsedRuntime = DesignSystemRuntimePathsSchema.safeParse(record.runtime);
-  if (!parsedRuntime.success) {
-    return {
-      mode: 'invalid',
-      errors: parsedRuntime.error.issues.map((issue) => {
-        const suffix = issue.path.length === 0
-          ? ''
-          : issue.path.map((part) => typeof part === 'number' ? `[${part}]` : `.${part}`).join('');
-        return `manifest.json: $.runtime${suffix} ${issue.message}`;
-      }),
-    };
-  }
-  return loadDesignSystemRuntimePackage(brandRoot, parsedRuntime.data);
-}
-
-/** Resolve the active package with the same built-in → installed precedence used by prompt assets. */
-export async function resolveDesignSystemRuntime(
-  designSystemId: string,
-  builtInRoot: string,
-  userInstalledRoot: string,
-): Promise<DesignSystemRuntimeLoadResult> {
-  if (designSystemId.startsWith('user:')) {
-    return readDesignSystemRuntime(userInstalledRoot, designSystemId, { idPrefix: 'user:' });
-  }
-
-  const builtIn = await readDesignSystemRuntime(builtInRoot, designSystemId);
-  if (builtIn.mode !== 'legacy') return builtIn;
-  return readDesignSystemRuntime(userInstalledRoot, designSystemId);
-}
-
-export type DesignSystemRuntimePromptContext =
-  | { mode: 'legacy' }
-  | { mode: 'structured'; intentIndex: string }
-  | { mode: 'invalid'; issue: string };
-
-export async function resolveDesignSystemRuntimePromptContext(
-  designSystemId: string,
-  builtInRoot: string,
-  userInstalledRoot: string,
-  env: NodeJS.ProcessEnv = process.env,
-): Promise<DesignSystemRuntimePromptContext> {
-  if (!isDesignTokenChannelEnabled(env)) return { mode: 'legacy' };
-
-  const runtime = await resolveDesignSystemRuntime(
-    designSystemId,
-    builtInRoot,
-    userInstalledRoot,
-  );
-  if (runtime.mode === 'structured') {
-    return {
-      mode: 'structured',
-      intentIndex: summarizeDesignSystemIntentMapForPrompt(runtime.bundle),
-    };
-  }
-  if (runtime.mode === 'invalid') {
-    return { mode: 'invalid', issue: runtime.errors.join('\n') };
-  }
-  return { mode: 'legacy' };
-}
-
 async function listAvailableDesignSystemPackageFiles(
   brandRoot: string,
   manifest: DesignSystemProjectManifest,
@@ -628,10 +533,6 @@ async function listAvailableDesignSystemPackageFiles(
   add(manifest.files.tailwind);
   add(manifest.usage);
   add(manifest.componentsManifest);
-  add(manifest.runtime?.components);
-  add(manifest.runtime?.intents);
-  add(manifest.runtime?.lint);
-  add(manifest.runtime?.fallback);
   for (const page of manifest.preview?.pages ?? []) add(page.path);
   for (const font of manifest.fonts ?? []) add(font.file);
 
@@ -815,8 +716,6 @@ export function digestDesignSystemContext(input: {
   componentsManifest?: string | null;
   fixtureHtml?: string | null;
   pullIndex?: string | null;
-  intentIndex?: string | null;
-  runtimeIssue?: string | null;
   importMode?: string | null;
 }): string | null {
   const hasContent = [
@@ -826,8 +725,6 @@ export function digestDesignSystemContext(input: {
     input.componentsManifest,
     input.fixtureHtml,
     input.pullIndex,
-    input.intentIndex,
-    input.runtimeIssue,
     input.importMode,
   ].some((value) => typeof value === 'string' && value.length > 0);
   if (!hasContent) return null;
@@ -841,8 +738,6 @@ export function digestDesignSystemContext(input: {
     componentsManifest: input.componentsManifest ?? null,
     fixtureHtml: input.fixtureHtml ?? null,
     pullIndex: input.pullIndex ?? null,
-    intentIndex: input.intentIndex ?? null,
-    runtimeIssue: input.runtimeIssue ?? null,
     importMode: input.importMode ?? null,
   };
   return createHash('sha256').update(JSON.stringify(payload), 'utf8').digest('hex');
@@ -1145,7 +1040,7 @@ async function isAllowedDesignSystemStaticFile(
   relativePath: string,
 ): Promise<boolean> {
   if (!isSafeManifestPath(relativePath)) return false;
-  if (DESIGN_SYSTEM_STATIC_SYSTEM_FILES.has(relativePath)) return true;
+  if (relativePath === 'brand.json' || DESIGN_SYSTEM_STATIC_SYSTEM_FILES.has(relativePath)) return true;
 
   const allowed = new Set<string>();
   const add = (filePath: string | undefined): void => {
@@ -1167,7 +1062,22 @@ async function isAllowedDesignSystemStaticFile(
     await addFilesUnderDeclaredDir(brandRoot, 'assets', allowed);
   }
 
-  return allowed.has(relativePath);
+  if (allowed.has(relativePath)) return true;
+  if (!relativePath.startsWith('assets/')) return false;
+  // User systems may have a brand manifest without a project manifest. Expose
+  // its declared logo/imagery files, not every file copied under assets/.
+  try {
+    const brand = JSON.parse(await readFile(path.join(brandRoot, 'brand.json'), 'utf8')) as Partial<Brand> | null;
+    const referenced: unknown[] = [
+      brand?.logo?.primary,
+      ...(Array.isArray(brand?.logo?.alternates) ? brand.logo.alternates : []),
+      ...(Array.isArray(brand?.imagery?.samples) ? brand.imagery.samples.map(sample => sample?.file) : []),
+    ];
+    return referenced.some(filePath => typeof filePath === 'string'
+      && isSafeManifestPath(filePath) && sanitizeRelativeFilePath(filePath) === relativePath);
+  } catch {
+    return false;
+  }
 }
 
 function designSystemStaticContentType(relativePath: string): string {
@@ -2529,8 +2439,8 @@ export type DesignSystemAssetSyncResult = {
  *     (the "fingerprint protection was spinning with nothing to protect"
  *     root cause the investigation identified).
  *
- * Only paths under `assets/` are accepted; anything else is silently
- * skipped — this function syncs real assets, not arbitrary canonical files.
+ * Only the public brand manifest and paths under `assets/` are accepted.
+ * Project metadata and other arbitrary canonical files are never copied.
  */
 export async function syncUserDesignSystemAssetsFromFiles(
   root: string,
@@ -2552,7 +2462,7 @@ export async function syncUserDesignSystemAssetsFromFiles(
   const synced: string[] = [];
   for (const file of files) {
     const sanitized = sanitizeRelativeFilePath(file.path);
-    if (!sanitized || !(sanitized === 'assets' || sanitized.startsWith('assets/'))) continue;
+    if (!sanitized || !(sanitized === 'brand.json' || sanitized === 'assets' || sanitized.startsWith('assets/'))) continue;
     const targetPath = path.join(dir, ...sanitized.split('/'));
     await mkdir(path.dirname(targetPath), { recursive: true });
     await writeFile(targetPath, file.content);
@@ -4215,15 +4125,13 @@ function isProjectManifest(value: unknown, expectedId: string): value is DesignS
   const files = record.files;
   if (typeof files !== 'object' || files === null || Array.isArray(files)) return false;
   const fileRecord = files as Record<string, unknown>;
-  if (!(
+  return (
     fileRecord.design === 'DESIGN.md' &&
     fileRecord.tokens === 'tokens.css' &&
     (fileRecord.designTokens === undefined || fileRecord.designTokens === 'design-tokens.json') &&
     (fileRecord.tailwind === undefined || fileRecord.tailwind === 'tailwind-v4.css') &&
     (fileRecord.components === undefined || fileRecord.components === 'components.html')
-  )) return false;
-
-  return record.runtime === undefined || DesignSystemRuntimePathsSchema.safeParse(record.runtime).success;
+  );
 }
 
 function summarize(raw: string): string {

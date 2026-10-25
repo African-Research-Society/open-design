@@ -2,6 +2,8 @@
    ARS Design — Observatory product workspace
    ============================================================ */
 :root {
+  --tick-img: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSI5IiBmaWxsPSIjMjAyMDIwIi8+PHBhdGggZD0iTTEyIDIyQzE3LjUyMjggMjIgMjIgMTcuNTIyOCAyMiAxMkMyMiA2LjQ3NzE1IDE3LjUyMjggMiAxMiAyQzYuNDc3MTUgMiAyIDYuNDc3MTUgMiAxMkMyIDE3LjUyMjggNi40NzcxNSAyMiAxMiAyMlpNMTcuNDU3MSA5LjQ1NzExTDExIDE1LjkxNDJMNi43OTI4OSAxMS43MDcxTDguMjA3MTEgMTAuMjkyOUwxMSAxMy4wODU4TDE2LjA0MjkgOC4wNDI4OUwxNy40NTcxIDkuNDU3MTFaIiBmaWxsPSIjMDBGRjA4Ii8+PC9zdmc+");
+  --select-ink: #353535;
   /* The ARS Observatory palette keeps the working canvas quiet and warm.
      Solar gold identifies action and selection; malachite is reserved for
      success so product state and brand emphasis remain distinct. */
@@ -35,6 +37,14 @@
   --text-soft: #666157;
   --text-faint: #666157;
 
+  --brand-ink: #007106;
+  --brand-surface: #F2FFF2;
+  --send-ground: #00ff08;
+  --send-ink: #202020;
+  --upgrade-ground: #00ff08;
+  --upgrade-ink: #121212;
+  --send-ground: #00ff08;
+  --send-ink: #202020;
   --accent: #7f5a0c;
   --accent-contrast: #f2ede2;
   --accent-strong: #5d3f00;
@@ -63,10 +73,42 @@
   --amber: #7f5a0c;
   --amber-bg: color-mix(in srgb, #e8b23a 18%, #f7f3ea);
 
+  --tag-prototype-ink: #2348b8;
+  --tag-prototype-tint: #e8efff;
+  --tag-live-artifact-ink: #6d4ff5;
+  --tag-live-artifact-tint: #745cff;
+  --tag-web-clone-ink: #0a7ea4;
+  --tag-slide-ink: #b15e00;
+  --tag-slide-tint: #ff9f40;
+  --tag-media-ink: #1c8a73;
   --shadow-xs: 0 1px 0 rgba(23, 22, 27, 0.04);
   --shadow-sm: 0 1px 2px rgba(23, 22, 27, 0.05), 0 1px 3px rgba(23, 22, 27, 0.04);
   --shadow-md: 0 6px 24px rgba(23, 22, 27, 0.08), 0 2px 6px rgba(23, 22, 27, 0.04);
   --shadow-lg: 0 24px 60px rgba(23, 22, 27, 0.16), 0 8px 16px rgba(23, 22, 27, 0.07);
+
+  /* Floating-layer ladder — the two tiers that already exist in
+     `primitives.css`, named so a new floating surface can be placed by
+     MEANING instead of by picking a number that happens to clear whatever it
+     collided with today.
+
+       --z-hint  a transient hint about something else on screen. Nobody
+                 opened it, `pointer-events: none`, it goes away on its own.
+                 `.od-tooltip-layer` is the only member.
+       --z-menu  a surface the user deliberately opened from a trigger and
+                 must be able to read and click. `.od-select-menu` has been
+                 here since it was written, and the artifact card's
+                 publish / export popovers join it.
+
+     menu ABOVE hint is the point, not an accident: a hint that paints over
+     the menu you just opened is never what you wanted — reported 2026-08-27
+     with a tooltip covering the lower half of the export menu.
+
+     These two do NOT describe the whole app. Roughly forty other z-index
+     literals (chrome 150, viewer popovers 220, dialogs 1500…) are still
+     ad-hoc; naming them is a separate job. Do not invent a third token here
+     without deciding what tier it means. */
+  --z-hint: 4000;
+  --z-menu: 9000;
 
   /* Corner-radius scale — the only radii UI should reach for (Shape
      Consistency Lock). xs for inline code / micro-chips, sm for controls,
@@ -78,6 +120,12 @@
   --radius-medium: 4px;
   --radius-large: 8px;
   --radius-xlarge: 12px;
+  --radius-2xlarge: 16px;
+  /* Both names for the 16px step stay defined: `--radius-2xlarge` is the
+     chat seam token (`--chat-radius-2xl`, `chat-seam-radius-tokens.test.ts`)
+     and `--radius-xxlarge` is what the entry rail's recent-project preview
+     reads (`entry-layout.css`, `entry-rail-recent.test.ts`). */
+  --radius-xxlarge: var(--radius-2xlarge);
   --radius-circular: 50%;
   --stroke-thin: 1px;
   --stroke-thick: 2px;
@@ -88,6 +136,8 @@
   --radius: var(--radius-large);
   --radius-md: var(--radius-large);
   --radius-lg: var(--radius-xlarge);
+  --radius-2xl: var(--radius-2xlarge);
+  --radius-xl: var(--radius-2xlarge);
   --radius-pill: 999px;
 
   --duration-ultra-fast: 50ms;
@@ -156,6 +206,8 @@
   --text-soft: #8e8fa6;
   --text-faint: #77798f;
 
+  --brand-ink: #adf788;
+  --brand-surface: #164111;
   --accent: #e8b23a;
   --accent-contrast: #221703;
   --accent-strong: #f6cf6b;
@@ -218,6 +270,8 @@
     --text-soft: #8e8fa6;
     --text-faint: #77798f;
 
+    --brand-ink: #adf788;
+    --brand-surface: #164111;
     --accent: #e8b23a;
     --accent-contrast: #221703;
     --accent-strong: #f6cf6b;

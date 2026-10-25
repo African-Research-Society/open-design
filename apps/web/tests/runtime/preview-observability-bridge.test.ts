@@ -1,6 +1,7 @@
 import { JSDOM } from 'jsdom';
 import { afterEach, describe, expect, it } from 'vitest';
 import {
+  PREVIEW_OBSERVABILITY_HOST_STATE_MESSAGE_TYPE,
   PREVIEW_OBSERVABILITY_MESSAGE_TYPE,
   buildPreviewObservabilityBridge,
   type PreviewObservabilityMessage,
@@ -16,6 +17,7 @@ interface BridgeHarness {
   advanceBy: (durationMs: number) => void;
   close: () => void;
   events: PreviewObservabilityMessage[];
+  setHostActive: (active: boolean) => void;
   setViewport: (width: number, height: number) => void;
   setVisibility: (value: DocumentVisibilityState) => void;
   window: JSDOM['window'];
@@ -27,7 +29,7 @@ function bridgeScriptBody(): string {
     .replace(/<\/script>$/, '');
 }
 
-function createBridgeHarness(body = ''): BridgeHarness {
+function createBridgeHarness(body = '', hostActive = true): BridgeHarness {
   const dom = new JSDOM(`<!doctype html><html><body>${body}</body></html>`, {
     pretendToBeVisual: true,
     runScripts: 'outside-only',
@@ -77,6 +79,16 @@ function createBridgeHarness(body = ''): BridgeHarness {
 
   win.eval(bridgeScriptBody());
 
+  const setHostActive = (active: boolean) => {
+    win.dispatchEvent(new win.MessageEvent('message', {
+      data: {
+        type: PREVIEW_OBSERVABILITY_HOST_STATE_MESSAGE_TYPE,
+        active,
+      },
+    }));
+  };
+  if (hostActive) setHostActive(true);
+
   return {
     advanceBy(durationMs) {
       const target = now + durationMs;
@@ -92,6 +104,7 @@ function createBridgeHarness(body = ''): BridgeHarness {
     },
     close: () => dom.window.close(),
     events,
+    setHostActive,
     setViewport(width, height) {
       viewportWidth = width;
       viewportHeight = height;
@@ -112,6 +125,23 @@ afterEach(() => {
 });
 
 describe('preview observability white-screen bridge', () => {
+  it('starts the white-screen window only after a retained preview becomes active', () => {
+    const harness = createBridgeHarness('', false);
+    harnesses.push(harness);
+
+    harness.advanceBy(20_000);
+    expect(harness.events).toEqual([]);
+
+    harness.setHostActive(true);
+    harness.advanceBy(6_500);
+    expect(harness.events).toEqual([
+      expect.objectContaining({
+        event: 'white_screen',
+        blank_observation_count: 2,
+      }),
+    ]);
+  });
+
   it('does not report while the host tab is hidden, then samples after it becomes visible', () => {
     const harness = createBridgeHarness();
     harnesses.push(harness);
@@ -192,4 +222,38 @@ describe('preview observability white-screen bridge', () => {
       }),
     ]);
   });
+});
+
+it('answers only parent metric probes with visible content and echoes the attempt id', () => {
+  const harness = createBridgeHarness('<p>Hello</p>'); harnesses.push(harness);
+  const win = harness.window;
+  const replies: unknown[] = [];
+  win.postMessage = ((data: unknown) => { replies.push(data); }) as typeof win.postMessage;
+  win.requestAnimationFrame = ((callback: FrameRequestCallback) => { callback(0); return 1; }) as typeof win.requestAnimationFrame;
+  Object.defineProperty(win.document.querySelector('p')!, 'getBoundingClientRect', { value: () => ({ width: 100, height: 20, top: 0, left: 0, bottom: 20, right: 100 }) });
+  const probe = { type: 'od:preview-metric-probe', attemptId: 'attempt-1' };
+  win.dispatchEvent(new win.MessageEvent('message', { source: null, data: probe }));
+  expect(replies).toHaveLength(0);
+  win.dispatchEvent(new win.MessageEvent('message', { source: win.parent, data: probe }));
+  expect(replies).toContainEqual({ type: 'od:preview-metric-result', attemptId: 'attempt-1', result: 'success' });
+  replies.length = 0; harness.setVisibility('hidden');
+  win.dispatchEvent(new win.MessageEvent('message', { source: win.parent, data: probe }));
+  expect(replies).toHaveLength(0);
+});
+
+it('bounds metric replies during an authored error storm to one per attempt', () => {
+  const harness = createBridgeHarness(); harnesses.push(harness);
+  const win = harness.window;
+  const replies: Array<{ type?: string; attemptId?: string }> = [];
+  win.postMessage = ((data: { type?: string }) => replies.push(data)) as typeof win.postMessage;
+  win.requestAnimationFrame = ((callback: FrameRequestCallback) => { callback(0); return 1; }) as typeof win.requestAnimationFrame;
+  const probe = (attemptId: string) => win.dispatchEvent(new win.MessageEvent('message', {
+    source: win.parent, data: { type: 'od:preview-metric-probe', attemptId },
+  }));
+  probe('storm-1');
+  for (let i = 0; i < 200; i++) win.dispatchEvent(new win.ErrorEvent('error', { message: `fixture error ${i}` }));
+  probe('storm-2');
+  for (let i = 0; i < 200; i++) win.dispatchEvent(new win.ErrorEvent('error', { message: `fixture error ${i}` }));
+  const metric = replies.filter(r => r.type === 'od:preview-metric-result');
+  expect(metric.map(r => r.attemptId)).toEqual(['storm-1', 'storm-2']);
 });

@@ -57,6 +57,20 @@ function context(overrides: Record<string, unknown> = {}) {
 }
 
 describe('createAuthorizeProjectRequest', () => {
+  it('blocks owner content writes during receipt while reads and comments remain available', async () => {
+    const row = { workspaceId: 'workspace-a', visibility: 'team', resourceState: 'active', createdByWorkspaceMemberId: 'member-a' };
+    const sendApiError = vi.fn();
+    const authorize = createAuthorizeProjectRequest({
+      db: {}, getWorkspaceProject: () => row, getWorkspaceProjectByProjectId: () => row,
+      isProjectReceivingContent: () => true, sendApiError,
+    });
+    const req = request({ workspaceId: 'workspace-a', memberId: 'member-a' });
+    expect(await authorize(req, response(), 'project-a', { mode: 'read' })).toBe(true);
+    expect(await authorize(req, response(), 'project-a', { mode: 'write', capability: 'comment' })).toBe(true);
+    expect(await authorize(req, response(), 'project-a', { mode: 'write', capability: 'writeFiles' })).toBe(false);
+    expect(sendApiError).toHaveBeenLastCalledWith(expect.anything(), 409, 'PROJECT_BUSY', expect.any(String));
+  });
+
   it('keeps a first-open placeholder readable/commentable but blocks content writes', async () => {
     const row = {
       workspaceId: 'workspace-a',
@@ -690,5 +704,79 @@ describe('createAuthorizeProjectRequest', () => {
       'WORKSPACE_CONTEXT_CONFLICT',
       expect.any(String),
     );
+  });
+
+  // Regression for https://github.com/nexu-io/open-design/issues/7072:
+  // A personal project with a stale or valid workspace_projects binding must
+  // be readable without workspace headers when the caller supplies no
+  // workspace context at all (e.g. an iframe src, MCP preview URL, or bare
+  // loopback fetch).  The /raw/ and /preview/ routes call authorizeProjectRequest
+  // with { mode: 'read', allowNavigationQuery: true }; returning
+  // WORKSPACE_CONTEXT_REQUIRED for these headerless loopback reads broke
+  // desktop preview for local-only personal projects.
+  it('allows a headerless iframe raw read of a personal workspace-bound project', async () => {
+    const row = {
+      workspaceId: 'workspace-a',
+      visibility: 'personal',
+      resourceState: 'active',
+      createdByWorkspaceMemberId: 'member-a',
+      syncState: 'local_only',
+    };
+    const verify = vi.fn(async () => ({
+      ok: false as const,
+      status: 400 as const,
+      code: 'WORKSPACE_CONTEXT_REQUIRED',
+      message: 'an explicit workspace context is required',
+    }));
+    const sendApiError = vi.fn();
+    const authorize = createAuthorizeProjectRequest({
+      db: {},
+      getWorkspaceProject: () => row,
+      getWorkspaceProjectByProjectId: () => row,
+      verifyWorkspaceRequestAuthority: verify,
+      sendApiError,
+    });
+
+    await expect(authorize(
+      request({}),
+      response(),
+      'project-a',
+      { mode: 'read', allowNavigationQuery: true },
+    )).resolves.toBe(true);
+    expect(verify).not.toHaveBeenCalled();
+    expect(sendApiError).not.toHaveBeenCalled();
+  });
+
+  it('allows a headerless iframe raw read of a team workspace-bound project', async () => {
+    const row = {
+      workspaceId: 'workspace-a',
+      visibility: 'team',
+      resourceState: 'active',
+      createdByWorkspaceMemberId: 'member-a',
+      syncState: 'local_only',
+    };
+    const verify = vi.fn(async () => ({
+      ok: false as const,
+      status: 400 as const,
+      code: 'WORKSPACE_CONTEXT_REQUIRED',
+      message: 'an explicit workspace context is required',
+    }));
+    const sendApiError = vi.fn();
+    const authorize = createAuthorizeProjectRequest({
+      db: {},
+      getWorkspaceProject: () => row,
+      getWorkspaceProjectByProjectId: () => row,
+      verifyWorkspaceRequestAuthority: verify,
+      sendApiError,
+    });
+
+    await expect(authorize(
+      request({}),
+      response(),
+      'project-a',
+      { mode: 'read', allowNavigationQuery: true },
+    )).resolves.toBe(true);
+    expect(verify).not.toHaveBeenCalled();
+    expect(sendApiError).not.toHaveBeenCalled();
   });
 });

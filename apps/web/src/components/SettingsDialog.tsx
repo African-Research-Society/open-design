@@ -60,9 +60,14 @@ import {
 } from '../providers/daemon';
 import { installDeepSeekHarnessCompanion } from '../providers/agent-companion';
 import { amrProfileBadgeLabel } from '../runtime/amr-guidance';
-import { deepSeekHarnessNeedsSetup, isVisibleLocalCliAgent } from '../utils/visibleAgents';
+import {
+  availableVisibleAgentCount,
+  deepSeekHarnessNeedsSetup,
+  isVisibleLocalCliAgent,
+} from '../utils/visibleAgents';
 import { ExportDiagnosticsRow } from './ExportDiagnosticsButton';
 import { Icon } from './Icon';
+import { LabsSection } from './LabsSection';
 import { defaultAgentModelId, effectiveAgentModelChoice } from './agentModelSelection';
 import {
   CUSTOM_MODEL_SENTINEL,
@@ -146,6 +151,7 @@ import {
   clearUpdaterCache,
   deriveUpdaterModel,
   downloadUpdaterUpdate,
+  isUpdaterDownloadFailure,
   openUpdaterInstaller,
   quitAfterUpdaterInstallerOpen,
   readUpdaterStatus,
@@ -166,6 +172,7 @@ import { SettingsWorkspaceSection } from './SettingsWorkspaceSection';
 import {
   useWorkspaceBillingResponse,
   useWorkspaceContext,
+  workspaceBillingBalanceUsd,
   workspaceBillingSummaryForContext,
 } from '../collab/useWorkspaceContext';
 import { canUpgradeFromPlanTier, resolvePlanTier } from '../collab/team-plan';
@@ -217,6 +224,7 @@ import {
 
 export type SettingsSection =
   | 'general'
+  | 'labs'
   | 'execution'
   | 'workspace'
   | 'instructions'
@@ -412,7 +420,9 @@ export function deriveAboutUpdateControl(
         primaryAction,
         primaryLabelKey: 'settings.updateRetry',
         showReleaseLink: true,
-        statusKey: 'updater.failed',
+        // S31c(OPEND-2849):下载没完成就说下载没完成。这一格是版本号旁边的
+        // 一枚短状态词,放得下的只有产品那格的标题;正文在更新弹窗里。
+        statusKey: isUpdaterDownloadFailure(model.status) ? 'updater.downloadFailedTitle' : 'updater.failed',
         statusTone: 'error',
       };
     }
@@ -1642,9 +1652,10 @@ export function SettingsDialog({
     context: workspaceContext,
     loading: workspaceContextLoading,
   } = useWorkspaceContext();
-  // Workspace billing remains available for workspace plan/upgrade decisions.
-  // The local-CLI card itself describes the selected CLI login and profile, so
-  // its email, account plan and balance must stay on one account-scoped source.
+  // Workspace billing drives both the plan and the money shown beside it. The
+  // CLI identity remains account-scoped, but a Team badge must never be paired
+  // with that account's personal wallet: the entry chrome and Settings must
+  // describe the same selected environment + workspace.
   const workspaceBillingResponse = useWorkspaceBillingResponse();
   // Same partition for the plan half: `response.summary` is an ACCOUNT read, so
   // the AMR card's plan badge and both upgrade routes must consume it projected
@@ -1654,14 +1665,9 @@ export function SettingsDialog({
     workspaceContext,
   );
   const showWorkspaceSettings = canShowWorkspaceSettings(workspaceContext);
-  // The 「升级」 buttons on the AMR model card route through
-  // `workspaceUpgradeUrl` — the one decision point every upgrade affordance
-  // shares (see its docblock in `EntryNavRail.tsx`): personal workspace →
-  // B's personal plan modal (`billing=plan`, recvpYEiH019cD); team → the
-  // checkout vs change-plan dashboard dialog by subscription state
-  // (recvpSQKna0LwR). The profile fallback keeps the buttons alive after a
-  // signed-out/no-context read; while that read is still loading, hide them so
-  // an owner-only action cannot flash briefly for an admin/member.
+  // All generic AMR upgrade buttons route through public Pricing. While the
+  // workspace read is pending, hide the owner-only action to avoid a flash for
+  // admins or members.
   const amrUpgradeUrl = (profile: string | null | undefined): string | null =>
     workspaceContextLoading
       ? null
@@ -1695,9 +1701,19 @@ export function SettingsDialog({
   const [amrCardStatus, setAmrCardStatus] = useState<VelaLoginStatus | null>(null);
   const [amrCardStatusReady, setAmrCardStatusReady] = useState(false);
   const amrCardSignedIn = isAmrSessionAuthenticated(amrCardStatus);
+  // Picking OpenDesign while signed out only selects it inside Settings:
+  // writing `agentId: 'amr'` without a session trips App's "cloud identity
+  // rejected" guard, which bounces the user to onboarding. The selected card
+  // offers sign-in instead, and the choice is committed once a session
+  // exists — from whichever surface observed it first.
+  const [amrPendingSelect, setAmrPendingSelect] = useState(false);
+  useEffect(() => {
+    if (!amrPendingSelect || !isAmrSessionAuthenticated(amrCardStatus)) return;
+    setAmrPendingSelect(false);
+    setCfg((c) => ({ ...c, agentId: 'amr' }));
+  }, [amrPendingSelect, amrCardStatus]);
   const [amrWalletSnapshot, setAmrWalletSnapshot] = useState<AmrWalletSnapshot | null>(null);
   const [amrWalletReady, setAmrWalletReady] = useState(false);
-  const [hoveredAgentCardId, setHoveredAgentCardId] = useState<string | null>(null);
   const [providerTestState, setProviderTestState] = useState<TestState>({
     status: 'idle',
   });
@@ -1707,18 +1723,25 @@ export function SettingsDialog({
   }, [amrCardStatus, onAmrLoginStatusChange]);
 
   const refreshAmrWalletSnapshot = useCallback(async (options: { refresh?: boolean } = {}) => {
+    // The wallet endpoint is account-scoped. Until the selected workspace is
+    // known, fetching it can race a Team context read and briefly put personal
+    // money (or a personal auth error) on the Team card.
+    if (workspaceContextLoading || workspaceContext?.workspaceType === 'team') {
+      setAmrWalletSnapshot(null);
+      setAmrWalletReady(false);
+      return;
+    }
     setAmrWalletReady(false);
     const next = await fetchAmrWalletSnapshot(options);
     setAmrWalletSnapshot(next);
     setAmrWalletReady(true);
-  }, []);
+  }, [workspaceContext?.workspaceType, workspaceContextLoading]);
 
   useEffect(() => {
     const hasAmrAgent = agents.some((agent) => agent.id === 'amr' && agent.available);
     if (!hasAmrAgent) {
       setAmrCardStatus(null);
       setAmrCardStatusReady(false);
-      setHoveredAgentCardId(null);
       return;
     }
     let cancelled = false;
@@ -1742,7 +1765,12 @@ export function SettingsDialog({
 
   useEffect(() => {
     const hasAmrAgent = agents.some((agent) => agent.id === 'amr' && agent.available);
-    if (!hasAmrAgent || !amrCardSignedIn) {
+    if (
+      !hasAmrAgent ||
+      !amrCardSignedIn ||
+      workspaceContextLoading ||
+      workspaceContext?.workspaceType === 'team'
+    ) {
       setAmrWalletSnapshot(null);
       setAmrWalletReady(false);
       return;
@@ -1763,6 +1791,8 @@ export function SettingsDialog({
     amrCardStatus?.profile,
     amrCardStatus?.user?.id,
     amrCardStatus?.user?.email,
+    workspaceContext?.workspaceType,
+    workspaceContextLoading,
   ]);
 
   // Reconcile AMR sign-in state whenever the user returns to the window. The
@@ -2333,7 +2363,7 @@ export function SettingsDialog({
       const nextAgents = Array.isArray(refreshed) ? refreshed : agents;
       setAgentRescanNotice({
         kind: 'success',
-        count: nextAgents.filter((a) => a.available).length,
+        count: availableVisibleAgentCount(nextAgents),
       });
     } catch {
       setAgentRescanNotice({ kind: 'error' });
@@ -2352,6 +2382,9 @@ export function SettingsDialog({
         (agent) => agent.id === 'deepseek-harness' && agent.available,
       );
       if (!installed) throw new Error(t('settings.dshSetupRequired'));
+      // This commits a CLI choice outside the card click handler, so drop any
+      // pending OpenDesign intent or a later sign-in would overwrite it.
+      setAmrPendingSelect(false);
       setCfg((current) => ({ ...current, agentId: installed.id, mode: 'daemon' }));
       setDshSetup(null);
       setAgentTestState({ status: 'running' });
@@ -2928,20 +2961,26 @@ export function SettingsDialog({
       const baseMessage = kindForSuccess === 'api'
         ? t('settings.testSuccessApi', { ms, sample })
         : t('settings.testSuccessCli', { agentName, ms, sample });
+      const successMessage =
+        kindForSuccess === 'cli' &&
+        result.resolvedModel &&
+        result.resolvedModel !== testedModel
+          ? `${baseMessage} ${t('settings.model')}: ${result.resolvedModel}`
+          : baseMessage;
       if (kindForSuccess === 'cli' && cfg.agentId === 'codex') {
         const codexStrings = codexPathStrings(locale);
         if (
           result.usedExecutableSource === 'configured' &&
           result.configuredExecutablePath
         ) {
-          return `${baseMessage} ${codexStrings.configuredSuccess(result.configuredExecutablePath)}`;
+          return `${successMessage} ${codexStrings.configuredSuccess(result.configuredExecutablePath)}`;
         }
         if (
           result.usedExecutableSource === 'fallback_invalid' &&
           result.configuredExecutablePath &&
           result.detectedExecutablePath
         ) {
-          return `${baseMessage} ${codexStrings.invalidFallback(
+          return `${successMessage} ${codexStrings.invalidFallback(
             result.configuredExecutablePath,
             result.detectedExecutablePath,
           )}`;
@@ -2951,13 +2990,13 @@ export function SettingsDialog({
           result.configuredExecutablePath &&
           result.detectedExecutablePath
         ) {
-          return `${baseMessage} ${codexStrings.failedFallback(
+          return `${successMessage} ${codexStrings.failedFallback(
             result.configuredExecutablePath,
             result.detectedExecutablePath,
           )}`;
         }
       }
-      return result.detail ? `${baseMessage} ${result.detail}` : baseMessage;
+      return result.detail ? `${successMessage} ${result.detail}` : successMessage;
     }
     switch (result.kind) {
       case 'auth_failed':
@@ -3161,8 +3200,32 @@ export function SettingsDialog({
   // The status here drives the footer indicator: 'idle' = no draft to
   // flush, 'pending' = scheduled, 'saving' = request in flight, 'saved'
   // = recent successful sync, 'error' = recent failure.
-  const [autosaveStatus, setAutosaveStatus] =
-    useState<'idle' | 'pending' | 'saving' | 'saved' | 'error'>('idle');
+  type AutosaveStatus = 'idle' | 'pending' | 'saving' | 'saved' | 'error';
+  const [autosaveStatus, setAutosaveStatus] = useState<AutosaveStatus>('idle');
+  // The indicator is one shared surface: every section drives this same pill.
+  // A section whose write outlives it — Labs writes immediately and can settle
+  // after unmount — must not relabel a newer save's outcome, so every writer
+  // takes a claim and only the current claim may settle. Comparing the
+  // displayed value would not be enough: a newer section can legitimately be
+  // showing the same `saving` an older write left behind.
+  const autosaveClaimRef = useRef(0);
+  const claimAutosaveStatus = useCallback((next: AutosaveStatus): number => {
+    autosaveClaimRef.current += 1;
+    setAutosaveStatus(next);
+    return autosaveClaimRef.current;
+  }, []);
+  const settleAutosaveStatus = useCallback((claim: number, next: AutosaveStatus): void => {
+    if (claim !== autosaveClaimRef.current) return;
+    setAutosaveStatus(next);
+  }, []);
+  const labsAutosave = useMemo(() => ({
+    claim: () => claimAutosaveStatus('saving'),
+    settle: (claim: number, status: 'saved' | 'error' | 'idle') => {
+      // Settling does not hand the indicator to anyone else, so the claim
+      // stays valid for this writer's own follow-up (saved -> idle).
+      settleAutosaveStatus(claim, status);
+    },
+  }), [claimAutosaveStatus, settleAutosaveStatus]);
   // Skip the very first effect tick so just opening the dialog doesn't
   // appear to "save" anything before the user has touched a field.
   const autosaveSkipFirstRef = useRef(true);
@@ -3208,9 +3271,9 @@ export function SettingsDialog({
       window.clearTimeout(autosaveRetryTimerRef.current);
       autosaveRetryTimerRef.current = null;
     }
-    setAutosaveStatus('idle');
+    claimAutosaveStatus('idle');
     onResetOnboarding({ ...cfg, onboardingCompleted: false });
-  }, [cfg, onResetOnboarding]);
+  }, [cfg, claimAutosaveStatus, onResetOnboarding]);
 
   useEffect(() => {
     if (autosaveSkipFirstRef.current) {
@@ -3221,7 +3284,7 @@ export function SettingsDialog({
       suppressNextAutosaveRef.current = false;
       return;
     }
-    setAutosaveStatus('pending');
+    const autosaveClaim = claimAutosaveStatus('pending');
     if (autosaveSavedTimerRef.current != null) {
       window.clearTimeout(autosaveSavedTimerRef.current);
       autosaveSavedTimerRef.current = null;
@@ -3287,10 +3350,10 @@ export function SettingsDialog({
         !persistOptions.forceMediaProviderSync
         && isAutosaveDraftOnlyChange(persistedSnapshot, autosaveLastSavedRef.current)
       ) {
-        setAutosaveStatus('idle');
+        settleAutosaveStatus(autosaveClaim, 'idle');
         return;
       }
-      setAutosaveStatus('saving');
+      settleAutosaveStatus(autosaveClaim, 'saving');
       void (async () => {
         try {
           await onPersist(persistedSnapshot, persistOptions);
@@ -3309,19 +3372,19 @@ export function SettingsDialog({
           // leave the status as 'pending' so the next debounce tick
           // owns the indicator instead of flashing "Saved".
           if (autosaveLatestRef.current !== snapshot) {
-            setAutosaveStatus('pending');
+            settleAutosaveStatus(autosaveClaim, 'pending');
             return;
           }
           if (persistOptions.forceMediaProviderSync) {
             lastSyncedMediaProvidersVersionRef.current = mediaProvidersVersion;
             setPendingMediaProviderEditIds(new Set());
           }
-          setAutosaveStatus('saved');
+          settleAutosaveStatus(autosaveClaim, 'saved');
           autosaveSavedTimerRef.current = window.setTimeout(() => {
             autosaveSavedTimerRef.current = null;
             // Settle to idle after a moment so the indicator doesn't
             // stay on "Saved" forever and become noise.
-            setAutosaveStatus((curr) => (curr === 'saved' ? 'idle' : curr));
+            settleAutosaveStatus(autosaveClaim, 'idle');
           }, 1800);
         } catch {
           if (
@@ -3330,7 +3393,7 @@ export function SettingsDialog({
             && mediaProvidersChangeVersionRef.current === mediaProvidersVersion
             && lastSyncedMediaProvidersVersionRef.current < mediaProvidersVersion
           ) {
-            setAutosaveStatus('pending');
+            settleAutosaveStatus(autosaveClaim, 'pending');
             autosaveRetryTimerRef.current = window.setTimeout(() => {
               autosaveRetryTimerRef.current = null;
               if (
@@ -3344,7 +3407,7 @@ export function SettingsDialog({
             }, 1500);
             return;
           }
-          setAutosaveStatus('error');
+          settleAutosaveStatus(autosaveClaim, 'error');
         }
       })();
     }, 400);
@@ -3354,7 +3417,15 @@ export function SettingsDialog({
         autosaveTimerRef.current = null;
       }
     };
-  }, [analytics.track, autosaveCommitTick, cfg, onPersist, autosaveRetryTick]);
+  }, [
+    analytics.track,
+    autosaveCommitTick,
+    autosaveRetryTick,
+    cfg,
+    claimAutosaveStatus,
+    onPersist,
+    settleAutosaveStatus,
+  ]);
   // Flush any pending autosave on unmount so a fast-closing dialog
   // never strands an in-flight edit. We also clear the "Saved" toast
   // timer to avoid setState after unmount.
@@ -3835,6 +3906,7 @@ export function SettingsDialog({
   // not twice (heading + tab).
   const sectionHeader: Record<SettingsSection, { title: string; subtitle: string }> = {
     general: { title: t('settings.general'), subtitle: t('settings.generalHint') },
+    labs: { title: t('labs.title'), subtitle: t('labs.navHint') },
     execution: { title: t('settings.title'), subtitle: t('settings.subtitle') },
     workspace: { title: t('settings.workspace'), subtitle: t('settings.workspaceHint') },
     instructions: {
@@ -4194,22 +4266,11 @@ export function SettingsDialog({
         aria-labelledby="settings-dialog-title"
         onClick={pageMode ? undefined : (e) => e.stopPropagation()}
       >
-        {/* Top-right chrome strip — anchored to the modal corner so the
-            autosave indicator and the close button float above the
-            sidebar/content rhythm without competing with the title.
-            We use `position: absolute` instead of putting these inside
-            `.modal-head` so the welcome variant's tall hero (kicker /
-            title / subtitle / pet teaser) keeps its centred reading
-            measure, and the close button always lands at the same
-            optical location regardless of how much copy the header
-            renders. */}
-        <div className="settings-chrome" aria-hidden={false}>
-          {/* Autosave status pill. Only renders something while a save
-              is in flight or has just completed — idle = invisible so
-              first-open feels calm. The chrome strip itself stays
-              mounted so the close button never shifts when the pill
-              appears, and the pill is announced via aria-live for
-              assistive tech. */}
+        {/* Autosave feedback is viewport-level rather than part of the
+            top-right dialog chrome: it rides the app's own top chrome row, so
+            a passive status never covers the Local CLI pickers that occupy the
+            panel's upper band (OPEND-2148). */}
+        <div className="settings-autosave-layer">
           <div
             className={`settings-autosave is-${autosaveStatus}`}
             role="status"
@@ -4232,6 +4293,11 @@ export function SettingsDialog({
               </>
             ) : null}
           </div>
+        </div>
+        {/* Top-right chrome strip — anchored to the modal corner so the
+            close and fullscreen controls stay at a stable optical location
+            regardless of the header copy. */}
+        <div className="settings-chrome" aria-hidden={false}>
           {pageMode ? null : (
             <button
               type="button"
@@ -4331,6 +4397,17 @@ export function SettingsDialog({
               <span>
                 <strong>{t('settings.general')}</strong>
                 <small>{t('settings.generalHint')}</small>
+              </span>
+            </button>
+            <button
+              type="button"
+              className={`settings-nav-item${activeSection === 'labs' ? ' active' : ''}`}
+              onClick={() => setActiveSection('labs')}
+            >
+              <Icon name="sparkles" size={18} />
+              <span>
+                <strong>{t('labs.title')}</strong>
+                <small>{t('labs.navHint')}</small>
               </span>
             </button>
             <button
@@ -4460,8 +4537,13 @@ export function SettingsDialog({
                 // here and the callout was showing spuriously.
                 <div className="settings-cloud-signin-callout">
                   <div>
-                    <strong>{t('settings.cloudCalloutTitle')}</strong>
-                    <p>{t('settings.cloudCalloutBody')}</p>
+                    <strong className="settings-cloud-signin-callout__title">
+                      <span className="settings-cloud-signin-callout__title-icon" aria-hidden>
+                        <Icon name="sparkles" size={12} />
+                      </span>
+                      {t('entry.cloudCreditsTitle')}
+                    </strong>
+                    <p>{t('entry.cloudCreditsBody')}</p>
                   </div>
                   {/* Same device-auth flow as the 授权 button on the OpenDesign
                       agent card below — the AMR/vela session IS the cloud
@@ -4474,8 +4556,9 @@ export function SettingsDialog({
                     hideSignedInStatus
                     initialStatus={amrCardStatus}
                     skipInitialRefresh
-                    signInLabel={t('settings.cloudCalloutButton')}
+                    signInLabel={t('entry.cloudCreditsCta')}
                     signInIcon="log-in"
+                    revealPendingCancelAction
                     amrEntrySourceDetail="settings_cloud_callout"
                     metricsConsent={cfg.telemetry?.metrics === true}
                     installationId={cfg.installationId}
@@ -4621,7 +4704,9 @@ export function SettingsDialog({
                       <div className="agent-grid agent-grid-installed">
                         {installedAgents.map((a) => {
                           const needsSetup = deepSeekHarnessNeedsSetup(a);
-                          const active = !needsSetup && cfg.agentId === a.id;
+                          const active =
+                            !needsSetup
+                            && (amrPendingSelect ? a.id === 'amr' : cfg.agentId === a.id);
                           const running =
                             active && agentTestState.status === 'running';
                           const isAmrAgent = a.id === 'amr';
@@ -4679,10 +4764,30 @@ export function SettingsDialog({
                           // credits count as a dollar amount is what put
                           // "Balance $388307.00" on a workspace whose real
                           // balance was under $39.
-                          const amrCardBalanceLabel =
-                            isAmrAgent && active && amrCardSignedIn
-                              ? amrStatusBalance ?? amrWalletBalance
+                          const workspaceBalanceUsd = workspaceBillingBalanceUsd(
+                            workspaceBillingResponse,
+                            workspaceContext,
+                          );
+                          const amrWorkspaceBalance =
+                            amrWalletVisible && workspaceBalanceUsd
+                              ? formatVelaBalanceUsd(workspaceBalanceUsd)
                               : null;
+                          const amrCardIsTeam =
+                            workspaceContext?.workspaceType === 'team';
+                          const amrCardBalanceLabel =
+                            isAmrAgent &&
+                            active &&
+                            amrCardSignedIn &&
+                            !workspaceContextLoading
+                              ? amrCardIsTeam
+                                ? amrWorkspaceBalance
+                                : amrWorkspaceBalance ?? amrStatusBalance ?? amrWalletBalance
+                              : null;
+                          const amrCardBalanceReady =
+                            !workspaceContextLoading &&
+                            (amrCardIsTeam
+                              ? Boolean(workspaceBillingResponse) || Boolean(amrWorkspaceBalance)
+                              : amrWalletReady || Boolean(amrCardBalanceLabel));
                           // vela's `account.plan` is ACCOUNT-scoped, so a member
                           // whose plan is held by the team workspace reads
                           // `free` there — the workspace context wins.
@@ -4732,12 +4837,10 @@ export function SettingsDialog({
                               ? canUpgradeFromPlanTier(amrCardResolvedPlan) &&
                                 Boolean(workspaceContext?.permissions?.canManageBilling)
                               : false;
+                          // Cancel stays visible for the whole pending sign-in,
+                          // matching the Settings callout button above.
                           const amrRevealPendingCancelAction =
-                            isAmrAgent &&
-                            active &&
-                            hoveredAgentCardId === a.id &&
-                            !amrCardSignedIn &&
-                            amrCardStatus?.loginInFlight === true;
+                            isAmrAgent && active && !amrCardSignedIn;
                           const cardEl = (
                             <div
                               key={a.id}
@@ -4747,16 +4850,9 @@ export function SettingsDialog({
                                 'agent-card agent-card-installed' +
                                 (active ? ' active' : '') +
                                 (needsSetup ? ' agent-card-needs-setup' : '') +
-                                (amrHighlighted ? ' agent-card--amr-highlight' : '')
+                                (amrHighlighted ? ' agent-card--amr-highlight' : '') +
+                                (isAmrAgent && !amrCardSignedIn ? ' agent-card--amr-signed-out' : '')
                               }
-                              onMouseEnter={() => {
-                                if (!isAmrAgent || !active) return;
-                                setHoveredAgentCardId(a.id);
-                              }}
-                              onMouseLeave={() => {
-                                if (hoveredAgentCardId !== a.id) return;
-                                setHoveredAgentCardId(null);
-                              }}
                             >
                               <div className="agent-card-main">
                                 <button
@@ -4786,6 +4882,13 @@ export function SettingsDialog({
                                         },
                                       );
                                     }
+                                    // Until a session is confirmed (including before the
+                                    // first status read lands), only select it here.
+                                    if (isAmrAgent && !amrCardSignedIn) {
+                                      setAmrPendingSelect(true);
+                                      return;
+                                    }
+                                    setAmrPendingSelect(false);
                                     setCfg((c) => ({ ...c, agentId: a.id }));
                                   }}
                                   aria-pressed={active}
@@ -4883,8 +4986,8 @@ export function SettingsDialog({
                                                 {amrWalletValueLabel({
                                                   balance: amrCardBalanceLabel,
                                                   loadingLabel: t('common.loading'),
-                                                  ready: amrWalletReady || Boolean(amrCardBalanceLabel),
-                                                  snapshot: amrWalletSnapshot,
+                                                  ready: amrCardBalanceReady,
+                                                  snapshot: amrCardIsTeam ? null : amrWalletSnapshot,
                                                   unavailableLabel: t('settings.amrWalletUnavailable'),
                                                 })}
                                               </span>
@@ -4903,7 +5006,10 @@ export function SettingsDialog({
                                 {isAmrAgent ? (
                                   active && amrCardStatusReady ? (
                                     <span
-                                      className="amr-auth-anchor"
+                                      className={
+                                        'amr-auth-anchor'
+                                        + (amrCardSignedIn ? '' : ' amr-auth-anchor--sign-in')
+                                      }
                                       onMouseEnter={() => setAmrCoachmarkDismissed(true)}
                                     >
                                       {amrCoachmarkArmed &&
@@ -4960,12 +5066,18 @@ export function SettingsDialog({
                                         </button>
                                       ) : null}
                                       <AmrLoginPill
-                                        className="agent-card-amr-auth"
+                                        className={
+                                          'agent-card-amr-auth'
+                                          + (amrCardSignedIn
+                                            ? ''
+                                            : ' settings-cloud-signin-callout__button')
+                                        }
                                         hideSignedOutStatus
                                         hideSignedInStatus
                                         initialStatus={amrCardStatus}
                                         skipInitialRefresh
-                                        signInLabel={t('settings.amrAuthorize')}
+                                        signInLabel={t('entry.cloudCreditsCta')}
+                                        signInIcon="log-in"
                                         showConsoleAction={amrCardSignedIn}
                                         iconOnlySignOut
                                         amrEntrySourceDetail="settings_amr_authorize"
@@ -5927,6 +6039,10 @@ export function SettingsDialog({
             </section>
           ) : null}
 
+          {activeSection === 'labs' ? (
+            <LabsSection autosave={labsAutosave} />
+          ) : null}
+
           {activeSection === 'designSystems' ? (
             <DesignSystemsSection
               cfg={cfg}
@@ -6076,6 +6192,7 @@ export function SettingsDialog({
                         allowSilentUpdates,
                       }));
                       if (onSilentUpdatePreferenceChange == null) return;
+                      const autosaveClaim = claimAutosaveStatus('saving');
                       setSilentUpdateBusy(true);
                       void (async () => {
                         try {
@@ -6089,13 +6206,13 @@ export function SettingsDialog({
                             ...autosaveLastSavedRef.current,
                             allowSilentUpdates,
                           };
-                          setAutosaveStatus('saved');
+                          settleAutosaveStatus(autosaveClaim, 'saved');
                           if (autosaveSavedTimerRef.current != null) {
                             window.clearTimeout(autosaveSavedTimerRef.current);
                           }
                           autosaveSavedTimerRef.current = window.setTimeout(() => {
                             autosaveSavedTimerRef.current = null;
-                            setAutosaveStatus((curr) => (curr === 'saved' ? 'idle' : curr));
+                            settleAutosaveStatus(autosaveClaim, 'idle');
                           }, 1800);
                         } catch {
                           if (writeToken !== silentUpdateWriteTokenRef.current) return;
@@ -6104,7 +6221,7 @@ export function SettingsDialog({
                             ...current,
                             allowSilentUpdates: previous,
                           }));
-                          setAutosaveStatus('error');
+                          settleAutosaveStatus(autosaveClaim, 'error');
                         } finally {
                           if (writeToken === silentUpdateWriteTokenRef.current) {
                             setSilentUpdateBusy(false);

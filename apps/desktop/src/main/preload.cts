@@ -3,6 +3,7 @@ const { contextBridge, ipcRenderer } = require('electron');
 import type {
   OpenDesignHostBridge,
   OpenDesignHostActionResult,
+  OpenDesignHostDownloadResult,
   OpenDesignHostBrowserClearDataOptions,
   OpenDesignHostCaptureOptions,
   OpenDesignHostCaptureResult,
@@ -11,6 +12,8 @@ import type {
   OpenDesignHostProjectImportInit,
   OpenDesignHostProjectReplaceWorkingDirResult,
   OpenDesignHostPickWorkingDirResult,
+  OpenDesignHostPreviewNavigationFailure,
+  OpenDesignHostPreviewNavigationFailureListener,
   OpenDesignHostUpdaterActionOptions,
   OpenDesignHostUpdaterMenuLabels,
   OpenDesignHostUpdaterOpenDialogListener,
@@ -25,6 +28,7 @@ const UPDATER_STATUS_EVENT = 'od:update:status-changed';
 const UPDATER_OPEN_DIALOG_EVENT = 'od:update:open-dialog';
 const APP_CONFIG_CHANGED_IPC_CHANNEL = 'od:app-config-changed';
 const APP_CONFIG_CHANGED_EVENT = 'open-design:app-config-changed';
+const PREVIEW_NAVIGATION_FAILURE_IPC_CHANNEL = 'od:preview-navigation-failed';
 
 // Mirror of the argv prefix used by main's `applyOsLocaleSwitch` and
 // runtime's `additionalArguments`. Duplicated literal on purpose: the
@@ -244,6 +248,46 @@ const capture = {
   },
 };
 
+let latestPreviewNavigationFailure: OpenDesignHostPreviewNavigationFailure | null = null;
+const previewNavigationFailureListeners = new Set<OpenDesignHostPreviewNavigationFailureListener>();
+
+ipcRenderer.on(PREVIEW_NAVIGATION_FAILURE_IPC_CHANNEL, (
+  _event: unknown,
+  failure: OpenDesignHostPreviewNavigationFailure,
+): void => {
+  if (
+    failure == null
+    || typeof failure !== 'object'
+    || !Number.isSafeInteger(failure.eventId)
+    || typeof failure.errorCode !== 'number'
+    || !Number.isFinite(failure.occurredAtMs)
+    || typeof failure.validatedUrl !== 'string'
+    || (failure.frameName !== undefined && typeof failure.frameName !== 'string')
+  ) return;
+  latestPreviewNavigationFailure = failure;
+  for (const listener of previewNavigationFailureListeners) {
+    try {
+      listener(failure);
+    } catch {
+      // A renderer listener must not prevent other active viewers from
+      // receiving the same host-owned failure signal.
+    }
+  }
+});
+
+const preview = {
+  getLatestNavigationFailure: (): OpenDesignHostPreviewNavigationFailure | null =>
+    latestPreviewNavigationFailure,
+  subscribeNavigationFailure: (
+    listener: OpenDesignHostPreviewNavigationFailureListener,
+  ): (() => void) => {
+    previewNavigationFailureListeners.add(listener);
+    return () => {
+      previewNavigationFailureListeners.delete(listener);
+    };
+  },
+};
+
 function invokeUpdater(
   action: 'check' | 'clear-cache' | 'download' | 'install' | 'status',
   options?: OpenDesignHostUpdaterActionOptions,
@@ -305,6 +349,11 @@ ipcRenderer.on(APP_CONFIG_CHANGED_IPC_CHANNEL, () => {
 
 const hostBridge = {
   version: OPEN_DESIGN_HOST_VERSION,
+  startup: {
+    context: () => ipcRenderer.invoke('od:startup:context'),
+    signal: (value: Parameters<NonNullable<OpenDesignHostBridge['startup']>['signal']>[0]) =>
+      ipcRenderer.invoke('od:startup:business-ready', value),
+  },
   client: {
     type: 'desktop',
     platform: process.platform,
@@ -316,9 +365,21 @@ const hostBridge = {
     setTheme: (theme: 'light' | 'dark' | 'system'): void =>
       ipcRenderer.send('od:appearance:set-theme', theme),
   },
+  downloads: {
+    subscribe: (listener: (result: OpenDesignHostDownloadResult) => void): (() => void) => {
+      const handler = (_event: unknown, result: OpenDesignHostDownloadResult): void => {
+        if (result == null || typeof result.url !== "string"
+          || !["completed", "cancelled", "interrupted"].includes(result.state)) return;
+        listener({ url: result.url, state: result.state });
+      };
+      ipcRenderer.on("od:download-finished", handler);
+      return () => { ipcRenderer.removeListener("od:download-finished", handler); };
+    },
+  },
   shell,
   browser,
   capture,
+  preview,
   project,
   pdf: {
     print: async (html: string, nonce?: string, options?: PrintPdfOptions): Promise<OpenDesignHostActionResult> => {

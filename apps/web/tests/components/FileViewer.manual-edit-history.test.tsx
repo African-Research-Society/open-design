@@ -177,12 +177,17 @@ describe('FileViewer manual edit history regressions', () => {
       />,
     );
 
+    const initialFrame = screen.getByTestId('artifact-preview-frame') as HTMLIFrameElement;
+    const post = vi.spyOn(initialFrame.contentWindow!, 'postMessage');
     await enterManualEditMode();
     await selectManualEditTarget();
 
     const editFrame = screen.getByTestId('artifact-preview-frame') as HTMLIFrameElement;
     expect(editFrame.getAttribute('data-od-render-mode')).toBe('srcdoc');
-    expect(editFrame.srcdoc).toContain('data-od-edit-bridge');
+    fireEvent.load(editFrame);
+    const activation = post.mock.calls.map(([message]) => message)
+      .find((message) => message.type === 'od:srcdoc-transport-activate');
+    expect(activation?.html).toContain('data-od-edit-bridge');
 
     // Exiting edit mode is the toolbar toggle's job — the panel's own close
     // button only collapses the inspector and stays in edit.
@@ -192,8 +197,9 @@ describe('FileViewer manual edit history regressions', () => {
       const previewFrame = screen.getByTestId('artifact-preview-frame') as HTMLIFrameElement;
       expect(previewFrame).toBe(editFrame);
       expect(previewFrame.getAttribute('data-od-render-mode')).toBe('srcdoc');
-      expect(previewFrame.srcdoc).toContain('Hero');
-      expect(previewFrame.srcdoc).toContain('data-od-edit-bridge');
+      expect(activation?.html).toContain('Hero');
+      expect(activation?.html).toContain('data-od-edit-bridge');
+      expect(post.mock.calls.filter(([message]) => message.type === 'od:srcdoc-transport-activate')).toHaveLength(1);
     });
   });
 
@@ -261,7 +267,7 @@ describe('FileViewer manual edit history regressions', () => {
     expect(savedSources[2]).not.toContain('rgb(239, 68, 68)');
   });
 
-  it('refreshes the manual edit canvas after non-style source patches', async () => {
+  it('updates the manual edit canvas after text patches without replacing its transport', async () => {
     const initialSource = '<!doctype html><html><body><h1 data-od-id="hero">Hero</h1></body></html>';
     const savedSources: string[] = [];
     const fetchMock = vi.fn(async (input: string | URL | Request, init?: RequestInit) => {
@@ -303,6 +309,9 @@ describe('FileViewer manual edit history regressions', () => {
       expect(frame.getAttribute('data-od-render-mode')).toBe('srcdoc');
       expect(panelState.props?.draft.fullSource).toContain('Hero');
     });
+    const frame = getActivePreviewFrame();
+    const transportBeforeSave = frame.srcdoc;
+    const postMessage = vi.spyOn(frame.contentWindow!, 'postMessage');
     act(() => {
       panelState.props?.onApplyPatch(
         { id: 'hero', kind: 'set-text', value: 'Updated hero' },
@@ -313,8 +322,14 @@ describe('FileViewer manual edit history regressions', () => {
     await waitFor(() => expect(savedSources).toHaveLength(1));
     await waitFor(() => expect(panelState.props?.draft.fullSource).toContain('Updated hero'));
     await waitFor(() => {
-      expect(getActivePreviewFrame().srcdoc).toContain('Updated hero');
+      expect(postMessage).toHaveBeenCalledWith({
+        type: 'od-edit-preview-text',
+        id: 'hero',
+        value: 'Updated hero',
+      }, '*');
     });
+    expect(getActivePreviewFrame()).toBe(frame);
+    expect(frame.srcdoc).toBe(transportBeforeSave);
   });
 
   it('only exposes reset after the selected element draft changes', async () => {

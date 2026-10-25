@@ -13,6 +13,7 @@ import {
   type Ref,
   type SyntheticEvent,
 } from 'react';
+import { bindMotionPreviewActivity, unbindMotionPreviewActivity } from '../runtime/motion-preview-activity';
 
 export const OD_PREVIEW_KEEP_ALIVE =
   typeof process === 'undefined' || process.env.OD_PREVIEW_KEEP_ALIVE !== '0';
@@ -61,6 +62,7 @@ function parkIframeElement(frame: HTMLIFrameElement) {
   frame.onload = null;
   frame.removeAttribute('data-testid');
   frame.setAttribute('data-od-active', 'false');
+  frame.setAttribute('data-od-motion-active', 'false');
   frame.setAttribute('aria-hidden', 'true');
   frame.setAttribute('tabindex', '-1');
 }
@@ -98,6 +100,7 @@ export function IframeKeepAliveProvider({
     const entry = entriesRef.current.get(key);
     if (!entry) return false;
     const wasActive = activeKeysRef.current.has(key);
+    unbindMotionPreviewActivity(entry.element);
     entry.element.remove();
     entriesRef.current.delete(key);
     activeKeysRef.current.delete(key);
@@ -218,6 +221,7 @@ export function useIframeKeepAlivePool(): IframeKeepAlivePoolValue {
     const removeFallbackEntry = (key: string) => {
       const entry = fallbackEntriesRef.current.get(key);
       if (!entry) return;
+      unbindMotionPreviewActivity(entry.element);
       entry.element.remove();
       fallbackEntriesRef.current.delete(key);
       fallbackActiveKeysRef.current.delete(key);
@@ -271,6 +275,7 @@ export function useIframeKeepAlivePool(): IframeKeepAlivePoolValue {
   useEffect(() => () => {
     for (const key of Array.from(fallbackEntriesRef.current.keys())) {
       const entry = fallbackEntriesRef.current.get(key);
+      if (entry) unbindMotionPreviewActivity(entry.element);
       entry?.element.remove();
       fallbackEntriesRef.current.delete(key);
       fallbackActiveKeysRef.current.delete(key);
@@ -350,6 +355,12 @@ function syncIframeProps(
   appliedAttributes: Set<string>,
   appliedStyleKeys: Set<string>,
 ) {
+  // A pooled srcDoc frame carries `src="about:blank"` as its parking URL.
+  // Set that URL before srcdoc on a fresh DOM node. Reversing this order starts
+  // the real about:srcdoc navigation and then immediately cancels it with the
+  // parking URL, which Electron reports as ERR_ABORTED and users see as a
+  // white preview when opening or reattaching a file tab.
+  setAttribute(frame, 'src', props.src);
   const nextAttributes = new Set<string>();
   for (const [name, value] of Object.entries(props)) {
     if (
@@ -377,7 +388,6 @@ function syncIframeProps(
   frame.onload = props.onLoad
     ? (event) => props.onLoad?.(event as unknown as SyntheticEvent<HTMLIFrameElement>)
     : null;
-  setAttribute(frame, 'src', props.src);
 }
 
 export const PooledIframe = forwardRef<HTMLIFrameElement, PooledIframeProps>(function PooledIframe({
@@ -418,7 +428,11 @@ const ClientPooledIframe = forwardRef<HTMLIFrameElement, PooledIframeProps>(func
   useLayoutEffect(() => {
     const host = hostRef.current;
     if (!host) return undefined;
-    const frame = pool.attach(cacheKey, host, () => document.createElement('iframe'));
+    const frame = pool.attach(cacheKey, host, () => {
+      const next = document.createElement('iframe');
+      bindMotionPreviewActivity(next);
+      return next;
+    });
     iframeRef.current = frame;
     return () => {
       setForwardedRef(forwardedRef, null);

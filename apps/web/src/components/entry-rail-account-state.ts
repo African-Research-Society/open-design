@@ -1,6 +1,21 @@
 import type { WorkspaceContextState } from '../collab/useWorkspaceContext';
+import { planUnlimitedTier } from '../runtime/amr-unlimited-models';
 
 export type EntryRailAccountFooterState = 'hidden' | 'syncing' | 'recovering' | 'sign-in';
+
+/** Keep the compact wallet badge quiet at zero on paid plans. Actual quota
+ * and wallet are shown separately in the billing panel; this is not admission. */
+export function shouldShowCreditsBalance(input: {
+  tier: string | null | undefined;
+  balanceUsd: string | null | undefined;
+}): boolean {
+  if (planUnlimitedTier(input.tier) === null) return true;
+  const raw = input.balanceUsd?.trim() ?? '';
+  if (!raw) return true;
+  const amount = Number(raw);
+  if (!Number.isFinite(amount)) return true;
+  return amount !== 0;
+}
 
 export function requiresAmrReauthentication(
   amrSessionState: import('@open-design/contracts').AmrSessionState | undefined,

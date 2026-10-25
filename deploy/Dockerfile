@@ -24,7 +24,7 @@ RUN apt-get update && \
 
 WORKDIR /app
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY scripts/postinstall.mjs ./scripts/postinstall.mjs
+COPY scripts/postinstall.mjs ./scripts/
 COPY packages ./packages
 COPY tools ./tools
 COPY apps/daemon/package.json ./apps/daemon/package.json
@@ -91,6 +91,11 @@ COPY design-systems ./design-systems
 COPY craft ./craft
 COPY prompt-templates ./prompt-templates
 COPY assets ./assets
+# `data/plugin-previews/manifest.json` is committed by the bake pipeline and is
+# what `resolvePluginPreviewsDir()` looks for at runtime. Without it in the
+# image, `loadManifest()` returns `{}` and every plugin silently falls back to
+# the live-iframe preview path — the exact cost the bakes exist to avoid.
+COPY data ./data
 COPY plugins/_official ./plugins/_official
 
 FROM ${RUNTIME_IMAGE}
@@ -118,6 +123,7 @@ COPY --from=build --chown=open-design:open-design /app/skills ./skills
 COPY --from=build --chown=open-design:open-design /app/design-systems ./design-systems
 COPY --from=build --chown=open-design:open-design /app/craft ./craft
 COPY --from=build --chown=open-design:open-design /app/prompt-templates ./prompt-templates
+COPY --from=build --chown=open-design:open-design /app/data ./data
 COPY --from=build --chown=open-design:open-design /app/assets/frames ./assets/frames
 COPY --from=build --chown=open-design:open-design /app/assets/community-pets ./assets/community-pets
 # Plan §3.J4 / spec §23.3.5 — bundled atom plugins registered on

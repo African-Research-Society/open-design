@@ -1,3 +1,4 @@
+import { arsExecutionEnvironment } from '../integrations/ars-team.js';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -135,7 +136,7 @@ export function spawnEnvForAgent(
     return finalizeRuntimeEnv(env, sandboxRuntime);
   }
   if (agentId === 'codex') {
-    return finalizeRuntimeEnv(env, sandboxRuntime);
+    return { ...finalizeRuntimeEnv(env, sandboxRuntime), ...arsExecutionEnvironment() };
   }
   if (agentId === 'opencode' || agentId === 'byok-opencode') {
     stripKeysCaseInsensitive(env, [

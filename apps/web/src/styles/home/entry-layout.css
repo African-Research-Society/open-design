@@ -1950,8 +1950,8 @@
 }
 .entry-main--scroll {
   /* Content card — the main column's own base card (per product: the rail
-     sits flat, and this is the one card on the screen): a milky-frost
-     surface, a 16px corner, a whisper elevation, and a vertical box (flush
+     sits flat, and this is the one card on the screen): a theme-matched
+     panel, a 16px corner, a whisper elevation, and a vertical box (flush
      top, 12px bottom) that ends on the same line as the rail column beside
      it. Right inset 12px mirrors the rail's left one; the left stays 0
      because the 12px gutter to the rail is the rail's own right margin (it
@@ -1965,8 +1965,8 @@
      pseudo scrolls away with the content, and `::before` is already taken by
      the top scroll-fade band above. */
   margin: 0 12px 12px 0;
-  --entry-content-surface: rgba(255, 255, 255, 0.85);
-  --entry-content-ring: var(--glass-refract-ring-edge);
+  --entry-content-surface: var(--bg-panel);
+  --entry-content-ring: var(--border);
   background: var(--entry-content-surface);
   -webkit-backdrop-filter: var(--material-thin-backdrop);
   backdrop-filter: var(--material-thin-backdrop);

@@ -1541,17 +1541,6 @@ export const HomeHero = forwardRef<HomeHeroHandle, Props>(function HomeHero(
         </span>
       </span>
 
-      {/* Capsule type row: the 10 top-level create-scenario types as pill chips above
-          the composer (per product — replaces the fanned card carousel); the
-          selected pill carries the accent tint, click switches. */}
-      <TypePillRow
-        chips={templateChips}
-        activeChipId={activeChipId}
-        disabled={pluginsLoading || pendingChipId !== null || pendingPluginId !== null}
-        labelFor={(id) => homeHeroChipLabel(id, t)}
-        onPick={handlePickTaskChip}
-      />
-
       {/* #5517 wraps the input card + workdir row into one visible composer
           card so they read as a single surface. */}
       <div

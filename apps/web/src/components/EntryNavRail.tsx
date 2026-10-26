@@ -1452,7 +1452,7 @@ export function EntryTopRightCluster({
       {createPortal(
         <div className={clusterVisible ? 'entry-top-right-cluster' : undefined}>
           {leadingSlot}
-          {theme && onThemeChange ? (
+          {!ARS_BRANDED && theme && onThemeChange ? (
             <button
               type="button"
               className="entry-theme-toggle"
